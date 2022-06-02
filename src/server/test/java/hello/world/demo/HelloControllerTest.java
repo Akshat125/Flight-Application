@@ -1,5 +1,6 @@
 package hello.world.demo;
 
+import controller.HelloControllerDEMO;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,8 +14,8 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(SpringExtension.class)
-@WebMvcTest(HelloController.class)
-@ContextConfiguration(classes = HelloController.class)
+@WebMvcTest(HelloControllerDEMO.class)
+@ContextConfiguration(classes = HelloControllerDEMO.class)
 class HelloControllerTest {
 
     @Autowired

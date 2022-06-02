@@ -24,18 +24,18 @@ dependencies {
 sourceSets {
     main {
         java {
-            srcDir 'src/main/java'
+            srcDir 'src/server/main/java'
         }
         resources {
-            srcDir 'src/main/resources'
+            srcDir 'src/server/main/resources'
         }
     }
     test {
         java {
-            srcDir 'src/test/java'
+            srcDir 'src/server/test/java'
         }
         resources {
-            'src/test/resources'
+            'src/server/test/resources'
         }
     }
 }
