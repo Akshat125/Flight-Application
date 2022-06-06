@@ -1,3 +1,9 @@
+.space {
+  width: 10px;
+  height: auto;
+  display: inline-block;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -16,9 +22,6 @@
   color: black;
 }
 
-.App-link {
-  color: #61dafb;
-}
 
 @keyframes App-logo-spin {
   from {
