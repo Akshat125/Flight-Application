@@ -2,17 +2,17 @@ package utils.api.airline;
 
 import java.util.ArrayList;
 
-public class FlightData {
+public class FlightDataAPI {
     public Pagination pagination;
     public ArrayList<Datum> data;
 
 
-    public FlightData(Pagination pagination, ArrayList<Datum> data) {
+    public FlightDataAPI(Pagination pagination, ArrayList<Datum> data) {
         this.pagination = pagination;
         this.data = data;
     }
 
-    public FlightData() {
+    public FlightDataAPI() {
     }
 
     public Pagination getPagination() {

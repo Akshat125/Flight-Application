@@ -2,19 +2,19 @@ package apis;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import utils.api.airport.Airport;
+import utils.api.airport.AirportAPI;
 
 import java.util.List;
 
 public interface AirportsAPI {
 
-    List<Airport> getAirportsByString(String airportSearch);
+    List<AirportAPI> getAirportsByString(String airportSearch);
 
-    static List<Airport> jsonStringToJavaClass(String jsonString) {
+    static List<AirportAPI> jsonStringToJavaClass(String jsonString) {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
-            List<Airport> airports;
-            airports = objectMapper.readValue(jsonString, new com.fasterxml.jackson.core.type.TypeReference<List<Airport>>(){});
+            List<AirportAPI> airports;
+            airports = objectMapper.readValue(jsonString, new com.fasterxml.jackson.core.type.TypeReference<List<AirportAPI>>(){});
             return airports;
         } catch (JsonProcessingException e) {
             e.printStackTrace();

@@ -2,7 +2,7 @@ package apis;
 
 import org.springframework.http.MediaType;
 import org.springframework.web.reactive.function.client.WebClient;
-import utils.api.airport.Airport;
+import utils.api.airport.AirportAPI;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
@@ -17,7 +17,7 @@ public class AirportsAPIRelease implements AirportsAPI{
         webClient = WebClient.builder().baseUrl("https://autocomplete.travelpayouts.com/places2?locale=de&types[]=airport&term=").defaultHeader(MediaType.APPLICATION_JSON_VALUE).build();
     }
 
-    public List<Airport> getAirportsByString(String airportSearch) {
+    public List<AirportAPI> getAirportsByString(String airportSearch) {
 
         try {
             String http = ("https://autocomplete.travelpayouts.com/places2?locale=de&types[]=airport&term=" + airportSearch);

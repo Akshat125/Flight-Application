@@ -7,7 +7,7 @@ public class FassadeAPI {
 
     private AirlinesAPI lufthansaAPI;
     private GoogleMapsAPI googleMapsAPI;
-    private WeatherAPI weatherAPI;
+    private WeathersAPI weatherAPI;
 
     public FassadeAPI(){
         if(USE_MOCKUP){

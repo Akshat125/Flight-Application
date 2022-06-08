@@ -2,7 +2,7 @@ package apis;
 
 import org.springframework.http.MediaType;
 import org.springframework.web.reactive.function.client.WebClient;
-import utils.api.airline.FlightData;
+import utils.api.airline.FlightDataAPI;
 import java.net.URI;
 import java.net.URISyntaxException;
 
@@ -29,7 +29,7 @@ public class AirlinesAPIRelease implements AirlinesAPI {
         webClient = WebClient.builder().baseUrl("http://api.aviationstack.com/v1/").defaultHeader(MediaType.APPLICATION_JSON_VALUE).build();
     }
 
-    public FlightData getFlightData(String formDep_iata, String toArr_icao) {
+    public FlightDataAPI getFlightData(String formDep_iata, String toArr_icao) {
         try {
             String res = "";
             res = webClient.get()
