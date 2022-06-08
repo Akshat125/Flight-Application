@@ -1,4 +1,4 @@
-package utils;
+package utils.user;
 
 
 import javax.persistence.Entity;

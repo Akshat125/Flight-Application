@@ -1,4 +1,4 @@
-package utils;
+package utils.api.airline;
 
 public class Flight{
     public String number;

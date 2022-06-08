@@ -1,15 +1,14 @@
-package utils;
+package utils.api.airline;
 
 import java.util.Date;
 
-public class Arrival{
+public class Departure{
     public String airport;
     public String timezone;
     public String iata;
     public String icao;
     public String terminal;
     public String gate;
-    public String baggage;
     public int delay;
     public Date scheduled;
     public Date estimated;
@@ -17,14 +16,13 @@ public class Arrival{
     public Date estimated_runway;
     public Date actual_runway;
 
-    public Arrival(String airport, String timezone, String iata, String icao, String terminal, String gate, String baggage, int delay, Date scheduled, Date estimated, Date actual, Date estimated_runway, Date actual_runway) {
+    public Departure(String airport, String timezone, String iata, String icao, String terminal, String gate, int delay, Date scheduled, Date estimated, Date actual, Date estimated_runway, Date actual_runway) {
         this.airport = airport;
         this.timezone = timezone;
         this.iata = iata;
         this.icao = icao;
         this.terminal = terminal;
         this.gate = gate;
-        this.baggage = baggage;
         this.delay = delay;
         this.scheduled = scheduled;
         this.estimated = estimated;
@@ -33,7 +31,7 @@ public class Arrival{
         this.actual_runway = actual_runway;
     }
 
-    public Arrival() {
+    public Departure() {
     }
 
     public String getAirport() {
@@ -82,14 +80,6 @@ public class Arrival{
 
     public void setGate(String gate) {
         this.gate = gate;
-    }
-
-    public String getBaggage() {
-        return baggage;
-    }
-
-    public void setBaggage(String baggage) {
-        this.baggage = baggage;
     }
 
     public int getDelay() {

@@ -1,4 +1,4 @@
-package utils;
+package utils.api.airline;
 
 import java.util.ArrayList;
 

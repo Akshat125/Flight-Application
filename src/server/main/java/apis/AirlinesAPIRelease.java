@@ -1,14 +1,12 @@
 package apis;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.MediaType;
 import org.springframework.web.reactive.function.client.WebClient;
-import utils.FlightData;
+import utils.api.airline.FlightData;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-public class LufthansaAPIRelease implements LufthansaAPI {
+public class AirlinesAPIRelease implements AirlinesAPI {
 
     // Source: https://aviationstack.com/
     // https://aviationstack.com/documentation
@@ -27,7 +25,7 @@ public class LufthansaAPIRelease implements LufthansaAPI {
     // München: IATA-Code: MUC, ICAO-Code: EDDM
     private String startAirport = "dep_iata=MUC";
 
-    public LufthansaAPIRelease() {
+    public AirlinesAPIRelease() {
         webClient = WebClient.builder().baseUrl("http://api.aviationstack.com/v1/").defaultHeader(MediaType.APPLICATION_JSON_VALUE).build();
     }
 
@@ -40,19 +38,9 @@ public class LufthansaAPIRelease implements LufthansaAPI {
                     .bodyToMono(String.class)
                     .onErrorStop()
                     .block();
-            return jsonStringToJavaClass(res);
+            return AirlinesAPI.jsonStringToJavaClass(res);
 
         } catch (URISyntaxException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
-    public static FlightData jsonStringToJavaClass(String jsonString) {
-        ObjectMapper objectMapper = new ObjectMapper();
-        try {
-            return objectMapper.readValue(jsonString, FlightData.class);
-        } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
         return null;
