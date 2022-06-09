@@ -6,7 +6,7 @@ public class List {
 
     public int dt;
     public Main main;
-    public ArrayList<WeatherAPI> weather;
+    public ArrayList<Weather> weather;
     public Clouds clouds;
     public Wind wind;
     public int visibility;
@@ -15,7 +15,7 @@ public class List {
     public Sys sys;
     public String dt_txt;
 
-    public List(int dt, Main main, ArrayList<WeatherAPI> weather, Clouds clouds, Wind wind, int visibility, double pop, Rain rain, Sys sys, String dt_txt) {
+    public List(int dt, Main main, ArrayList<Weather> weather, Clouds clouds, Wind wind, int visibility, double pop, Rain rain, Sys sys, String dt_txt) {
         this.dt = dt;
         this.main = main;
         this.weather = weather;
@@ -47,11 +47,11 @@ public class List {
         this.main = main;
     }
 
-    public ArrayList<WeatherAPI> getWeather() {
+    public ArrayList<Weather> getWeather() {
         return weather;
     }
 
-    public void setWeather(ArrayList<WeatherAPI> weather) {
+    public void setWeather(ArrayList<Weather> weather) {
         this.weather = weather;
     }
 

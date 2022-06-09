@@ -1,6 +1,7 @@
 package apis;
 
 import utils.api.airport.AirportAPI;
+import utils.api.weather.WeatherAPI;
 
 import java.util.List;
 
@@ -18,11 +19,11 @@ public class FassadeAPI {
         if(USE_MOCKUP){
             this.lufthansaAPI = new AirlinesAPIMockUp();
             this.googleMapsAPI = new MapsAPIMockUp();
-            this.weatherAPI = new WeatherAPIMockUp();
+            this.weatherAPI = new WeathersAPIMockUp();
         }else{
             this.lufthansaAPI = new AirlinesAPIRelease();
             this.googleMapsAPI = new MapsAPIRelease();
-            this.weatherAPI = new WeatherAPIRelease();
+            this.weatherAPI = new WeathersAPIRelease();
         }
         // no restrictions, can be used right now
         this.airportsAPI = new AirportsAPIRelease();
@@ -30,5 +31,12 @@ public class FassadeAPI {
 
     public List<AirportAPI> searchForAirport(String searchString){
         return this.airportsAPI.getAirportsByString(searchString);
+    }
+
+    public WeatherAPI getWeatherByCoordinates(double lon, double lat) {
+        if(lon > 180 || lon < -180 || lat > 90 || lat < -90){
+            return null;
+        }
+        return weatherAPI.getWeatherByCoordinates(lon,lat);
     }
 }
