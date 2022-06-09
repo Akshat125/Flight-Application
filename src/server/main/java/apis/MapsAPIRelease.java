@@ -28,7 +28,7 @@ public class MapsAPIRelease implements MapsAPI {
         String requestParams = MapsAPI.getCoords(coordinatesMapAPIList);
         byte[] image;
         try {
-            String http = ("https://www.mapquestapi.com/staticmap/v5/map?locations=" + requestParams + "&Rochester,NY&size=170,30@2x&key=9GECRq8QYifLKMgRw1g2GvMNzLWeHwyA");
+            String http = ("https://www.mapquestapi.com/staticmap/v5/map?locations=" + requestParams + "&Rochester,NY&size=600,400@2x&key=9GECRq8QYifLKMgRw1g2GvMNzLWeHwyA");
             URI uri = new URI(http);
             String searchURI = uri.toASCIIString();
             image = webClient

@@ -9,6 +9,9 @@ import java.util.List;
 
 public interface MapsAPI {
 
+    // Source: https://developer.mapquest.com/
+    // Docs: https://developer.mapquest.com/documentation/static-map-api/v5/map
+
     byte[] getImageOfMap(List<CoordinatesMapAPI> coordinatesMapAPIList);
 
     static String getCoords(List<CoordinatesMapAPI> coordinatesMapAPIList){
