@@ -1,5 +1,9 @@
 package apis;
 
+import utils.api.airport.AirportAPI;
+
+import java.util.List;
+
 public class FassadeAPI {
 
     // switch between mockup and release version
@@ -22,5 +26,9 @@ public class FassadeAPI {
         }
         // no restrictions, can be used right now
         this.airportsAPI = new AirportsAPIRelease();
+    }
+
+    public List<AirportAPI> searchForAirport(String searchString){
+        return this.airportsAPI.getAirportsByString(searchString);
     }
 }

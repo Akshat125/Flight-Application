@@ -22,18 +22,18 @@ public class AirlinesAPIRelease implements AirlinesAPI {
     private String accessKey = "access_key=0a58c3ceafb82f4ef97033fd718d2655";
     private String limit = "limit=2";
 
-    // München: IATA-Code: MUC, ICAO-Code: EDDM
+    // München: IATA-Code: MUC, ICAO-Code: BER
     private String startAirport = "dep_iata=MUC";
 
     public AirlinesAPIRelease() {
         webClient = WebClient.builder().baseUrl("http://api.aviationstack.com/v1/").defaultHeader(MediaType.APPLICATION_JSON_VALUE).build();
     }
 
-    public FlightDataAPI getFlightData(String formDep_iata, String toArr_icao) {
+    public FlightDataAPI getFlightData(String formDep_iata, String toArr_iata) {
         try {
             String res = "";
             res = webClient.get()
-                    .uri(new URI(("http://api.aviationstack.com/v1/flights?access_key=0a58c3ceafb82f4ef97033fd718d2655&dep_iata="+ formDep_iata + "&arr_icao=" + toArr_icao).toString()))
+                    .uri(new URI(("http://api.aviationstack.com/v1/flights?access_key=0a58c3ceafb82f4ef97033fd718d2655&dep_iata="+ formDep_iata + "&arr_iata=" + toArr_iata).toString()))
                     .retrieve()
                     .bodyToMono(String.class)
                     .onErrorStop()

@@ -22,8 +22,9 @@ public class AirlinesAPIMockUp implements AirlinesAPI {
     private String limit = "limit=2";
     private String mockData;
 
-    // München: IATA-Code: MUC, ICAO-Code: EDDM
-    private String startAirport = "dep_iata=MUC";
+    // München: IATA-Code: MUC, IATA-Code: BER
+    private String startAirportMunich = "dep_iata=MUC";
+    private String startAirportBerlin = "dep_iata=BER";
 
     public AirlinesAPIMockUp() {
         webClient = WebClient.builder().baseUrl("http://api.aviationstack.com/v1/").defaultHeader(MediaType.APPLICATION_JSON_VALUE).build();
@@ -46,7 +47,7 @@ public class AirlinesAPIMockUp implements AirlinesAPI {
  */
 
 
-    public FlightDataAPI getFlightData(String formDep_iata, String toArr_icao) {
+    public FlightDataAPI getFlightData(String formDep_iata, String toArr_iata) {
         return AirlinesAPI.jsonStringToJavaClass(mockData);
     }
 }

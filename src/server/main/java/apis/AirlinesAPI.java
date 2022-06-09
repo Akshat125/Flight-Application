@@ -6,7 +6,7 @@ import utils.api.airline.FlightDataAPI;
 
 public interface AirlinesAPI {
 
-    FlightDataAPI getFlightData(String formDep_iata, String toArr_icao);
+    FlightDataAPI getFlightData(String formDep_iata, String toArr_iata);
 
     static FlightDataAPI jsonStringToJavaClass(String jsonString) {
         ObjectMapper objectMapper = new ObjectMapper();
