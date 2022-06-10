@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const FLIGHT_API_BASE_URL = "";
 
-class FlightController {
+class AirlineController {
     getEmployees(){
         return axios.get();
     }
@@ -24,5 +24,5 @@ class FlightController {
     }
 }
 
-export default new FlightController()
+export default new AirlineController()
 
