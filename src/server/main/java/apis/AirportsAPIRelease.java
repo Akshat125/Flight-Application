@@ -14,13 +14,13 @@ public class AirportsAPIRelease implements AirportsAPI{
     private WebClient webClient;
 
     public AirportsAPIRelease() {
-        webClient = WebClient.builder().baseUrl("https://autocomplete.travelpayouts.com/places2?locale=de&types[]=airport&term=").defaultHeader(MediaType.APPLICATION_JSON_VALUE).build();
+        webClient = WebClient.builder().baseUrl("https://autocomplete.travelpayouts.com/places2?locale=de&types[]=airport&types[]=city&term=").defaultHeader(MediaType.APPLICATION_JSON_VALUE).build();
     }
 
     public List<AirportAPI> getAirportsByString(String airportSearch) {
 
         try {
-            String http = ("https://autocomplete.travelpayouts.com/places2?locale=de&types[]=airport&term=" + airportSearch);
+            String http = ("https://autocomplete.travelpayouts.com/places2?locale=de&types[]=airport&types[]=city&term=" + airportSearch);
             URI uri = new URI(http);
             String searchURI = uri.toASCIIString();
             String res = webClient.get()

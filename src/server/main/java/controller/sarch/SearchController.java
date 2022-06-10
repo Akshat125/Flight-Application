@@ -44,7 +44,11 @@ public class SearchController {
             airports = this.fassadeAPI.searchForAirport(searchVariable);
         int maxItemsResponse = Math.min(5,airports.size());
         for (int i = 0; i < maxItemsResponse; i++) {
-            airportResponses.add(new AirportResponse(airports.get(i).getName(),airports.get(i).getCity_name(),airports.get(i).country_name,airports.get(i).code));
+            if(airports.get(i).getType().equals("city")){
+                airportResponses.add(new AirportResponse(airports.get(i).getName(),airports.get(i).getName(),airports.get(i).country_name,airports.get(i).code));
+            }else{
+                airportResponses.add(new AirportResponse(airports.get(i).getName(),airports.get(i).getCity_name(),airports.get(i).country_name,airports.get(i).code));
+            }
             IataCoordinatesMapping iataToAdd = new IataCoordinatesMapping(airports.get(i).code, airports.get(i).getCoordinates().getLat(),airports.get(i).getCoordinates().getLon());
             if(!(iataList.contains(iataToAdd))){
                 iataCoordinatesRepository.save(iataToAdd);
