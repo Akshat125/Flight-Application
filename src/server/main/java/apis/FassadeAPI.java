@@ -1,6 +1,8 @@
 package apis;
 
 import utils.api.airport.AirportAPI;
+import utils.api.airport.Coordinates;
+import utils.api.maps.CoordinatesMapAPI;
 import utils.api.weather.WeatherAPI;
 
 import java.util.List;
@@ -10,19 +12,19 @@ public class FassadeAPI {
     // switch between mockup and release version
     private static final boolean USE_MOCKUP = true;
 
-    private AirlinesAPI lufthansaAPI;
-    private MapsAPI googleMapsAPI;
+    private AirlinesAPI airlinesAPI;
+    private MapsAPI mapsAPI;
     private WeathersAPI weatherAPI;
     private AirportsAPI airportsAPI;
 
     public FassadeAPI(){
         if(USE_MOCKUP){
-            this.lufthansaAPI = new AirlinesAPIMockUp();
-            this.googleMapsAPI = new MapsAPIMockUp();
+            this.airlinesAPI = new AirlinesAPIMockUp();
+            this.mapsAPI = new MapsAPIMockUp();
             this.weatherAPI = new WeathersAPIMockUp();
         }else{
-            this.lufthansaAPI = new AirlinesAPIRelease();
-            this.googleMapsAPI = new MapsAPIRelease();
+            this.airlinesAPI = new AirlinesAPIRelease();
+            this.mapsAPI = new MapsAPIRelease();
             this.weatherAPI = new WeathersAPIRelease();
         }
         // no restrictions, can be used right now
@@ -38,5 +40,12 @@ public class FassadeAPI {
             return null;
         }
         return weatherAPI.getWeatherByCoordinates(lon,lat);
+    }
+
+    public byte[] getMapByIATA(List<CoordinatesMapAPI> coordinates){
+        if(coordinates == null || coordinates.isEmpty()){
+            return new byte[0];
+        }
+        return mapsAPI.getImageOfMap(coordinates);
     }
 }
