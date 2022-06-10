@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const USER_API_BASE_URL = "http://localhost:8080/"; //TODO: tbd
-// TODO: url for Lufthansa, Google Maps API
+const USER_API_BASE_URL = "";
+
 class UserLoginController {
     getUserData() {
         return axios.get(USER_API_BASE_URL);

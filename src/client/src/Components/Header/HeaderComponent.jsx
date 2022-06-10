@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import HomepageComponent from "./HomepageComponent";
+import HomepageComponent from "../HomepageComponent";
 
 class HeaderComponent extends Component {
 
