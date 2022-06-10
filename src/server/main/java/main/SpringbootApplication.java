@@ -12,14 +12,21 @@ import utils.user.UserRepository;
 @EntityScan(value = {"apis", "controller", "exceptions", "main", "utils"})
 @ComponentScan(basePackages = {"apis", "controller", "exceptions", "main", "utils"})
 
-
 public class SpringbootApplication {
+
+
+    private static ConfigurableApplicationContext applicationContext;
+
     public static void main(String[] args) {
-        ConfigurableApplicationContext configurableApplicationContext = SpringApplication.run(SpringbootApplication.class, args);
-        UserRepository userRepository = configurableApplicationContext.getBean(UserRepository.class);
+        applicationContext = SpringApplication.run(SpringbootApplication.class, args);
 
         // These lines would add another admin to the database
+        //UserRepository userRepository = applicationContext.getBean(UserRepository.class);
         //User admin = new User("admin", "admin");
         //userRepository.save(admin);
+    }
+
+    public static ConfigurableApplicationContext getApplicationContext() {
+        return applicationContext;
     }
 }

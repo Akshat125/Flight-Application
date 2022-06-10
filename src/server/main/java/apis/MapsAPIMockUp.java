@@ -3,6 +3,10 @@ package apis;
 import org.springframework.web.reactive.function.client.ExchangeStrategies;
 import org.springframework.web.reactive.function.client.WebClient;
 import utils.api.maps.CoordinatesMapAPI;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.util.List;
 
 public class MapsAPIMockUp implements MapsAPI {
@@ -12,7 +16,7 @@ public class MapsAPIMockUp implements MapsAPI {
         webClient = WebClient.builder()
                 .exchangeStrategies(ExchangeStrategies.builder().codecs(
                                 clientCodecConfigurer ->
-                                        clientCodecConfigurer.defaultCodecs().maxInMemorySize(1000000))
+                                        clientCodecConfigurer.defaultCodecs().maxInMemorySize(10000000))
                         .build())
                 .build();
     }
@@ -25,6 +29,12 @@ public class MapsAPIMockUp implements MapsAPI {
      */
 
     public byte[] getImageOfMap(List<CoordinatesMapAPI> coordinatesMapAPIList) {
-        return new byte[0]; // no mockup possible (file is to large otherwise..
+        File mockImage= new File("src/server/main/resources/muc&ber.jpg");
+        try {
+            byte[] mockImageArray = Files.readAllBytes(mockImage.toPath());
+            return mockImageArray;
+        } catch (IOException e) {
+            return new byte[0];
+        }
     }
 }
