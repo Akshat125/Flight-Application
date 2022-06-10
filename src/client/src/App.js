@@ -2,10 +2,11 @@ import './App.css';
 
 import HomepageComponent from "./Components/HomepageComponent";
 import UserLoginComponent from "./Components/UserLogin/UserLoginComponent";
-//routing is used to direct to a specific homepage depending on the path.
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import HeaderComponent from "./Components/Header/HeaderComponent";
 import FooterComponent from "./Components/Footer/FooterComponent";
+
+//
 
 function App() {
     return (
