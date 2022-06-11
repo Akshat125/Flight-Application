@@ -4,11 +4,11 @@ import java.util.ArrayList;
 
 public class WeatherAPI {
 
-    public String cod;
-    public int message;
-    public int cnt;
-    public ArrayList<List> list;
-    public City city;
+    private String cod;
+    private int message;
+    private int cnt;
+    private ArrayList<List> list;
+    private City city;
 
     public WeatherAPI(String cod, int message, int cnt, ArrayList<List> list, City city) {
         this.cod = cod;

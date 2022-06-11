@@ -22,7 +22,6 @@ public class SearchController {
     private List<AirportResponse> airportResponses;
     private IataCoordinatesRepository iataCoordinatesRepository;
     private List<IataCoordinatesMapping> iataList;
-    private Iterable<IataCoordinatesMapping> iterable;
 
     private SearchController(){
         this.fassadeAPI = new FassadeAPI();
@@ -33,10 +32,7 @@ public class SearchController {
     @GetMapping("/getAirport/{searchString}")
     public ResponseEntity<List<AirportResponse>> getAirports(@PathVariable("searchString") String searchVariable){
         this.iataCoordinatesRepository =  SpringbootApplication.getApplicationContext().getBean(IataCoordinatesRepository.class);
-        this.iterable = iataCoordinatesRepository.findAll();
-        for (int i = 0; i < iataCoordinatesRepository.count(); i++) {
-            iterable.forEach(x -> iataList.add(x));
-        }
+        this.iataList = iataCoordinatesRepository.findAll();
         airportResponses.clear();
         if(searchVariable == null || searchVariable.trim().equals("")){
             return ResponseEntity.ok(airportResponses);
@@ -45,11 +41,11 @@ public class SearchController {
         int maxItemsResponse = Math.min(5,airports.size());
         for (int i = 0; i < maxItemsResponse; i++) {
             if(airports.get(i).getType().equals("city")){
-                airportResponses.add(new AirportResponse(airports.get(i).getName(),airports.get(i).getName(),airports.get(i).country_name,airports.get(i).code));
+                airportResponses.add(new AirportResponse(airports.get(i).getName(),airports.get(i).getName(),airports.get(i).getCountry_name(),airports.get(i).getCode()));
             }else{
-                airportResponses.add(new AirportResponse(airports.get(i).getName(),airports.get(i).getCity_name(),airports.get(i).country_name,airports.get(i).code));
+                airportResponses.add(new AirportResponse(airports.get(i).getName(),airports.get(i).getCity_name(),airports.get(i).getCountry_name(),airports.get(i).getCode()));
             }
-            IataCoordinatesMapping iataToAdd = new IataCoordinatesMapping(airports.get(i).code, airports.get(i).getCoordinates().getLat(),airports.get(i).getCoordinates().getLon());
+            IataCoordinatesMapping iataToAdd = new IataCoordinatesMapping(airports.get(i).getCode(), airports.get(i).getCoordinates().getLat(),airports.get(i).getCoordinates().getLon());
             if(!(iataList.contains(iataToAdd))){
                 iataCoordinatesRepository.save(iataToAdd);
                 iataList.add(iataToAdd);

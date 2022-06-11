@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class Rain {
 
     @JsonProperty("3h")
-    public double _3h;
+    private double _3h;
 
     public Rain(double _3h) {
         this._3h = _3h;

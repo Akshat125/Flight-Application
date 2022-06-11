@@ -4,16 +4,16 @@ import java.util.ArrayList;
 
 public class List {
 
-    public int dt;
-    public Main main;
-    public ArrayList<Weather> weather;
-    public Clouds clouds;
-    public Wind wind;
-    public int visibility;
-    public double pop;
-    public Rain rain;
-    public Sys sys;
-    public String dt_txt;
+    private int dt;
+    private Main main;
+    private ArrayList<Weather> weather;
+    private Clouds clouds;
+    private Wind wind;
+    private int visibility;
+    private double pop;
+    private Rain rain;
+    private Sys sys;
+    private String dt_txt;
 
     public List(int dt, Main main, ArrayList<Weather> weather, Clouds clouds, Wind wind, int visibility, double pop, Rain rain, Sys sys, String dt_txt) {
         this.dt = dt;

@@ -2,15 +2,15 @@ package utils.api.weather;
 
 public class Main {
 
-    public double temp;
-    public double feels_like;
-    public double temp_min;
-    public double temp_max;
-    public int pressure;
-    public int sea_level;
-    public int grnd_level;
-    public int humidity;
-    public double temp_kf;
+    private double temp;
+    private double feels_like;
+    private double temp_min;
+    private double temp_max;
+    private int pressure;
+    private int sea_level;
+    private int grnd_level;
+    private int humidity;
+    private double temp_kf;
 
     public Main(double temp, double feels_like, double temp_min, double temp_max, int pressure, int sea_level, int grnd_level, int humidity, double temp_kf) {
         this.temp = temp;

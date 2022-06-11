@@ -2,9 +2,9 @@ package utils.api.weather;
 
 public class Wind {
 
-    public double speed;
-    public int deg;
-    public double gust;
+    private double speed;
+    private int deg;
+    private double gust;
 
     public Wind(double speed, int deg, double gust) {
         this.speed = speed;

@@ -2,16 +2,17 @@ package apis;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import utils.api.airline.AirlineAPI;
+import utils.api.airportNameIcao.Icao2NameAPI;
 
-public interface AirlinesAPI {
+public interface AirportNameAPI {
 
-    AirlineAPI getFlightData(String formDep_iata, String toArr_iata);
+    Icao2NameAPI getAirportData(String airportICAO);
 
-    static AirlineAPI jsonStringToJavaClass(String jsonString) {
+
+    static Icao2NameAPI jsonStringToJavaClass(String jsonString) {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
-            return objectMapper.readValue(jsonString, AirlineAPI.class);
+            return objectMapper.readValue(jsonString, Icao2NameAPI.class);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }

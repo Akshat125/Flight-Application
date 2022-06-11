@@ -1,8 +1,5 @@
 package apis;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import utils.api.airline.FlightDataAPI;
 import utils.api.maps.CoordinatesMapAPI;
 
 import java.util.List;

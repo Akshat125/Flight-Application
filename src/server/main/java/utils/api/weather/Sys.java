@@ -2,7 +2,7 @@ package utils.api.weather;
 
 public class Sys {
 
-    public String pod;
+    private String pod;
 
     public Sys(String pod) {
         this.pod = pod;

@@ -1,8 +1,8 @@
 package utils.api.weather;
 
 public class Coord {
-    public double lat;
-    public double lon;
+    private double lat;
+    private double lon;
 
     public Coord(double lat, double lon) {
         this.lat = lat;

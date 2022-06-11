@@ -13,13 +13,13 @@ import utils.api.weather.WeatherAPI;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 @RestController
 public class WeatherController {
 
     private IataCoordinatesRepository iataCoordinatesRepository;
     private List<IataCoordinatesMapping> iataList;
-    private Iterable<IataCoordinatesMapping> iterable;
     private FassadeAPI fassadeAPI;
     private List<WeatherResponse> weatherList;
 
@@ -35,10 +35,7 @@ public class WeatherController {
     public ResponseEntity<List<WeatherResponse>> getWeather(@PathVariable("searchByIATA") String IATA){
         this.iataCoordinatesRepository =  SpringbootApplication.getApplicationContext().getBean(IataCoordinatesRepository.class);
         weatherList.clear();
-        this.iterable = iataCoordinatesRepository.findAll();
-        for (int i = 0; i < iataCoordinatesRepository.count(); i++) {
-            iterable.forEach(x -> iataList.add(x));
-        }
+        this.iataList = iataCoordinatesRepository.findByIata(IATA.toUpperCase(Locale.ROOT));
         for (IataCoordinatesMapping iataCoordinatesMapping : iataList) {
             if (iataCoordinatesMapping.getIata().trim().equalsIgnoreCase(IATA.trim())) {
                 WeatherAPI weather = fassadeAPI.getWeatherByCoordinates(iataCoordinatesMapping.getLongitude(), iataCoordinatesMapping.getLatitude());

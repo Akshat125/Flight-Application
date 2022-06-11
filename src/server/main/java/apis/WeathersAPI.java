@@ -5,8 +5,6 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import utils.api.weather.WeatherAPI;
 
-import java.util.List;
-
 public interface WeathersAPI {
 
     WeatherAPI getWeatherByCoordinates(double lon, double lat);

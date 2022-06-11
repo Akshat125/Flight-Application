@@ -2,8 +2,8 @@ package utils.api.airport;
 
 public class Coordinates {
 
-    public double lon;
-    public double lat;
+    private double lon;
+    private double lat;
 
     public Coordinates(double lon, double lat) {
         this.lon = lon;

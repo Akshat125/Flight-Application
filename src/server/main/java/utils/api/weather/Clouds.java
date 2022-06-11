@@ -2,7 +2,7 @@ package utils.api.weather;
 
 public class Clouds {
 
-    public int all;
+    private int all;
 
     public Clouds(int all) {
         this.all = all;

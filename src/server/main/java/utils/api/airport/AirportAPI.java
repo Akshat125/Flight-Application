@@ -4,21 +4,21 @@ import java.util.ArrayList;
 
 public class AirportAPI {
 
-    public String type;
-    public String code;
-    public String name;
-    public String country_code;
-    public String country_name;
-    public String state_code;
-    public Coordinates coordinates;
-    public ArrayList<String> index_strings;
-    public int weight;
-    public Object cases;
-    public Object country_cases;
-    public Object main_airport_name;
-    public String city_code;
-    public String city_name;
-    public Object city_cases;
+    private String type;
+    private String code;
+    private String name;
+    private String country_code;
+    private String country_name;
+    private String state_code;
+    private Coordinates coordinates;
+    private ArrayList<String> index_strings;
+    private int weight;
+    private Object cases;
+    private Object country_cases;
+    private Object main_airport_name;
+    private String city_code;
+    private String city_name;
+    private Object city_cases;
 
     public AirportAPI(String type, String code, String name, String country_code, String country_name, String state_code, Coordinates coordinates, ArrayList<String> index_strings, int weight, Object cases, Object country_cases, Object main_airport_name, String city_code, String city_name, Object city_cases) {
         this.type = type;

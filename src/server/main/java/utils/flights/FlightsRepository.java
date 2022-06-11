@@ -1,4 +1,4 @@
-package utils.user;
+package utils.flights;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
@@ -11,7 +11,8 @@ import java.util.List;
  */
 
 @Repository
-public interface UserRepository extends CrudRepository<User, Long> {
-    User findUserByNameAndPassword(String name, String password);
-    User findByName(String name);
+public interface FlightsRepository extends CrudRepository<Flights, Long> {
+    Flights findByHashode(int hashcode);
+    List<Flights> findAll();
+    Flights getByID(long ID);
 }
