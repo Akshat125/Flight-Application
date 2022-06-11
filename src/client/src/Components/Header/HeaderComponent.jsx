@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import HomepageComponent from "../HomepageComponent";
+import NavigationBarComponent from "./Subcomponents/NavigationBarComponent"
 
 class HeaderComponent extends Component {
 
@@ -9,7 +10,6 @@ class HeaderComponent extends Component {
         this.state = {
 
         }
-
     }
 
     componentDidMount() {
@@ -18,7 +18,8 @@ class HeaderComponent extends Component {
     render() {
         return (
             <header>
-
+                <NavigationBarComponent />
+                <div className="drop-shadow"> </div>
             </header>
         );
     }
