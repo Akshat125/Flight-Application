@@ -11,8 +11,8 @@ import FooterComponent from "./Components/Footer/FooterComponent";
 function App() {
     return (
         <div className="App-main">
-            <HeaderComponent />
             <Router>
+            <HeaderComponent />
                 <div className="container">
                     <Switch>
                         <Route exact path="/" component={HomepageComponent}/>
@@ -20,8 +20,8 @@ function App() {
                         <HomepageComponent/>
                     </Switch>
                 </div>
-            </Router>
             <FooterComponent />
+            </Router>
         </div>
 
     );
