@@ -6,8 +6,13 @@ class InFlightServiceComponent extends Component {
         super(props);
 
         this.state = {
+            visible: false,
         }
 
+    }
+
+    setVisible()    {
+        this.state.visible = !this.state.visible;
     }
 
     componentDidMount() {
@@ -15,8 +20,8 @@ class InFlightServiceComponent extends Component {
 
     render() {
         return (
-            <div>
-
+            <div className="inflight-service">
+                <h1> placeholder inflight service section </h1>
             </div>
         );
     }

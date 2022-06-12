@@ -18,7 +18,7 @@ class HeaderComponent extends Component {
     render() {
         return (
             <header>
-                <NavigationBarComponent />
+                <NavigationBarComponent clickedDash={this.clickedDash} />
                 <div className="drop-shadow"> </div>
             </header>
         );

@@ -82,13 +82,19 @@ div {
 
 .navbar .navlink    {
     font-size: 12pt;
-    color: #141414;
+    color: #142a52;
     text-decoration: none;
-    transition: none;
+    transition: font-size 0.5s ease;
 }
 
 .navbar .navitem:hover {
+}
+
+.navbar .navlink:hover  {
+    font-size: 14pt;
     cursor: pointer;
+    color: #a62525;
+    transition: font-size 0.5s ease;
 }
 
 .navbar .btn    {
@@ -133,20 +139,43 @@ div {
 
 .main .button-list li   {
     margin: 0em 1em;
-    font-size: 0.65em;
+    font-size: 13pt;
 }
 
 .main .button-list button   {
     border: 2px solid #1f557b;
     border-radius: 20px;
     padding: 0.5em;
+    box-shadow: 2px 3px #888888;
     background: #000000;
     background: linear-gradient(30deg, #76c6ff 0%, #e5f6fb 100%);
+
+    transition: color 0.5s ease;
+
+    animation-name: btn-border-rev;
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
+}
+
+@keyframes btn-border-rev   {
+    from    {
+        border: 1px solid #ffb145;
+        box-shadow: 0px 0px 10px #ffb145;
+    }
+    to  {
+        border: 2px solid #1f557b;
+        box-shadow: 2px 3px #888888;
+    }
 }
 
 .main .button-list button:hover  {
+    cursor: pointer;
+    color: #a62525;
+    transition: color 0.5s ease;
+
     animation-name: btn-border;
-    animation-duration: 0.5s;
+    animation-duration: 0.2s;
     animation-fill-mode: forwards;
     animation-timing-function: ease-out;
 }
@@ -154,9 +183,11 @@ div {
 @keyframes btn-border   {
     from    {
         border: 2px solid #1f557b;
+        box-shadow: 2px 3px #888888;
     }
     to  {
-        border: 2px solid #ffb145;
+        border: 1px solid #ffb145;
+        box-shadow: 0px 0px 10px #ffb145;
     }
 }
 
@@ -166,6 +197,52 @@ div {
 }
 
 
+@keyframes tabswitch    {
+    from    {
+        left: -30em;
+    }
+    to  {
+        left: 0em;
+    }
+}
+
+.body   {
+    display: block;
+    padding: 3em 2em 0em 2em;
+}
+
+.trip-dashboard {
+    position: relative;
+    left: -30em;
+    height: 70em;
+
+    animation-name: tabswitch;
+    animation-duration: 1s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+}
+
+.passenger-survey   {
+    position: relative;
+    left: -30em;
+    height: 70em;
+
+    animation-name: tabswitch;
+    animation-duration: 1s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+}
+
+.inflight-service   {
+    position: relative;
+    left: -30em;
+    height: 70em;
+
+    animation-name: tabswitch;
+    animation-duration: 1s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+}
 
 /* TODO: Add further elements here: */
 /* Additional CSS elements can be imported through bootstrap, react-bootstrap*/
