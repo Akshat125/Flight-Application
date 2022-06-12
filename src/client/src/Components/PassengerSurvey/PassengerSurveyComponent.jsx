@@ -6,8 +6,13 @@ class PassengerSurveyComponent extends Component {
         super(props);
 
         this.state = {
+            visible: false,
         }
 
+    }
+
+    setVisible()    {
+        this.state.visible = !this.state.visible;
     }
 
     componentDidMount() {
@@ -15,8 +20,8 @@ class PassengerSurveyComponent extends Component {
 
     render() {
         return (
-            <div>
-
+            <div className="passenger-survey">
+                <h1> placeholder passenger survey section </h1>
             </div>
         );
     }

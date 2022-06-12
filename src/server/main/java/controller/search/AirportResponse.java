@@ -1,4 +1,4 @@
-package controller.sarch;
+package controller.search;
 
 public class AirportResponse {
 

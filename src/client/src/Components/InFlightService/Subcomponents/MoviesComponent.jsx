@@ -13,10 +13,21 @@ class MoviesComponent extends Component {
     componentDidMount() {
     }
 
+    //TODO: Add different movie options and embed videos.
+
     render() {
         return (
             <div>
-
+                <div>
+                    <iframe
+                        src="https://www.youtube.com/embed/E7wJTI-1dvQ"
+                        frameBorder="0"
+                        allow="autoplay; encrypted-media"
+                        allowFullScreen
+                        title="video"
+                    />
+                    {" "}
+                </div>
             </div>
         );
     }

@@ -1,14 +1,247 @@
-.space {
-    width: 10px;
-    height: auto;
-    display: inline-block;
-}
-
 .App-main {
+    margin-top: 80px; /* In order to avoid collision with header */
+    margin-bottom: 20px; /* In order to avoid collision with header */
     background-color: #e5f6fb;
-    min-height: 100vh;
     font-size: calc(10px + 2vmin);
     color: black;
+}
+
+.footer{
+    text-align: center;
+    margin-top: 0.1rem;
+    padding: 0.1rem;
+    bottom: 0; /* logical pixels to offset the bottom */
+    left: 0;
+    background-color: rgb(20, 20, 20);
+    font-size: calc(5px + 2vmin);
+    color: white;
+    width: 100%;
+    position: fixed;
+}
+
+/*
+- grayscale:
+#141414 / 20, 20, 20
+#4c4c4c / 76, 76, 76
+- blues:
+#e5f6fb / 229, 246, 251
+#76c6ff / 118, 198, 255
+#1f557b / 31, 85, 123
+#142a52 / 20, 42, 82
+- accents:
+#ffdb8a / 255, 219, 138
+#ffb145 / 255, 177, 69
+#a62525 / 166, 37, 37
+*/
+
+*   {
+    padding: 0;
+    margin: 0;
+    color: #141414;
+}
+
+header  {
+    top: 0;
+    position: fixed;
+}
+
+div {
+    padding: 0;
+    margin: 0;
+}
+
+.container-fluid    {
+    padding: 0;
+    margin: 0;
+}
+
+.navbar {
+    padding: 0;
+    margin: 0;
+    position: fixed;
+    width: 100vw;
+    height: 9vh;
+
+    background: rgb(229, 246, 251);
+    background: linear-gradient(90deg, #76c6ff 0%, #e5f6fb 100%);
+    border-bottom: 2px solid #1f557b;
+}
+
+.navbar .navbar-logo   {
+    padding: 0vh 1vw 0vh 3vw;
+    margin: 0;
+    height: auto;
+    width: 14vw;
+}
+
+.navbar .navitem    {
+    padding: 0.3em;
+    margin: 0.3em;
+    justify-content: center;
+}
+
+.navbar .navlink    {
+    font-size: 12pt;
+    color: #142a52;
+    text-decoration: none;
+    transition: font-size 0.5s ease;
+}
+
+.navbar .navitem:hover {
+}
+
+.navbar .navlink:hover  {
+    font-size: 14pt;
+    cursor: pointer;
+    color: #a62525;
+    transition: font-size 0.5s ease;
+}
+
+.navbar .btn    {
+
+}
+
+.drop-shadow    {
+    height: 3px;
+    background: rgb(136,136,136);
+    background: linear-gradient(180deg, rgba(100,100,100,1) 0%, rgba(255,255,255,0) 100%);
+}
+
+
+
+
+
+
+
+.main {
+    padding-top: 9vh;
+    background-color: #e5f6fb;
+}
+
+.main .main-logo   {
+    display: block;
+    margin-top: 6em;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 4em;
+    width: 40%;
+}
+
+.main .button-container    {
+    margin: 0em 15em 0em 15em;
+}
+
+.main .button-list  {
+    display: flex;
+    list-style-type: none;
+    justify-content: center;
+}
+
+.main .button-list li   {
+    margin: 0em 1em;
+    font-size: 13pt;
+}
+
+.main .button-list button   {
+    border: 2px solid #1f557b;
+    border-radius: 20px;
+    padding: 0.5em;
+    box-shadow: 2px 3px #888888;
+    background: #000000;
+    background: linear-gradient(30deg, #76c6ff 0%, #e5f6fb 100%);
+
+    transition: color 0.5s ease;
+
+    animation-name: btn-border-rev;
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
+}
+
+@keyframes btn-border-rev   {
+    from    {
+        border: 1px solid #ffb145;
+        box-shadow: 0px 0px 10px #ffb145;
+    }
+    to  {
+        border: 2px solid #1f557b;
+        box-shadow: 2px 3px #888888;
+    }
+}
+
+.main .button-list button:hover  {
+    cursor: pointer;
+    color: #a62525;
+    transition: color 0.5s ease;
+
+    animation-name: btn-border;
+    animation-duration: 0.2s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
+}
+
+@keyframes btn-border   {
+    from    {
+        border: 2px solid #1f557b;
+        box-shadow: 2px 3px #888888;
+    }
+    to  {
+        border: 1px solid #ffb145;
+        box-shadow: 0px 0px 10px #ffb145;
+    }
+}
+
+.main .button img   {
+    width: 8em;
+    height: 5em;
+}
+
+
+@keyframes tabswitch    {
+    from    {
+        left: -30em;
+    }
+    to  {
+        left: 0em;
+    }
+}
+
+.body   {
+    display: block;
+    padding: 3em 2em 0em 2em;
+}
+
+.trip-dashboard {
+    position: relative;
+    left: -30em;
+    height: 70em;
+
+    animation-name: tabswitch;
+    animation-duration: 1s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+}
+
+.passenger-survey   {
+    position: relative;
+    left: -30em;
+    height: 70em;
+
+    animation-name: tabswitch;
+    animation-duration: 1s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+}
+
+.inflight-service   {
+    position: relative;
+    left: -30em;
+    height: 70em;
+
+    animation-name: tabswitch;
+    animation-duration: 1s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
 }
 
 /*

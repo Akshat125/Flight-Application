@@ -1,4 +1,4 @@
-package controller;
+package controller.review;
 
 public class ReviewController {
 }

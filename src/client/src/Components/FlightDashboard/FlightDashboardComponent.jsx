@@ -6,8 +6,13 @@ class FlightDashboardComponent extends Component {
         super(props);
 
         this.state = {
+            visible: false,
         }
 
+    }
+
+    setVisible()    {
+        this.state.visible = !this.state.visible;
     }
 
     componentDidMount() {
@@ -15,8 +20,8 @@ class FlightDashboardComponent extends Component {
 
     render() {
         return (
-            <div>
-
+            <div className="trip-dashboard">
+                <h1> placeholder trip dashboard section </h1>
             </div>
         );
     }
