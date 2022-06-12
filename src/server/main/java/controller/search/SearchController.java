@@ -1,4 +1,4 @@
-package controller.sarch;
+package controller.search;
 
 import apis.FassadeAPI;
 import main.SpringbootApplication;
