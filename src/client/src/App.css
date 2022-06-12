@@ -1,14 +1,22 @@
-.space {
-    width: 10px;
-    height: auto;
-    display: inline-block;
-}
-
 .App-main {
+    margin-top: 80px; /* In order to avoid collision with header */
+    margin-bottom: 20px; /* In order to avoid collision with header */
     background-color: #e5f6fb;
-    min-height: 100vh;
     font-size: calc(10px + 2vmin);
     color: black;
+}
+
+.footer{
+    text-align: center;
+    margin-top: 0.1rem;
+    padding: 0.1rem;
+    bottom: 0; /* logical pixels to offset the bottom */
+    left: 0;
+    background-color: rgb(20, 20, 20);
+    font-size: calc(5px + 2vmin);
+    color: white;
+    width: 100%;
+    position: fixed;
 }
 
 /*

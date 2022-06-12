@@ -15,9 +15,9 @@ class FooterComponent extends Component {
 
     render() {
         return (
-            <div>
-
-            </div>
+            <footer className="footer">
+                EIST Project 2022 | @Team: Debugging Penguins | @Authors: Akshat Tandon, Eben Jowie Haezer, Jonas Arnold, Kilian Burger, Saiyam Jain
+            </footer>
         );
     }
 }
