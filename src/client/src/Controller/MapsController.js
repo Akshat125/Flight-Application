@@ -8,7 +8,7 @@ class MapsController {
     // @ret: JPEG-Image (try it in browser - the image will appear)
 
     getMap(...iatas) {
-        var query = iatas.reduce((previous, next) => previous + "&" + next);
+        const query = iatas.reduce((previous, next) => previous + "&" + next);
         return axios.get(query);
     }
 

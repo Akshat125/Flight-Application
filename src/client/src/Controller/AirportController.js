@@ -15,7 +15,7 @@ class AirportController {
      */
 
     getAirport(query) {
-        axios.get(AIRPORT_API_BASE_URL + "/" + query);
+        return axios.get(AIRPORT_API_BASE_URL + "/" + query);
     }
 
 }
