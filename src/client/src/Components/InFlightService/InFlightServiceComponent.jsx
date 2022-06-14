@@ -7,30 +7,39 @@ class InFlightServiceComponent extends Component {
         super(props);
 
         this.state = {
-            visible: false,
+            showMovie: false,
+            showFlightInstructions: false,
+            showService: false,
         }
 
     }
 
-    setVisible()    {
-        this.state.visible = !this.state.visible;
-    }
+    //TODO add a dialog box for showService
 
     componentDidMount() {
+
     }
 
     clickedMovies() {
-
+        this.showMovie = true;
+        this.showFlightInstructions = false;
+        this.showService = false;
     }
-    clickedService() {
 
+    clickedService() {
+        this.showMovie = false;
+        this.showFlightInstructions = false;
+        this.showService = true;
     }
 
     clickedSafetyInstructions() {
-
+        this.showMovie = false;
+        this.showFlightInstructions = true;
+        this.showService = false;
     }
 
     //TODO: add an image above each button.
+    //TODO: redirect/autoscroll to the respective components.
 
     render() {
         return (
@@ -38,17 +47,17 @@ class InFlightServiceComponent extends Component {
                 <div className="button-container">
                     <ul className="button-list">
                         <li className="button">
-                            <button onClick={this.clickedMovies}><img className="btn1logo" src={logo}/>
+                            <button onClick={this.clickedMovies}><img className="btn1logo"/>
                                 <br/> Movies <br/>
                             </button>
                         </li>
                         <li className="button">
-                            <button onClick={this.clickedSafetyInstructions}><img className="btn2logo" src={logo}/>
-                                <br/> Flight <br/> Instructions
+                            <button onClick={this.clickedSafetyInstructions}><img className="btn2logo"/>
+                                <br/> Flight Instructions <br/>
                             </button>
                         </li>
                         <li className="button">
-                            <button onClick={this.clickedService}><img className="btn3logo" src={logo}/>
+                            <button onClick={this.clickedService}><img className="btn3logo"/>
                                 <br/> Service <br/>
                             </button>
                         </li>

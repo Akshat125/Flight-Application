@@ -18,6 +18,7 @@ class MoviesComponent extends Component {
     render() {
         return (
             <div>
+
                 <div>
                     <iframe
                         src="https://www.youtube.com/embed/E7wJTI-1dvQ"
@@ -28,6 +29,7 @@ class MoviesComponent extends Component {
                     />
                     {" "}
                 </div>
+
             </div>
         );
     }
