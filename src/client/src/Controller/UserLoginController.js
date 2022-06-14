@@ -1,18 +1,12 @@
 import axios from 'axios';
 
-const USER_API_BASE_URL = "";
+const USER_PUT_API_BASE_URL = "http://localhost:8080/createUser";
 
 class UserLoginController {
-    getUserData() {
-        return axios.get(USER_API_BASE_URL);
-    }
-
-    getUserById(userId) {
-        return axios.get(USER_API_BASE_URL + '/' + userId);
-    }
-
-    postUserData(user){
-        return axios.post(USER_API_BASE_URL, user);
+    // @param: username &and& password
+    // @return: 400 if something went wrong else a new user
+    putUser(username, password) {
+        axios.post(USER_PUT_API_BASE_URL + "/" + username + "&and&" + password);
     }
 }
 

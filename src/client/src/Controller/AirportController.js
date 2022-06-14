@@ -2,8 +2,6 @@ import axios from 'axios';
 
 const AIRPORT_API_BASE_URL = "http://localhost:8080/getAirport";
 
-
-
 class AirportController {
 
     // @Param: query-String. e.g. "MUC"

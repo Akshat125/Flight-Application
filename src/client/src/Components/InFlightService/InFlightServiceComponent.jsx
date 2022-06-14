@@ -17,7 +17,6 @@ class InFlightServiceComponent extends Component {
     //TODO add a dialog box for showService
 
     componentDidMount() {
-
     }
 
     clickedMovies() {

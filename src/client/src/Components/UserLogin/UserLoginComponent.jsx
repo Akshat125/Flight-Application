@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
 
 class EmployeeLoginComponent extends Component {
-
+    //TODO the username and the password is not allowed to have this combination in the name and password! “&and&”
     constructor(props) {
         super(props);
         this.state = {
-            userId: '',
-            password: ''
+            username: '',
+            password: '',
+            userId: 0
         }
 
         this.insertUserIdHandler = this.insertUserIdHandler.bind(this);
