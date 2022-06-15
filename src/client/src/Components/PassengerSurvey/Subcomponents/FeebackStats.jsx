@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import FeedbackContext from './context/FeedbackContext';
 
+class FeedbackStats extends Component {
 const FeebackStats = () => {
     const { feedback } = useContext(FeedbackContext);
 
@@ -10,7 +11,7 @@ const FeebackStats = () => {
         }, 0) / feedback.length;
 
     average = Number(average.toFixed(1).replace(/[.,]0$/, ''));
-
+render{
     return (
         <div className="feedback-stats">
             <h4>{feedback.length} Reviews</h4>
@@ -18,5 +19,7 @@ const FeebackStats = () => {
         </div>
     );
 };
+}
+}
 
 export default FeebackStats;
