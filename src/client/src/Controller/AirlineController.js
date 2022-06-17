@@ -11,10 +11,7 @@ class AirlineController {
     /* @ret: List of all flights from a given Iata to a given Iata at a given day
              days are: sun, mon, wed, fri, sat, thu, tue,
     */
-
-    // e.g. for flight attributes:
-
-    /*
+    /* e.g. for flight attributes:
     {
     "flightNumber":"1586",
     "airline":"Airline",
