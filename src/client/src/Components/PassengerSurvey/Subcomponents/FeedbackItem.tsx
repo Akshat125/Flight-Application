@@ -3,6 +3,7 @@ import { FaTimes, FaEdit } from 'react-icons/fa';
 import FeedbackContext from './context/FeedbackContext';
 import { Feedback } from './modules/Feedback';
 import Card from './shared/Card';
+import * as React from "react";
 
 type Props = {
     item: Feedback;

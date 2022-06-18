@@ -47,7 +47,7 @@ const FeedbackForm: React.FC = () => {
             };
 
             if (feedbackEdit.edit === true) {
-                updataFeedback(feedbackEdit.item.id!.toString(), newFeedback);
+                updataFeedback(feedbackEdit.item.id!=toString(), newFeedback);
             } else {
                 addFeedback(newFeedback);
             }
