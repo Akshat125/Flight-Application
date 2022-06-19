@@ -1,5 +1,6 @@
+// @ts-ignore
 import React, { createContext, useEffect, useState } from 'react';
-import { Feedback } from './modules/Feedback';
+import { Feedback } from '../modules/Feedback';
 
 const FeedbackContext = createContext({
     feedback: [] as Feedback[],

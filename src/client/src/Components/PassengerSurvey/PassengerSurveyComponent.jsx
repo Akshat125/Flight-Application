@@ -13,16 +13,19 @@ class PassengerSurveyComponent extends Component {
     }
 
     setVisible()    {
-        this.state.visible = !this.state.visible;
+        this.setState(this.setVisible);
+//        this.state.visible = !this.state.visible;
     }
 
     componentDidMount() {
     }
 
     render() {
+    const {rating} = this.state;
+
         return (
             <div className="passenger-survey">
-                <h2>Rating from state: {rating}</h2>
+                <h2>Rating from state:{rating}</h2>
                 <RatingComponent
                     name="rate1"
                     starCount={5}

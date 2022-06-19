@@ -16,7 +16,7 @@ class App extends React.Component {
   }
 
   render() {
-    const { rating } = this.state;
+    const {rating} = this.state;
 
     return (
       <div>
@@ -34,5 +34,5 @@ class App extends React.Component {
 
 ReactDOM.render(
   <App />,
-  document.getElementById('app')
+  document.getElementById('root')
 );
