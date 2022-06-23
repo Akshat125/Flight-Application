@@ -4,7 +4,7 @@ import { Feedback } from '../modules/Feedback';
 
 const FeedbackContext = createContext({
     feedback: [] as Feedback[],
-    feedbackEdit: { item: {} as Feedback, edit: false },
+    feedbackEdit: { item:l {} as Feedback, edit: false },
     isLoadding: true,
     addFeedback: (newFeedback: Feedback) => {},
     editFeedback: (item: Feedback) => {},

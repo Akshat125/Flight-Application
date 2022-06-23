@@ -1,5 +1,9 @@
 import React, {Component} from 'react';
-import logo from "../../Images/flightLogo.png";
+import moviesLogo from '../../Images/InFlightService/Movies/popcorn.png';
+import serviceButtonLogo1 from '../../Images/InFlightService/Service/blueServiceButton.png';
+import serviceButtonLogo2 from '../../Images/InFlightService/Service/greenServiceButton.png';
+import flightInstructionLogo from '../../Images/InFlightService/SafetyInstructions/instructions.png';
+import cinemaLogo from '../../Images/InFlightService/Movies/PinguCinemas.png';
 
 class InFlightServiceComponent extends Component {
 
@@ -9,35 +13,42 @@ class InFlightServiceComponent extends Component {
         this.state = {
             showMovie: false,
             showFlightInstructions: false,
-            showService: false,
+            serviceImageUrl: serviceButtonLogo1
         }
 
+        this.clickedMovies = this.clickedMovies.bind(this);
+        this.clickedService = this.clickedService.bind(this);
+        this.clickedSafetyInstructions = this.clickedSafetyInstructions.bind(this);
     }
-
-    //TODO add a dialog box for showService
 
     componentDidMount() {
     }
 
     clickedMovies() {
-        this.showMovie = true;
-        this.showFlightInstructions = false;
-        this.showService = false;
+        this.setState({
+            showMovie: true,
+            showFlightInstructions: false,
+            serviceImageUrl: this.state.serviceImageUrl
+        });
     }
 
     clickedService() {
-        this.showMovie = false;
-        this.showFlightInstructions = false;
-        this.showService = true;
+        this.setState({
+            showMovie: false,
+            showFlightInstructions: false,
+            serviceImageUrl: this.state.serviceImageUrl == serviceButtonLogo1 ? serviceButtonLogo2 : serviceButtonLogo1
+        });
+        console.log("The flight attendant has been informed!");
     }
 
     clickedSafetyInstructions() {
-        this.showMovie = false;
-        this.showFlightInstructions = true;
-        this.showService = false;
+        this.setState({
+            showMovie: false,
+            showFlightInstructions: true,
+            serviceImageUrl: this.state.serviceImageUrl
+        });
     }
 
-    //TODO: add an image above each button.
     //TODO: redirect/autoscroll to the respective components.
 
     render() {
@@ -46,17 +57,17 @@ class InFlightServiceComponent extends Component {
                 <div className="button-container">
                     <ul className="button-list">
                         <li className="button">
-                            <button onClick={this.clickedMovies}><img className="btn1logo"/>
+                            <button onClick={this.clickedMovies}><img className="btn1logo" src = {moviesLogo}/>
                                 <br/> Movies <br/>
                             </button>
                         </li>
                         <li className="button">
-                            <button onClick={this.clickedSafetyInstructions}><img className="btn2logo"/>
+                            <button onClick={this.clickedSafetyInstructions}><img className="btn2logo" src = {flightInstructionLogo}/>
                                 <br/> Flight Instructions <br/>
                             </button>
                         </li>
                         <li className="button">
-                            <button onClick={this.clickedService}><img className="btn3logo"/>
+                            <button onClick={this.clickedService}><img className="btn3logo" src = {this.state.serviceImageUrl}/>
                                 <br/> Service <br/>
                             </button>
                         </li>

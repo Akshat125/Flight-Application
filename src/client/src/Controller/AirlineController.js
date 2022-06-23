@@ -21,8 +21,6 @@ class AirlineController {
     "arrivalIata":"BER",
     "departureTerminal":"[2]",
     "arrivalTerminal":"[1, T1]",
-    "arrivalTimezone":"arrTimezone",
-    "departureTimezone":"depTimezone",
     "departureTimeInUTC":"09:00",
     "departureTime":"11:00",
     "arrivalTimeInUTC":"10:05",

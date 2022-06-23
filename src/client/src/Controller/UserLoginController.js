@@ -6,7 +6,7 @@ class UserLoginController {
     // @param: username &and& password
     // @return: 400 if something went wrong else a new user
     putUser(username, password) {
-        axios.post(USER_PUT_API_BASE_URL + "/" + username + "&and&" + password);
+        return axios.post(USER_PUT_API_BASE_URL + "/" + username + "&and&" + password);
     }
 }
 
