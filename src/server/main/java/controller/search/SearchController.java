@@ -1,13 +1,13 @@
 package controller.search;
 
-import apis.FassadeAPI;
+import apis.FassadeApi;
 import main.SpringbootApplication;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
-import utils.api.airport.AirportAPI;
-import utils.api.iatacoordinates.IataCoordinatesMapping;
+import utils.api.airport.AirportApiUtil;
+import utils.api.iatacoordinates.IataCoordinatesApiUtil;
 import utils.api.iatacoordinates.IataCoordinatesRepository;
 
 import java.util.ArrayList;
@@ -17,14 +17,14 @@ import java.util.List;
 @RestController
 public class SearchController {
 
-    private FassadeAPI fassadeAPI;
-    private List<AirportAPI> airports;
+    private FassadeApi fassadeAPI;
+    private List<AirportApiUtil> airports;
     private List<AirportResponse> airportResponses;
     private IataCoordinatesRepository iataCoordinatesRepository;
-    private List<IataCoordinatesMapping> iataList;
+    private List<IataCoordinatesApiUtil> iataList;
 
     private SearchController(){
-        this.fassadeAPI = new FassadeAPI();
+        this.fassadeAPI = new FassadeApi();
         this.airportResponses = new ArrayList<>();
         this.iataList = new ArrayList<>();
     }
@@ -45,7 +45,7 @@ public class SearchController {
             }else{
                 airportResponses.add(new AirportResponse(airports.get(i).getName(),airports.get(i).getCity_name(),airports.get(i).getCountry_name(),airports.get(i).getCode()));
             }
-            IataCoordinatesMapping iataToAdd = new IataCoordinatesMapping(airports.get(i).getCode(), airports.get(i).getCoordinates().getLat(),airports.get(i).getCoordinates().getLon());
+            IataCoordinatesApiUtil iataToAdd = new IataCoordinatesApiUtil(airports.get(i).getCode(), airports.get(i).getCoordinates().getLat(),airports.get(i).getCoordinates().getLon());
             if(!(iataList.contains(iataToAdd))){
                 iataCoordinatesRepository.save(iataToAdd);
                 iataList.add(iataToAdd);

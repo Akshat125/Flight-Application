@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface IacoNameRepository extends CrudRepository<IcaoName, String> {
-    List<IcaoName> findByIcao(String icao);
+public interface IacoNameRepository extends CrudRepository<IcaoNameApiUtil, String> {
+    List<IcaoNameApiUtil> findByIcao(String icao);
 }

@@ -1,15 +1,15 @@
 package controller.weather;
 
 
-import apis.FassadeAPI;
+import apis.FassadeApi;
 import main.SpringbootApplication;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
-import utils.api.iatacoordinates.IataCoordinatesMapping;
+import utils.api.iatacoordinates.IataCoordinatesApiUtil;
 import utils.api.iatacoordinates.IataCoordinatesRepository;
-import utils.api.weather.WeatherAPI;
+import utils.api.weather.WeatherApiUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,14 +19,14 @@ import java.util.Locale;
 public class WeatherController {
 
     private IataCoordinatesRepository iataCoordinatesRepository;
-    private List<IataCoordinatesMapping> iataList;
-    private FassadeAPI fassadeAPI;
+    private List<IataCoordinatesApiUtil> iataList;
+    private FassadeApi fassadeAPI;
     private List<WeatherResponse> weatherList;
 
 
     public WeatherController(){
         this.iataList = new ArrayList<>();
-        this.fassadeAPI = new FassadeAPI();
+        this.fassadeAPI = new FassadeApi();
         weatherList = new ArrayList<>();
     }
 
@@ -36,9 +36,9 @@ public class WeatherController {
         this.iataCoordinatesRepository =  SpringbootApplication.getApplicationContext().getBean(IataCoordinatesRepository.class);
         weatherList.clear();
         this.iataList = iataCoordinatesRepository.findByIata(IATA.toUpperCase(Locale.ROOT));
-        for (IataCoordinatesMapping iataCoordinatesMapping : iataList) {
+        for (IataCoordinatesApiUtil iataCoordinatesMapping : iataList) {
             if (iataCoordinatesMapping.getIata().trim().equalsIgnoreCase(IATA.trim())) {
-                WeatherAPI weather = fassadeAPI.getWeatherByCoordinates(iataCoordinatesMapping.getLongitude(), iataCoordinatesMapping.getLatitude());
+                WeatherApiUtil weather = fassadeAPI.getWeatherByCoordinates(iataCoordinatesMapping.getLongitude(), iataCoordinatesMapping.getLatitude());
                 for (int j = 0; j < weather.getList().size(); j++) {
                     weatherList.add(new WeatherResponse(weather.getList().get(j).getDt(), weather.getList().get(j).getMain().getTemp(),
                             weather.getList().get(j).getMain().getFeels_like(), weather.getList().get(j).getMain().getHumidity(),
