@@ -1,17 +1,17 @@
 package apis;
 
-import utils.api.maps.CoordinatesMapAPI;
+import utils.api.maps.CoordinatesMapApiUtil;
 
 import java.util.List;
 
-public interface MapsAPI {
+public interface MapApi {
 
     // Source: https://developer.mapquest.com/
     // Docs: https://developer.mapquest.com/documentation/static-map-api/v5/map
 
-    byte[] getImageOfMap(List<CoordinatesMapAPI> coordinatesMapAPIList);
+    byte[] getImageOfMap(List<CoordinatesMapApiUtil> coordinatesMapAPIList);
 
-    static String getCoords(List<CoordinatesMapAPI> coordinatesMapAPIList){
+    static String getCoords(List<CoordinatesMapApiUtil> coordinatesMapAPIList){
 
         StringBuilder sb = new StringBuilder();
 

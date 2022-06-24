@@ -1,13 +1,13 @@
 package controller.flight;
 
-import apis.FassadeAPI;
+import apis.FassadeApi;
 import main.SpringbootApplication;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import utils.api.airline.AirlineAPI;
-import utils.api.airportNameIcao.Icao2NameAPI;
+import utils.api.airline.AirlineApiUtil;
+import utils.api.airportNameIcao.Icao2NameApiUtil;
 import utils.api.icaoname.IacoNameRepository;
-import utils.api.icaoname.IcaoName;
+import utils.api.icaoname.IcaoNameApiUtil;
 import utils.flights.Flights;
 import utils.flights.FlightsRepository;
 import utils.user.User;
@@ -23,11 +23,11 @@ public class FlightController {
 
     private List<Flights> flightList;
     private List<Flights> flightListWhileSurfing;
-    private FassadeAPI fassadeAPI;
-    private AirlineAPI flightData;
-    private Icao2NameAPI airportData;
+    private FassadeApi fassadeAPI;
+    private AirlineApiUtil flightData;
+    private Icao2NameApiUtil airportData;
     private IacoNameRepository iacoNameRepository;
-    private Icao2NameAPI icao2NameAPI;
+    private Icao2NameApiUtil icao2NameAPI;
     private FlightsRepository flightsRepository;
     private UserRepository userRepository;
     private UserFlightsRepository userFlightsRepository;
@@ -35,7 +35,7 @@ public class FlightController {
     public FlightController() {
         this.flightListWhileSurfing = new ArrayList<>();
         this.flightList = new ArrayList<>();
-        this.fassadeAPI = new FassadeAPI();
+        this.fassadeAPI = new FassadeApi();
     }
 
     @GetMapping("/getFlights/{fromIataToIataAtDay}")
@@ -53,17 +53,17 @@ public class FlightController {
 
 
         for (int i = 0; i < flightData.getResponse().size(); i++) {
-            List<IcaoName> departureAirport = iacoNameRepository.findByIcao(flightData.getResponse().get(i).getDep_icao());
-            List<IcaoName> arrivalAirport = iacoNameRepository.findByIcao(flightData.getResponse().get(i).getArr_icao());
-            if(departureAirport.isEmpty()){
+            List<IcaoNameApiUtil> departureAirport = iacoNameRepository.findByIcao(flightData.getResponse().get(i).getDep_icao());
+            List<IcaoNameApiUtil> arrivalAirport = iacoNameRepository.findByIcao(flightData.getResponse().get(i).getArr_icao());
+            if (departureAirport.isEmpty()) {
                 icao2NameAPI = fassadeAPI.getNameAirport(flightData.getResponse().get(i).getDep_icao());
-                iacoNameRepository.save(new IcaoName(icao2NameAPI.getResponse().get(0).getIcao_code(), icao2NameAPI.getResponse().get(0).getName()));
-                departureAirport.add(new IcaoName(icao2NameAPI.getResponse().get(0).getIcao_code(), icao2NameAPI.getResponse().get(0).getName()));
+                iacoNameRepository.save(new IcaoNameApiUtil(icao2NameAPI.getResponse().get(0).getIcao_code(), icao2NameAPI.getResponse().get(0).getName()));
+                departureAirport.add(new IcaoNameApiUtil(icao2NameAPI.getResponse().get(0).getIcao_code(), icao2NameAPI.getResponse().get(0).getName()));
             }
-            if(arrivalAirport.isEmpty()){
+            if (arrivalAirport.isEmpty()) {
                 icao2NameAPI = fassadeAPI.getNameAirport(flightData.getResponse().get(i).getArr_icao());
-                iacoNameRepository.save(new IcaoName(icao2NameAPI.getResponse().get(0).getIcao_code(), icao2NameAPI.getResponse().get(0).getName()));
-                arrivalAirport.add(new IcaoName(icao2NameAPI.getResponse().get(0).getIcao_code(), icao2NameAPI.getResponse().get(0).getName()));
+                iacoNameRepository.save(new IcaoNameApiUtil(icao2NameAPI.getResponse().get(0).getIcao_code(), icao2NameAPI.getResponse().get(0).getName()));
+                arrivalAirport.add(new IcaoNameApiUtil(icao2NameAPI.getResponse().get(0).getIcao_code(), icao2NameAPI.getResponse().get(0).getName()));
             }
 
             if (flightData.getResponse().get(i).getDays().toString().contains(flightArray[2].toLowerCase())) {
@@ -71,9 +71,8 @@ public class FlightController {
                         flightData.getResponse().get(i).getDep_iata(), flightData.getResponse().get(i).getArr_iata(),
                         flightData.getResponse().get(i).getDep_terminals() == null ? "/" : flightData.getResponse().get(i).getDep_terminals().toString(),
                         flightData.getResponse().get(i).getDep_terminals() == null ? "/" : flightData.getResponse().get(i).getArr_terminals().toString(),
-                        "arrTimezone", "depTimezone",
                         flightData.getResponse().get(i).getDep_time_utc(), flightData.getResponse().get(i).getDep_time(),
-                        flightData.getResponse().get(i).getArr_time_utc(), flightData.getResponse().get(i).getArr_time(),flightData.getResponse().get(i).getDuration());
+                        flightData.getResponse().get(i).getArr_time_utc(), flightData.getResponse().get(i).getArr_time(), flightData.getResponse().get(i).getDuration());
                 flightListWhileSurfing.add(flight);
                 flightList.add(flight);
             }
@@ -83,9 +82,9 @@ public class FlightController {
     }
 
     @PutMapping("/addFlight/{addFlightByUserAndPasswordAndHashCode}")
-    public ResponseEntity<Boolean> addFlight(@PathVariable("addFlightByUserAndPasswordAndHashCode") String addFlightByUserAndPasswordAndHashCode){
+    public ResponseEntity<Boolean> addFlight(@PathVariable("addFlightByUserAndPasswordAndHashCode") String addFlightByUserAndPasswordAndHashCode) {
         String[] params = addFlightByUserAndPasswordAndHashCode.split("&and&");
-        if(params.length != 3){
+        if (params.length != 3) {
             return ResponseEntity.badRequest().build();
         }
         this.flightsRepository = SpringbootApplication.getApplicationContext().getBean(FlightsRepository.class);
@@ -111,26 +110,26 @@ public class FlightController {
     }
 
     @DeleteMapping("deleteFlight/{deleteFlightByUserAndPasswordAndHashCode}")
-    public ResponseEntity<Boolean> deleteFlight(@PathVariable("deleteFlightByUserAndPasswordAndHashCode") String deleteParams){
+    public ResponseEntity<Boolean> deleteFlight(@PathVariable("deleteFlightByUserAndPasswordAndHashCode") String deleteParams) {
         String[] params = deleteParams.split("&and&");
         this.flightsRepository = SpringbootApplication.getApplicationContext().getBean(FlightsRepository.class);
         this.userFlightsRepository = SpringbootApplication.getApplicationContext().getBean(UserFlightsRepository.class);
-        this.userRepository =  SpringbootApplication.getApplicationContext().getBean(UserRepository.class);
-        if(params.length != 3){
+        this.userRepository = SpringbootApplication.getApplicationContext().getBean(UserRepository.class);
+        if (params.length != 3) {
             return ResponseEntity.badRequest().build();
         }
-        try{
+        try {
             int hash = Integer.parseInt(params[2]);
             User user = userRepository.findUserByNameAndPassword(params[0], params[1]);
-            if(user == null){
+            if (user == null) {
                 return ResponseEntity.badRequest().build();
             }
             long flightID = flightsRepository.findByHashode(hash).getID();
             long userID = user.getID();
-            userFlightsRepository.delete(userFlightsRepository.findUserFlightsByUserIDAndFlightID(userID,flightID));
+            userFlightsRepository.delete(userFlightsRepository.findUserFlightsByUserIDAndFlightID(userID, flightID));
             flightsRepository.delete(flightsRepository.findByHashode(hash));
 
-        }catch (NumberFormatException  e){
+        } catch (NumberFormatException e) {
             return ResponseEntity.badRequest().build();
         }
         return ResponseEntity.ok(true);

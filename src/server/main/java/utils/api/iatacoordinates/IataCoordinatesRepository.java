@@ -11,7 +11,7 @@ import java.util.List;
  */
 
 @Repository
-public interface IataCoordinatesRepository extends CrudRepository<IataCoordinatesMapping, String>{
-    List<IataCoordinatesMapping> findByIata(String iata);
-    List<IataCoordinatesMapping> findAll();
+public interface IataCoordinatesRepository extends CrudRepository<IataCoordinatesApiUtil, String>{
+    List<IataCoordinatesApiUtil> findByIata(String iata);
+    List<IataCoordinatesApiUtil> findAll();
 }

@@ -2,7 +2,7 @@ package utils.api.weather;
 
 import java.util.ArrayList;
 
-public class WeatherAPI {
+public class WeatherApiUtil {
 
     private String cod;
     private int message;
@@ -10,7 +10,7 @@ public class WeatherAPI {
     private ArrayList<List> list;
     private City city;
 
-    public WeatherAPI(String cod, int message, int cnt, ArrayList<List> list, City city) {
+    public WeatherApiUtil(String cod, int message, int cnt, ArrayList<List> list, City city) {
         this.cod = cod;
         this.message = message;
         this.cnt = cnt;
@@ -18,7 +18,7 @@ public class WeatherAPI {
         this.city = city;
     }
 
-    public WeatherAPI() {
+    public WeatherApiUtil() {
     }
 
     public String getCod() {

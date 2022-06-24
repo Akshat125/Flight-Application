@@ -20,8 +20,6 @@ public class Flights {
     private String arrivalIata;
     private String departureTerminal;
     private String arrivalTerminal;
-    private String arrivalTimezone;
-    private String departureTimezone;
     private String departureTimeInUTC;
     private String departureTime;
     private String arrivalTimeInUTC;
@@ -31,7 +29,7 @@ public class Flights {
 
     public Flights(String flightNumber, String airline, String departureAirport, String arrivalAirport,
                    String departureIata, String arrivalIata, String departureTerminal, String arrivalTerminal,
-                   String arrivalTimezone, String departureTimezone, String departureTimeInUTC, String departureTime,
+                   String departureTimeInUTC, String departureTime,
                    String arrivalTimeInUTC, String arrivalTime, int duration) {
 
         this.flightNumber = flightNumber;
@@ -42,8 +40,6 @@ public class Flights {
         this.arrivalIata = arrivalIata;
         this.departureTerminal = departureTerminal;
         this.arrivalTerminal = arrivalTerminal;
-        this.arrivalTimezone = arrivalTimezone;
-        this.departureTimezone = departureTimezone;
         this.departureTimeInUTC = departureTimeInUTC;
         this.departureTime = departureTime;
         this.arrivalTimeInUTC = arrivalTimeInUTC;
@@ -126,22 +122,6 @@ public class Flights {
 
     public void setArrivalTerminal(String arrivalTerminal) {
         this.arrivalTerminal = arrivalTerminal;
-    }
-
-    public String getArrivalTimezone() {
-        return arrivalTimezone;
-    }
-
-    public void setArrivalTimezone(String arrivalTimezone) {
-        this.arrivalTimezone = arrivalTimezone;
-    }
-
-    public String getDepartureTimezone() {
-        return departureTimezone;
-    }
-
-    public void setDepartureTimezone(String departureTimezone) {
-        this.departureTimezone = departureTimezone;
     }
 
     public String getDepartureTimeInUTC() {

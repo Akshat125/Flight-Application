@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import java.util.Objects;
 
 @Entity
-public class IataCoordinatesMapping {
+public class IataCoordinatesApiUtil {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -17,13 +17,13 @@ public class IataCoordinatesMapping {
     private double latitude;
     private double longitude;
 
-    public IataCoordinatesMapping(String iata, double latitude, double longitude) {
+    public IataCoordinatesApiUtil(String iata, double latitude, double longitude) {
         this.iata = iata;
         this.latitude = latitude;
         this.longitude = longitude;
     }
 
-    public IataCoordinatesMapping() {
+    public IataCoordinatesApiUtil() {
     }
 
     public long getID() {
@@ -62,7 +62,7 @@ public class IataCoordinatesMapping {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        IataCoordinatesMapping that = (IataCoordinatesMapping) o;
+        IataCoordinatesApiUtil that = (IataCoordinatesApiUtil) o;
         return Objects.equals(iata, that.iata);
     }
 

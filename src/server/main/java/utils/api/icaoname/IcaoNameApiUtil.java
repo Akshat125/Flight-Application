@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class IcaoName {
+public class IcaoNameApiUtil {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -14,12 +14,12 @@ public class IcaoName {
     private String icao;
     private String airportName;
 
-    public IcaoName(String icao, String airportName) {
+    public IcaoNameApiUtil(String icao, String airportName) {
         this.icao = icao;
         this.airportName = airportName;
     }
 
-    public IcaoName() {
+    public IcaoNameApiUtil() {
     }
 
     public long getID() {

@@ -1,11 +1,11 @@
 package utils.api.maps;
 
-public class CoordinatesMapAPI {
+public class CoordinatesMapApiUtil {
 
     private double latitude;
     private double longitude;
 
-    public CoordinatesMapAPI(double latitude, double longitude) {
+    public CoordinatesMapApiUtil(double latitude, double longitude) {
         this.latitude = latitude;
         this.longitude = longitude;
     }

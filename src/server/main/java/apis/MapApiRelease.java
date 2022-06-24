@@ -3,16 +3,16 @@ package apis;
 import org.springframework.http.MediaType;
 import org.springframework.web.reactive.function.client.ExchangeStrategies;
 import org.springframework.web.reactive.function.client.WebClient;
-import utils.api.maps.CoordinatesMapAPI;
+import utils.api.maps.CoordinatesMapApiUtil;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 
-public class MapsAPIRelease implements MapsAPI {
+public class MapApiRelease implements MapApi {
 
     private WebClient webClient;
 
-    public MapsAPIRelease() {
+    public MapApiRelease() {
         webClient = WebClient.builder()
                 .exchangeStrategies(ExchangeStrategies.builder().codecs(
                                 clientCodecConfigurer ->
@@ -21,7 +21,7 @@ public class MapsAPIRelease implements MapsAPI {
                 .build();
     }
 
-    public byte[] getImageOfMap(List<CoordinatesMapAPI> coordinatesMapAPIList) {
+    public byte[] getImageOfMap(List<CoordinatesMapApiUtil> coordinatesMapAPIList) {
         if (coordinatesMapAPIList.isEmpty()) {
             return new byte[0];
         }
@@ -29,7 +29,7 @@ public class MapsAPIRelease implements MapsAPI {
         if(coordinatesMapAPIList.size() == 1){
             zoomFactor = "&zoom=6";
         }
-        String requestParams = MapsAPI.getCoords(coordinatesMapAPIList);
+        String requestParams = MapApi.getCoords(coordinatesMapAPIList);
         byte[] image;
         try {
             String http = ("https://www.mapquestapi.com/staticmap/v5/map?locations=" + requestParams + zoomFactor + "&size=600,400@2x&key=9GECRq8QYifLKMgRw1g2GvMNzLWeHwyA");

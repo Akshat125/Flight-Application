@@ -3,18 +3,18 @@ package apis;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import utils.api.weather.WeatherAPI;
+import utils.api.weather.WeatherApiUtil;
 
-public interface WeathersAPI {
+public interface WeatherApi {
 
-    WeatherAPI getWeatherByCoordinates(double lon, double lat);
+    WeatherApiUtil getWeatherByCoordinates(double lon, double lat);
 
-    static WeatherAPI jsonStringToJavaClass(String jsonString) {
+    static WeatherApiUtil jsonStringToJavaClass(String jsonString) {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
         try {
-            WeatherAPI weatherAPI;
-            weatherAPI = objectMapper.readValue(jsonString, WeatherAPI.class);
+            WeatherApiUtil weatherAPI;
+            weatherAPI = objectMapper.readValue(jsonString, WeatherApiUtil.class);
             return weatherAPI;
         } catch (JsonProcessingException e) {
             e.printStackTrace();

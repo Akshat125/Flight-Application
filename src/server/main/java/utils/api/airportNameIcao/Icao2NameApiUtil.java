@@ -1,20 +1,20 @@
-package utils.api.airline;
+package utils.api.airportNameIcao;
 
 import java.util.ArrayList;
 
-public class AirlineAPI {
+public class Icao2NameApiUtil {
 
     private Request request;
     private ArrayList<Response> response;
     private String terms;
 
-    public AirlineAPI(Request request, ArrayList<Response> response, String terms) {
+    public Icao2NameApiUtil(Request request, ArrayList<Response> response, String terms) {
         this.request = request;
         this.response = response;
         this.terms = terms;
     }
 
-    public AirlineAPI() {
+    public Icao2NameApiUtil() {
     }
 
     public Request getRequest() {

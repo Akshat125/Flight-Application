@@ -1,25 +1,25 @@
 package controller.map;
 
-import apis.FassadeAPI;
+import apis.FassadeApi;
 import main.SpringbootApplication;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-import utils.api.iatacoordinates.IataCoordinatesMapping;
+import utils.api.iatacoordinates.IataCoordinatesApiUtil;
 import utils.api.iatacoordinates.IataCoordinatesRepository;
-import utils.api.maps.CoordinatesMapAPI;
+import utils.api.maps.CoordinatesMapApiUtil;
 import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 public class MapController {
-    private FassadeAPI fassadeAPI;
-    private List<IataCoordinatesMapping> iataList;
+    private FassadeApi fassadeAPI;
+    private List<IataCoordinatesApiUtil> iataList;
     private IataCoordinatesRepository iataCoordinatesRepository;
-    private Iterable<IataCoordinatesMapping> iterable;
-    List<CoordinatesMapAPI> coordinatesList;
+    private Iterable<IataCoordinatesApiUtil> iterable;
+    List<CoordinatesMapApiUtil> coordinatesList;
 
     public MapController() {
-        this.fassadeAPI = new FassadeAPI();
+        this.fassadeAPI = new FassadeApi();
         this.iataList = new ArrayList<>();
         this.coordinatesList = new ArrayList<>();
     }
@@ -40,10 +40,9 @@ public class MapController {
         }
 
         for (String s : listIataRequest) {
-            for (IataCoordinatesMapping iataCoordinatesMapping : iataList) {
+            for (IataCoordinatesApiUtil iataCoordinatesMapping : iataList) {
                 if (iataCoordinatesMapping.getIata().equalsIgnoreCase(s)) {
-                    IataCoordinatesMapping iata = iataCoordinatesMapping;
-                    coordinatesList.add(new CoordinatesMapAPI(iata.getLatitude(), iata.getLongitude()));
+                    coordinatesList.add(new CoordinatesMapApiUtil(iataCoordinatesMapping.getLatitude(), iataCoordinatesMapping.getLongitude()));
                     break;
                 }
             }

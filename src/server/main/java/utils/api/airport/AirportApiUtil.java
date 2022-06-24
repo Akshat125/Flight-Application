@@ -2,7 +2,7 @@ package utils.api.airport;
 
 import java.util.ArrayList;
 
-public class AirportAPI {
+public class AirportApiUtil {
 
     private String type;
     private String code;
@@ -20,7 +20,7 @@ public class AirportAPI {
     private String city_name;
     private Object city_cases;
 
-    public AirportAPI(String type, String code, String name, String country_code, String country_name, String state_code, Coordinates coordinates, ArrayList<String> index_strings, int weight, Object cases, Object country_cases, Object main_airport_name, String city_code, String city_name, Object city_cases) {
+    public AirportApiUtil(String type, String code, String name, String country_code, String country_name, String state_code, Coordinates coordinates, ArrayList<String> index_strings, int weight, Object cases, Object country_cases, Object main_airport_name, String city_code, String city_name, Object city_cases) {
         this.type = type;
         this.code = code;
         this.name = name;
@@ -38,7 +38,7 @@ public class AirportAPI {
         this.city_cases = city_cases;
     }
 
-    public AirportAPI() {
+    public AirportApiUtil() {
     }
 
     public String getType() {
