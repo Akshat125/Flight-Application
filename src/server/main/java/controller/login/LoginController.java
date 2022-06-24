@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
-import utils.flights.Flights;
-import utils.flights.FlightsRepository;
+import utils.flight.Flight;
+import utils.flight.FlightRepository;
 import utils.user.User;
 import utils.user.UserRepository;
 import utils.userflights.UserFlights;
@@ -20,10 +20,10 @@ import java.util.List;
 @RestController
 public class LoginController {
 
-    private FlightsRepository flightsRepository;
+    private FlightRepository flightsRepository;
     private UserRepository userRepository;
     private UserFlightsRepository userFlightsRepository;
-    private List<Flights> flightsReturn;
+    private List<Flight> flightsReturn;
 
     public LoginController() {
         this.flightsReturn = new ArrayList<>();
@@ -31,14 +31,14 @@ public class LoginController {
 
 
     @PostMapping("login/{usernameAndpassword}")
-    public ResponseEntity<List<Flights>> loginUserGetFlights(@PathVariable("usernameAndpassword") String usernameAndPassword) {
+    public ResponseEntity<List<Flight>> loginUserGetFlights(@PathVariable("usernameAndpassword") String usernameAndPassword) {
 
         String[] params = usernameAndPassword.split("&and&");
         if (params.length != 2) {
             return ResponseEntity.badRequest().build();
         }
 
-        this.flightsRepository = SpringbootApplication.getApplicationContext().getBean(FlightsRepository.class);
+        this.flightsRepository = SpringbootApplication.getApplicationContext().getBean(FlightRepository.class);
         this.userRepository = SpringbootApplication.getApplicationContext().getBean(UserRepository.class);
         this.userFlightsRepository = SpringbootApplication.getApplicationContext().getBean(UserFlightsRepository.class);
 

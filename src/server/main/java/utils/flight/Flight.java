@@ -1,13 +1,12 @@
-package utils.flights;
+package utils.flight;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.util.Objects;
 
 @Entity
-public class Flights {
+public class Flight {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -27,10 +26,10 @@ public class Flights {
     private int duration;
     private int hashode;
 
-    public Flights(String flightNumber, String airline, String departureAirport, String arrivalAirport,
-                   String departureIata, String arrivalIata, String departureTerminal, String arrivalTerminal,
-                   String departureTimeInUTC, String departureTime,
-                   String arrivalTimeInUTC, String arrivalTime, int duration) {
+    public Flight(String flightNumber, String airline, String departureAirport, String arrivalAirport,
+                  String departureIata, String arrivalIata, String departureTerminal, String arrivalTerminal,
+                  String departureTimeInUTC, String departureTime,
+                  String arrivalTimeInUTC, String arrivalTime, int duration) {
 
         this.flightNumber = flightNumber;
         this.airline = airline;
@@ -48,7 +47,7 @@ public class Flights {
         this.hashode = hashCode();
     }
 
-    public Flights() {
+    public Flight() {
 
     }
 
@@ -172,7 +171,7 @@ public class Flights {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Flights flights = (Flights) o;
+        Flight flights = (Flight) o;
         return hashode == flights.hashode;
     }
 }

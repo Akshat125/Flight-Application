@@ -1,4 +1,4 @@
-package utils.flights;
+package utils.flight;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
@@ -11,8 +11,8 @@ import java.util.List;
  */
 
 @Repository
-public interface FlightsRepository extends CrudRepository<Flights, Long> {
-    Flights findByHashode(int hashcode);
-    List<Flights> findAll();
-    Flights getByID(long ID);
+public interface FlightRepository extends CrudRepository<Flight, Long> {
+    Flight findByHashode(int hashcode);
+    List<Flight> findAll();
+    Flight getByID(long ID);
 }

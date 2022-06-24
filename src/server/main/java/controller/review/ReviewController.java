@@ -4,7 +4,6 @@ package controller.review;
 import main.SpringbootApplication;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import utils.flights.Flights;
 import utils.review.Review;
 import utils.review.ReviewRepository;
 import utils.user.User;
