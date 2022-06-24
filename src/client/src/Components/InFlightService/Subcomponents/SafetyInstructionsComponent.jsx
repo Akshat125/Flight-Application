@@ -16,7 +16,7 @@ class SafetyInstructionsComponent extends Component {
     render() {
         return (
             <div>
-
+                TODO
             </div>
         );
     }

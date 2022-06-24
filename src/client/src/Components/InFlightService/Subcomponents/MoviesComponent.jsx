@@ -13,7 +13,9 @@ class MoviesComponent extends Component {
     componentDidMount() {
     }
 
-    //TODO: Add different movie options and embed videos.
+    //frame details:
+    // l x w in pixels: 1386 x 853
+    // Movie Platform: topLeft: (199, 70) bottomRight: (1206,643) => 1007 x 573
 
     render() {
         return (

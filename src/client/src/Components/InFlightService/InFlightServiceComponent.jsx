@@ -4,9 +4,15 @@ import serviceButtonLogo1 from '../../Images/InFlightService/Service/blueService
 import serviceButtonLogo2 from '../../Images/InFlightService/Service/greenServiceButton.png';
 import flightInstructionLogo from '../../Images/InFlightService/SafetyInstructions/instructions.png';
 import cinemaLogo from '../../Images/InFlightService/Movies/PinguCinemas.png';
+import cinema from '../../Images/InFlightService/Movies/cinema.png'
+import FlightDashboardComponent from "../FlightDashboard/FlightDashboardComponent";
+import PassengerSurveyComponent from "../PassengerSurvey/PassengerSurveyComponent";
+import MoviesComponent from "./Subcomponents/MoviesComponent";
+import SafetyInstructionsComponent from "./Subcomponents/SafetyInstructionsComponent";
+import Swal from "sweetalert2";
 
 class InFlightServiceComponent extends Component {
-
+    //TODO: potentially add music effects later
     constructor(props) {
         super(props);
 
@@ -30,15 +36,22 @@ class InFlightServiceComponent extends Component {
             showFlightInstructions: false,
             serviceImageUrl: this.state.serviceImageUrl
         });
+        const y = document.getElementById('body').getBoundingClientRect().top + window.pageYOffset - 200;
+        setTimeout(() => {window.scrollTo({top: y, behavior: 'smooth'})}, 300);
     }
 
     clickedService() {
+        let previousState = this.state.serviceImageUrl
         this.setState({
-            showMovie: false,
-            showFlightInstructions: false,
             serviceImageUrl: this.state.serviceImageUrl == serviceButtonLogo1 ? serviceButtonLogo2 : serviceButtonLogo1
         });
-        console.log("The flight attendant has been informed!");
+        if (previousState == serviceButtonLogo1) {
+            Swal.fire({
+                icon: 'success',
+                type: 'success',
+                text: 'The flight attendant has been informed',
+            });
+        }
     }
 
     clickedSafetyInstructions() {
@@ -47,9 +60,9 @@ class InFlightServiceComponent extends Component {
             showFlightInstructions: true,
             serviceImageUrl: this.state.serviceImageUrl
         });
+        const y = document.getElementById('body').getBoundingClientRect().top + window.pageYOffset - 200;
+        setTimeout(() => {window.scrollTo({top: y, behavior: 'smooth'})}, 300);
     }
-
-    //TODO: redirect/autoscroll to the respective components.
 
     render() {
         return (
@@ -72,6 +85,10 @@ class InFlightServiceComponent extends Component {
                             </button>
                         </li>
                     </ul>
+                </div>
+                <div id="body" className="body">
+                    {this.state.showMovie ? <MoviesComponent /> : null}
+                    {this.state.showFlightInstructions ? <SafetyInstructionsComponent /> : null}
                 </div>
             </div>
         );
