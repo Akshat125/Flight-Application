@@ -4,10 +4,14 @@ import org.springframework.http.MediaType;
 import org.springframework.web.reactive.function.client.ExchangeStrategies;
 import org.springframework.web.reactive.function.client.WebClient;
 import utils.api.maps.CoordinatesMapApiUtil;
+
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 
+/**
+ * Documentation: https://developer.mapquest.com/documentation/static-map-api/v5/
+ */
 public class MapApiRelease implements MapApi {
 
     private WebClient webClient;
@@ -21,12 +25,16 @@ public class MapApiRelease implements MapApi {
                 .build();
     }
 
+    /**
+     * @param coordinatesMapAPIList takes a List of Coordinates
+     * @return byte[] and returns the Byte Array/Image of a static Map, showing all Markers of the given Coordinates-List
+     */
     public byte[] getImageOfMap(List<CoordinatesMapApiUtil> coordinatesMapAPIList) {
         if (coordinatesMapAPIList.isEmpty()) {
             return new byte[0];
         }
         String zoomFactor = "";
-        if(coordinatesMapAPIList.size() == 1){
+        if (coordinatesMapAPIList.size() == 1) {
             zoomFactor = "&zoom=6";
         }
         String requestParams = MapApi.getCoords(coordinatesMapAPIList);

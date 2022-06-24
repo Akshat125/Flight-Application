@@ -8,6 +8,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import utils.user.User;
 import utils.user.UserRepository;
+
 @SpringBootApplication()
 @EnableJpaRepositories(value = {"apis", "controller", "main", "utils"})
 @EntityScan(value = {"apis", "controller", "exceptions", "main", "utils"})
@@ -15,16 +16,10 @@ import utils.user.UserRepository;
 
 public class SpringbootApplication {
 
-
     private static ConfigurableApplicationContext applicationContext;
 
     public static void main(String[] args) {
         applicationContext = SpringApplication.run(SpringbootApplication.class, args);
-
-        // These lines would add another admin to the database
-        //UserRepository userRepository = applicationContext.getBean(UserRepository.class);
-        //User admin = new User("admin", "admin");
-        //userRepository.save(admin);
     }
 
     public static ConfigurableApplicationContext getApplicationContext() {

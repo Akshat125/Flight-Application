@@ -7,6 +7,9 @@ import utils.api.airlinename.AirlineNameApiUtil;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+/**
+ * Documentation: https://airlabs.co/docs/
+ */
 public class AirlineNameApiRelease implements AirlineNameApi {
 
 
@@ -16,6 +19,10 @@ public class AirlineNameApiRelease implements AirlineNameApi {
         webClient = WebClient.builder().defaultHeader(MediaType.APPLICATION_JSON_VALUE).build();
     }
 
+    /**
+     * @param airline_icao takes the ICAO_CODE of a given Airline and return the corresponding Airline name/AirlineNameApiUtil
+     * @return AirlineNameApiUtil
+     */
     @Override
     public AirlineNameApiUtil getAirlineName(String airline_icao) {
         try {

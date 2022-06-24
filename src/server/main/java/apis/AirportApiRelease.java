@@ -3,20 +3,27 @@ package apis;
 import org.springframework.http.MediaType;
 import org.springframework.web.reactive.function.client.WebClient;
 import utils.api.airport.AirportApiUtil;
+
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Documentation: https://support.travelpayouts.com/
+ */
 public class AirportApiRelease implements AirportApi {
-    // Source: https://support.travelpayouts.com/
 
     private WebClient webClient;
 
     public AirportApiRelease() {
-        webClient = WebClient.builder().baseUrl("https://autocomplete.travelpayouts.com/places2?locale=de&types[]=airport&types[]=city&term=").defaultHeader(MediaType.APPLICATION_JSON_VALUE).build();
+        webClient = WebClient.builder().defaultHeader(MediaType.APPLICATION_JSON_VALUE).build();
     }
 
+    /**
+     * @param airportSearch takes a search Query and returns a List of all Airports, which are related to that query
+     * @return List<AirportApiUtil>
+     */
     public List<AirportApiUtil> getAirportsByString(String airportSearch) {
 
         try {
@@ -32,7 +39,7 @@ public class AirportApiRelease implements AirportApi {
             return AirportApi.jsonStringToJavaClass(res);
 
         } catch (URISyntaxException e) {
-           return new ArrayList<>();
+            return new ArrayList<>();
         }
     }
 }

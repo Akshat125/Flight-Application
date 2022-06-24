@@ -52,9 +52,6 @@ public class FlightController {
         AirlineName airlineName;
         AirlineNameApiUtil airlineNameUtil;
         String airlineNameRet;
-        // flightArray[0] -> from iata
-        // flightArray[1] -> to iata
-        // flightArray[2] -> sun/mon/wed/fri/sat/thu/tue
         flightListWhileSurfing.clear();
         if (flightArray.length != 3) {
             return ResponseEntity.ok(flightListWhileSurfing);
