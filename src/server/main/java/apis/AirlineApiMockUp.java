@@ -7,34 +7,24 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 /**
- * This mockApplication returns flights between Munic and Berlin
+ * Documentation: https://aviationstack.com/ || https://aviationstack.com/documentation
  */
-
 public class AirlineApiMockUp implements AirlineApi {
-
-    // Source: https://aviationstack.com/
-    // https://aviationstack.com/documentation
-
-
-    // München: IATA-Code: MUC, IATA-Code: BER
 
     public AirlineApiMockUp() {
     }
 
-/*
-    public static void main(String[] args) {
-        AirlinesAPIMockUp mock = new AirlinesAPIMockUp();
-    }
-
- */
-
-
+    /**
+     * @param formDep_iata takes a corresponding IATA_CODE of a given departure Airport
+     * @param toArr_iata   takes a corresponding IATA_CODE of a given arrival Airport
+     * @return AirlineApiUtil
+     */
     public AirlineApiUtil getFlightData(String formDep_iata, String toArr_iata) {
         try {
             return AirlineApi.jsonStringToJavaClass(Files.readString(Path.of("src/server/main/resources/muc&ber_mock")));
         } catch (IOException e) {
             e.printStackTrace();
         }
-       return AirlineApi.jsonStringToJavaClass("");
+        return AirlineApi.jsonStringToJavaClass("");
     }
 }

@@ -7,6 +7,9 @@ import utils.api.airportNameIcao.Icao2NameApiUtil;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+/**
+ * Documentation: https://airlabs.co/docs/
+ */
 public class AirportNameApiRelease implements AirportNameApi {
 
     private WebClient webClient;
@@ -15,6 +18,10 @@ public class AirportNameApiRelease implements AirportNameApi {
         webClient = WebClient.builder().defaultHeader(MediaType.APPLICATION_JSON_VALUE).build();
     }
 
+    /**
+     * @param airportICAO takes the ICAO_Code of a given Airport and returns a new Object of Icao2NameApiUtil, which contains the name of the Airport
+     * @return Icao2NameApiUtil
+     */
     public Icao2NameApiUtil getAirportData(String airportICAO) {
         try {
             String res = webClient.get()

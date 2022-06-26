@@ -9,9 +9,13 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.util.List;
 
+/**
+ * Documentation: https://developer.mapquest.com/documentation/static-map-api/v5/
+ */
 public class MapApiMockUp implements MapApi {
 
     private WebClient webClient;
+
     public MapApiMockUp() {
         webClient = WebClient.builder()
                 .exchangeStrategies(ExchangeStrategies.builder().codecs(
@@ -21,15 +25,12 @@ public class MapApiMockUp implements MapApi {
                 .build();
     }
 
-    /*
-    public static void main(String[] args) {
-        MapsAPIMockUp mapsAPIMockUp = new MapsAPIMockUp();
-        //System.out.println(Arrays.toString(mapsAPIMockUp.getImageOfMap(null)));
-    }
+    /**
+     * @param coordinatesMapAPIList takes a List of Coordinates
+     * @return byte[] and returns the Byte Array/Image of a static Map, showing all Markers of the given Coordinates-List
      */
-
     public byte[] getImageOfMap(List<CoordinatesMapApiUtil> coordinatesMapAPIList) {
-        File mockImage= new File("src/server/main/resources/muc&ber.jpg");
+        File mockImage = new File("src/server/main/resources/muc&ber.jpg");
         try {
             return Files.readAllBytes(mockImage.toPath());
         } catch (IOException e) {
