@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
 import RatingComponent from "./Subcomponents/RatingComponent";
 import './ratestyle.css'
-import 'font-awesome/css/font-awesome.min.css'
+//import "font-awesome/css/font-awesome.min.css"
 import "bootstrap/dist/css/bootstrap.css"
-
 class PassengerSurveyComponent extends Component {
 
     constructor(props) {
@@ -21,8 +20,74 @@ class PassengerSurveyComponent extends Component {
        //this.state.visible = !this.state.visible;}
 
     componentDidMount() {
+        const ratings = {
+            comfort: 4.7,
+            food: 3.4,
+            entertainment: 2.3,
+            service: 3.6,
+            journey: 4.1
+        };
+
+        // Total Stars
+        const starsTotal = 5;
+
+        // Run getRatings when DOM loads
+        document.addEventListener("DOMContentLoaded", getRatings);
+
+        // Form Elements
+        const productSelect = document.getElementById("product-select");
+        const ratingControl = document.getElementById("rating-control");
+
+        // Init product
+        let product;
+
+        // Product select change
+        productSelect.addEventListener("change", (e) => {
+            product = e.target.value;
+            // Enable rating control
+            ratingControl.disabled = false;
+            ratingControl.value = ratings[product];
+        });
+
+        // Rating control change
+        ratingControl.addEventListener("blur", (e) => {
+            const rating = e.target.value;
+
+            // Make sure 5 or under
+            if (rating > 5) {
+                alert("Please rate 1 - 5");
+                return;
+            }
+
+            // Change rating
+            ratings[product] = rating;
+
+            getRatings();
+        });
+
+        // Get ratings
+        function getRatings() {
+            for (let rating in ratings) {
+                // Get percentage
+                const starPercentage = (ratings[rating] / starsTotal) * 100;
+
+                // Round to nearest 10
+                const starPercentageRounded = `${Math.round(starPercentage / 10) * 10}%`;
+
+                // Set width of stars-inner to percentage
+                document.querySelector(
+                    `.${rating} .stars-inner`
+                ).style.width = starPercentageRounded;
+
+                // Add number rating
+                document.querySelector(`.${rating} .number-rating`).innerHTML =
+                    ratings[rating];
+            }
+        }
     }
+
     render() {
+
         //const {rating} = this.state;
         return (
             /*
@@ -36,8 +101,6 @@ class PassengerSurveyComponent extends Component {
                 />
             </div>
             */
-
-
             <div className="container mt-5">
 
                 <div className="form-group">

@@ -1,4 +1,6 @@
-@import url("https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
+@import url("https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css");
+@import url("https://use.fontawesome.com/releases/v5.7.0/css/all.css");
+
 .stars-outer {
     position: relative;
     display: inline-block;
@@ -15,14 +17,14 @@
 
 .stars-outer::before {
     content: "\f005 \f005 \f005 \f005 \f005";
-    font-family: "Font Awesome 5 Free", serif;
+    font-family: "Font Awesome 5 Free", fantasy;
     font-weight: 900;
     color: #ccc;
 }
 
 .stars-inner::before {
     content: " \f005\f005 \f005 \f005 \f005";
-    font-family: "Font Awesome 5 Free", serif;
+    font-family: "Font Awesome 5 Free", fantasy;
     font-weight: 900;
     color: #f8ce0b;
 }
