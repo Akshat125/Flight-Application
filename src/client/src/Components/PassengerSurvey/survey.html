@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+
+    <title>Title</title>
+    <style>
+        .stars-outer {
+            position: relative;
+            display: inline-block;
+        }
+
+        .stars-inner {
+            position: absolute;
+            top: 0;
+            left: 0;
+            white-space: nowrap;
+            overflow: hidden;
+            width: 0;
+        }
+
+        .stars-outer::before {
+            content: "\f005 \f005 \f005 \f005 \f005";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            color: #ccc;
+        }
+
+        .stars-inner::before {
+            content: " \f005\f005 \f005 \f005 \f005";
+            font-family: "Font Awesome 5 Free", serif;
+            font-weight: 900;
+            color: #f8ce0b;
+        }
+
+    </style>
+</head>
+<body>
+
+<div className="container mt-5">
+    <div className="form-group">
+        <select id="product-select" className="form-control custom-select">
+            <option value="0" disabled selected>Rate your flight</option>
+            <option value="comfort">Comfort</option>
+            <option value="food">Food</option>
+            <option value="entertainment">Entertainment</option>
+            <option value="service">Service</option>
+            <option value="journey">Journey</option>
+        </select>
+    </div>
+    <div className="form-group">
+        <input type="number" id="rating-control" className="form-control" step="0.1" max="5"
+               placeholder="Rate 1 - 5" disabled></input>
+    </div>
+
+    <table className="table table-striped">
+        <thead>
+        <tr>
+            <th>Air Pingu</th>
+            <th>Rating</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr className="comfort">
+            <td>Comfort</td>
+            <td>
+                <div className="stars-outer">
+                    <div className="stars-inner"></div>
+                </div>
+                <span className="number-rating"></span>
+            </td>
+        </tr>
+        <tr className="food">
+            <td>Food</td>
+            <td>
+                <div className="stars-outer">
+                    <div className="stars-inner"></div>
+                </div>
+                <span className="number-rating"></span>
+            </td>
+        </tr>
+        <tr className="entertainment">
+            <td>Entertainment</td>
+            <td>
+                <div className="stars-outer">
+                    <div className="stars-inner"></div>
+                </div>
+                <span className="number-rating"></span>
+            </td>
+        </tr>
+        <tr className="service">
+            <td>Service</td>
+            <td>
+                <div className="stars-outer">
+                    <div className="stars-inner"></div>
+                </div>
+                <span className="number-rating"></span>
+            </td>
+        </tr>
+        <tr className="journey">
+            <td>Journey</td>
+            <td>
+                <div className="stars-outer">
+                    <div className="stars-inner"></div>
+                </div>
+                <span className="number-rating"></span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

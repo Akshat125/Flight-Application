@@ -5,6 +5,8 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'; // important in order to incorporate bootstrap dependencies.
 
+import 'bootstrap/dist/js/bootstrap.bundle.min';
+
 ReactDOM.render(
   <React.StrictMode>
     <App />
