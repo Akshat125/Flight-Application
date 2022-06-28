@@ -12,7 +12,7 @@ import SafetyInstructionsComponent from "./Subcomponents/SafetyInstructionsCompo
 import Swal from "sweetalert2";
 
 class InFlightServiceComponent extends Component {
-    //TODO: potentially add music effects later
+    //potentially add music effects later
     constructor(props) {
         super(props);
 
@@ -36,7 +36,7 @@ class InFlightServiceComponent extends Component {
             showFlightInstructions: false,
             serviceImageUrl: this.state.serviceImageUrl
         });
-        const y = document.getElementById('body').getBoundingClientRect().top + window.pageYOffset - 200;
+        const y = document.getElementById('body').getBoundingClientRect().top + window.pageYOffset - 300;
         setTimeout(() => {window.scrollTo({top: y, behavior: 'smooth'})}, 300);
     }
 
@@ -60,7 +60,7 @@ class InFlightServiceComponent extends Component {
             showFlightInstructions: true,
             serviceImageUrl: this.state.serviceImageUrl
         });
-        const y = document.getElementById('body').getBoundingClientRect().top + window.pageYOffset - 200;
+        const y = document.getElementById('body').getBoundingClientRect().top + window.pageYOffset - 300;
         setTimeout(() => {window.scrollTo({top: y, behavior: 'smooth'})}, 300);
     }
 
