@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import Card from 'react-bootstrap/Card'
 import baseImage from '../../../Images/InFlightService/Movies/cinema.png'
 
 class MoviesComponent extends Component {
@@ -15,21 +14,15 @@ class MoviesComponent extends Component {
     componentDidMount() {
     }
 
-    //frame details:
-    // l x w in pixels:
-    // Movie Platform:
+    // Movie Platform: Youtube API
+
     /*
 
     */
     render() {
         return (
-            <div>
-                <Card className = "text-center" style={{ width: '60rem' }}>
-                    <Card.Img src= {baseImage}  alt="Card Image"/>
-                    <Card.ImgOverlay>
-
-                    </Card.ImgOverlay>
-                </Card>
+            <div className = "card opacity-100 bg-gradient">
+                <img className="card-img" width={100} height={750} src = {baseImage}/>
             </div>
 
         );
