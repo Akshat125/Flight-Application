@@ -72,7 +72,7 @@ class FooterComponent extends Component {
             description={description}
             title={title}
             columns={columns}
-            linkedin="linkedin.comn"
+            linkedin="linkedin.com"
             facebook="facebook.com"
             twitter="twitter.com"
             instagram="instagram.com"
