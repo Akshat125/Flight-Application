@@ -234,6 +234,7 @@ div {
     left: -30em;
     height: 70em;
 
+    justify-content: center;
     animation-name: tabswitch;
     animation-duration: 1s;
     animation-timing-function: ease;
