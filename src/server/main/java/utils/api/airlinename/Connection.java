@@ -1,6 +1,10 @@
 package utils.api.airlinename;
 
 public class Connection {
+    /**
+     * This is a helper-Class to handle the API-Calls for specific Airline-name information: main: AirlineNameApiUtil
+     */
+
     private String type;
     private int isp_code;
     private String isp_name;

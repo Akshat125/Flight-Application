@@ -3,6 +3,9 @@ package utils.api.airline;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 public class Params {
+    /**
+     * This is a helper-Class to handle the API-Calls for specific Airline information: main: AirlineApiUtil
+     */
 
     private String dep_iata;
     private String arr_iata;

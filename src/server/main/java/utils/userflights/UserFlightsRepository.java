@@ -5,7 +5,9 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-
+/**
+ * Repository to handle the DB interaction for the mapping between User and Flight IDs
+ */
 @Repository
 public interface UserFlightsRepository extends CrudRepository<UserFlights,Long>{
     List<UserFlights> findUserFlightsByFlightID(long flightID);

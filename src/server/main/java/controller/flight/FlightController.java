@@ -8,7 +8,7 @@ import utils.airlinename.AirlineName;
 import utils.airlinename.AirlineNameRepository;
 import utils.api.airline.AirlineApiUtil;
 import utils.api.airlinename.AirlineNameApiUtil;
-import utils.api.airportNameIcao.Icao2NameApiUtil;
+import utils.api.airportNameIcao.IcaoMappingNameApiUtil;
 import utils.api.icaoname.IacoNameRepository;
 import utils.api.icaoname.IcaoNameApiUtil;
 import utils.flight.Flight;
@@ -29,7 +29,7 @@ public class FlightController {
     private FassadeApi fassadeAPI;
     private AirlineApiUtil flightData;
     private IacoNameRepository iacoNameRepository;
-    private Icao2NameApiUtil icao2NameAPI;
+    private IcaoMappingNameApiUtil icao2NameAPI;
     private FlightRepository flightsRepository;
     private UserRepository userRepository;
     private UserFlightsRepository userFlightsRepository;
@@ -43,6 +43,10 @@ public class FlightController {
         this.fassadeAPI = new FassadeApi();
     }
 
+    /**
+     * @param fromIataToIata this GET request takes the departure IATA Airport, the arrival IATA Airport and the Day (Mon,Sun,Wed..)
+     * @return JSON formatted Flights, which correspond to the given params
+     */
     @GetMapping("/getFlights/{fromIataToIataAtDay}")
     public ResponseEntity<List<Flight>> getFlights(@PathVariable("fromIataToIataAtDay") String fromIataToIata) {
         this.iacoNameRepository = SpringbootApplication.getApplicationContext().getBean(IacoNameRepository.class);
@@ -103,6 +107,10 @@ public class FlightController {
         return ResponseEntity.ok(flightListWhileSurfing);
     }
 
+    /**
+     * @param addFlightByUserAndPasswordAndHashCode takes the Username, the Password/ID and the hash value of the flight and saves it to the User
+     * @return true/false
+     */
     @PutMapping("/addFlight/{addFlightByUserAndPasswordAndHashCode}")
     public ResponseEntity<Boolean> addFlight(@PathVariable("addFlightByUserAndPasswordAndHashCode") String addFlightByUserAndPasswordAndHashCode) {
         String[] params = addFlightByUserAndPasswordAndHashCode.split("&and&");
@@ -130,6 +138,10 @@ public class FlightController {
         return ResponseEntity.ok(false);
     }
 
+    /**
+     * @param deleteParams akes the Username, the Password/ID and the hash value of the flight and deletes the Flight
+     * @return true/false
+     */
     @DeleteMapping("deleteFlight/{deleteFlightByUserAndPasswordAndHashCode}")
     public ResponseEntity<Boolean> deleteFlight(@PathVariable("deleteFlightByUserAndPasswordAndHashCode") String deleteParams) {
         String[] params = deleteParams.split("&and&");

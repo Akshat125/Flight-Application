@@ -14,6 +14,9 @@ import utils.user.UserRepository;
 @EntityScan(value = {"apis", "controller", "exceptions", "main", "utils"})
 @ComponentScan(basePackages = {"apis", "controller", "main", "utils"})
 
+/**
+ * Server-Main Methode
+ */
 public class SpringbootApplication {
 
     private static ConfigurableApplicationContext applicationContext;

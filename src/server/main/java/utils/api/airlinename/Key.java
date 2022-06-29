@@ -3,6 +3,9 @@ package utils.api.airlinename;
 import java.util.Date;
 
 public class Key {
+    /**
+     * This is a helper-Class to handle the API-Calls for specific Airline-name information: main: AirlineNameApiUtil
+     */
 
     private int id;
     private String api_key;

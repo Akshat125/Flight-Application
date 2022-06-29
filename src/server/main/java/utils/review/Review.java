@@ -9,6 +9,9 @@ import java.util.Objects;
 
 @Entity
 public class Review {
+    /**
+     * This Class is used to store Reviews
+     */
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

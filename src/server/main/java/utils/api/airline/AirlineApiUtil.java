@@ -3,6 +3,9 @@ package utils.api.airline;
 import java.util.ArrayList;
 
 public class AirlineApiUtil {
+    /**
+     * This is the main-Class to handle the API-Calls for specific Airline information
+     */
 
     private Request request;
     private ArrayList<Response> response;

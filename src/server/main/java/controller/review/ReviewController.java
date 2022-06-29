@@ -22,6 +22,10 @@ public class ReviewController {
     private UserReviewRepository userReviewRepository;
     private ReviewRepository reviewRepository;
 
+    /**
+     * @param reviewMapping takes a new Review as String, the Review then can be seen from all other Users (private or public)
+     * @return the new Review
+     */
     @PutMapping("addReview/{query}")
     public ResponseEntity<Review> addReview(@PathVariable("query") String reviewMapping) {
 
@@ -69,6 +73,10 @@ public class ReviewController {
         }
     }
 
+    /**
+     * @param userLoginData takes the Username and Password/ID and returns all the added Reviews
+     * @return List<Review>
+     */
     @GetMapping("getAllReviews/{query}")
     public ResponseEntity<List<Review>> getAllReviews(@PathVariable("query") String userLoginData) {
 
@@ -114,6 +122,10 @@ public class ReviewController {
         return ResponseEntity.ok(retReview);
     }
 
+    /**
+     * @param userLoginDataReviewHash takes the Username, the Password/ID and the hash Value corresponding to the Review and deletes it
+     * @return true/false
+     */
     @DeleteMapping("deleteReview/{query}")
     public ResponseEntity<Boolean> deleteReview(@PathVariable("query") String userLoginDataReviewHash) {
 

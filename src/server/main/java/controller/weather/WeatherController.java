@@ -24,16 +24,19 @@ public class WeatherController {
     private List<WeatherResponse> weatherList;
 
 
-    public WeatherController(){
+    public WeatherController() {
         this.iataList = new ArrayList<>();
         this.fassadeAPI = new FassadeApi();
         weatherList = new ArrayList<>();
     }
 
-
+    /**
+     * @param IATA takes the IATA from a given Airport and returns the Weather data for the next 5 Days in 3h steps
+     * @return List<Weather>
+     */
     @GetMapping("/getWeather/{searchByIATA}")
-    public ResponseEntity<List<WeatherResponse>> getWeather(@PathVariable("searchByIATA") String IATA){
-        this.iataCoordinatesRepository =  SpringbootApplication.getApplicationContext().getBean(IataCoordinatesRepository.class);
+    public ResponseEntity<List<WeatherResponse>> getWeather(@PathVariable("searchByIATA") String IATA) {
+        this.iataCoordinatesRepository = SpringbootApplication.getApplicationContext().getBean(IataCoordinatesRepository.class);
         weatherList.clear();
         this.iataList = iataCoordinatesRepository.findByIata(IATA.toUpperCase(Locale.ROOT));
         for (IataCoordinatesApiUtil iataCoordinatesMapping : iataList) {

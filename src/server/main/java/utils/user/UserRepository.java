@@ -4,9 +4,8 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 /**
- * This interface allows you to store new Users into the Database
+ * Repository to handle the DB interaction for the Users
  */
-
 @Repository
 public interface UserRepository extends CrudRepository<User, Long> {
     User findUserByNameAndPassword(String name, String password);

@@ -7,6 +7,9 @@ import javax.persistence.Id;
 
 @Entity
 public class Flight {
+    /**
+     * This Class is used to store Flights
+     */
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
