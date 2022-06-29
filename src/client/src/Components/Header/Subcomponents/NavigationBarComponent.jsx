@@ -36,7 +36,7 @@ class NavigationBarComponent extends Component {
                         </li>
                     </ul>
                     <form className="d-flex" role="search">
-                        <a className="btn" href="/login">login</a>
+                        <a className="login-btn" href="/login">login</a>
                     </form>
                 </div>
             </nav>

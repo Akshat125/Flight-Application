@@ -1,6 +1,4 @@
 .App-main {
-    margin-top: 80px; /* In order to avoid collision with header */
-    margin-bottom: 20px; /* In order to avoid collision with header */
     background-color: #e5f6fb;
     font-size: calc(10px + 2vmin);
     color: black;
@@ -98,8 +96,16 @@ div {
     transition: font-size 0.5s ease;
 }
 
-.navbar .btn    {
+.navbar .login-btn    {
+    font-size: 12pt;
+    color: #142a52;
+    text-decoration: none;
+    background-color: #76c6ff;
 
+    padding: 0.5em 1.5em;
+    margin: 0em 1em;
+    border: 1px solid #1f557b;
+    border-radius: 2em;
 }
 
 .drop-shadow    {
@@ -110,7 +116,8 @@ div {
 
 .main {
     padding-top: 9vh;
-    background-color: #e5f6fb;
+    background: rgb(229, 246, 251);
+    background: linear-gradient(0deg, #ffffff 0%, #e5f6fb 100%);
 }
 
 .main .main-logo   {
@@ -225,6 +232,12 @@ div {
     animation-fill-mode: forwards;
 }
 
+.trip-dashboard h1  {
+    background: rgb(229, 246, 251);
+    background: linear-gradient(90deg, #76c6ff 0%, #e5f6fb 100%);
+    border-radius: 1em;
+}
+
 .passenger-survey   {
     position: relative;
     left: -30em;
@@ -248,6 +261,7 @@ div {
     animation-fill-mode: forwards;
 }
 
+<<<<<<< Updated upstream
 /*
 - grayscale:
 #141414 / 20, 20, 20
@@ -387,6 +401,8 @@ div {
     width: 8em;
     height: 5em;
 }
+=======
+>>>>>>> Stashed changes
 
 
 
