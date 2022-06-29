@@ -1,4 +1,7 @@
 import React, {Component} from 'react';
+import SearchBar from './Subcomponents/SearchBar.jsx'
+import SearchResults from './Subcomponents/SearchResults.jsx'
+import SaveFlight from './Subcomponents/SaveFlight.jsx'
 
 class FlightDashboardComponent extends Component {
 
@@ -22,6 +25,9 @@ class FlightDashboardComponent extends Component {
         return (
             <div className="trip-dashboard">
                 <h1> placeholder trip dashboard section </h1>
+                <SearchBar />
+                <SearchResults />
+                <SaveFlight />
             </div>
         );
     }

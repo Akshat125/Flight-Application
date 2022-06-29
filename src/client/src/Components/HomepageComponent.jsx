@@ -16,7 +16,9 @@ class HomepageComponent extends Component {
         super(props);
 
         this.state = {
-
+            showDash: false,
+            showSurvey: false,
+            showService: false,
         };
 
     }

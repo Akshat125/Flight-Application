@@ -30,8 +30,13 @@ class AirlineController {
     "id":0}
      */
 
-    getFLights(fromIata, toIata) {
-        return axios.get(AIRLINE_GET_API_BASE_URL + "/" + fromIata + "&and&" + toIata);
+    getFlights(fromIata, toIata, day) {
+        return (
+            axios.get(AIRLINE_GET_API_BASE_URL + "/" + fromIata + "&" + toIata + "&" + day)
+            .then(response => {
+                return response.data;
+            })
+        );
     }
 
     // @param: username &and& password &and& hashCode

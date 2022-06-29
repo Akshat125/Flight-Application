@@ -36,6 +36,7 @@
     padding: 0;
     margin: 0;
     color: #141414;
+    font-family: "Montserrat", sans-serif;
 }
 
 header  {
@@ -224,7 +225,6 @@ div {
 .trip-dashboard {
     position: relative;
     left: -30em;
-    height: 70em;
 
     animation-name: tabswitch;
     animation-duration: 1s;
@@ -261,148 +261,6 @@ div {
     animation-fill-mode: forwards;
 }
 
-<<<<<<< Updated upstream
-/*
-- grayscale:
-#141414 / 20, 20, 20
-#4c4c4c / 76, 76, 76
-- blues:
-#e5f6fb / 229, 246, 251
-#76c6ff / 118, 198, 255
-#1f557b / 31, 85, 123
-#142a52 / 20, 42, 82
-- accents:
-#ffdb8a / 255, 219, 138
-#ffb145 / 255, 177, 69
-#a62525 / 166, 37, 37
-*/
-
-*   {
-    padding: 0;
-    margin: 0;
-    color: #141414;
-}
-
-header  {
-    top: 0;
-    position: fixed;
-}
-
-div {
-    padding: 0;
-    margin: 0;
-}
-
-.container-fluid    {
-    padding: 0;
-    margin: 0;
-}
-
-.navbar {
-    padding: 0;
-    margin: 0;
-    position: fixed;
-    width: 100vw;
-    height: 9vh;
-
-    background: rgb(229, 246, 251);
-    background: linear-gradient(90deg, #76c6ff 0%, #e5f6fb 100%);
-    border-bottom: 2px solid #1f557b;
-}
-
-.navbar .navbar-logo   {
-    padding: 0vh 1vw 0vh 3vw;
-    margin: 0;
-    height: auto;
-    width: 14vw;
-}
-
-.navbar .navitem    {
-    padding: 0.3em;
-    margin: 0.3em;
-    justify-content: center;
-}
-
-.navbar .navlink    {
-    font-size: 12pt;
-    color: #141414;
-    text-decoration: none;
-    transition: none;
-}
-
-.navbar .navitem:hover {
-    cursor: pointer;
-}
-
-.navbar .btn    {
-
-}
-
-.drop-shadow    {
-    height: 3px;
-    background: rgb(136,136,136);
-    background: linear-gradient(180deg, rgba(100,100,100,1) 0%, rgba(255,255,255,0) 100%);
-}
-
-.main {
-    padding-top: 9vh;
-    background-color: #e5f6fb;
-}
-
-.main .main-logo   {
-    display: block;
-    margin-top: 6em;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 4em;
-    width: 40%;
-}
-
-.main .button-container    {
-    margin: 0em 15em 0em 15em;
-}
-
-.main .button-list  {
-    display: flex;
-    list-style-type: none;
-    justify-content: center;
-}
-
-.main .button-list li   {
-    margin: 0em 1em;
-    font-size: 0.65em;
-}
-
-.main .button-list button   {
-    border: 2px solid #1f557b;
-    border-radius: 20px;
-    padding: 0.5em;
-    background: #000000;
-    background: linear-gradient(30deg, #76c6ff 0%, #e5f6fb 100%);
-}
-
-.main .button-list button:hover  {
-    animation-name: btn-border;
-    animation-duration: 0.5s;
-    animation-fill-mode: forwards;
-    animation-timing-function: ease-out;
-}
-
-@keyframes btn-border   {
-    from    {
-        border: 2px solid #1f557b;
-    }
-    to  {
-        border: 2px solid #ffb145;
-    }
-}
-
-.main .button img   {
-    width: 8em;
-    height: 5em;
-}
-=======
->>>>>>> Stashed changes
 
 
 

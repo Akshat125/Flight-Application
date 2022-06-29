@@ -5,7 +5,7 @@ import serviceButtonLogo2 from '../../Images/InFlightService/Service/greenServic
 import flightInstructionLogo from '../../Images/InFlightService/SafetyInstructions/instructions.png';
 import MoviesComponent from "./Subcomponents/MoviesComponent";
 import SafetyInstructionsComponent from "./Subcomponents/SafetyInstructionsComponent";
-import Swal from "sweetalert2";
+import Swal from 'sweetalert2';
 
 class InFlightServiceComponent extends Component {
     //potentially add music effects later

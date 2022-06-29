@@ -10,10 +10,15 @@ class AirportController {
              -nameCity
              -nameCountry
              -IATA-Code of Airport/City
-     */
+    */
 
     getAirport(query) {
-        return axios.get(AIRPORT_API_BASE_URL + "/" + query);
+        return (
+            axios.get(AIRPORT_API_BASE_URL + "/" + query)
+            .then(response => {
+                return response.data
+            })
+        );
     }
 
 }
