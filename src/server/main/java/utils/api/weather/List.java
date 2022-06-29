@@ -3,6 +3,9 @@ package utils.api.weather;
 import java.util.ArrayList;
 
 public class List {
+    /**
+     * This is a helper-Class to handle the API-Calls for specific Weather: main: WeatherApiUtil
+     */
 
     private int dt;
     private Main main;

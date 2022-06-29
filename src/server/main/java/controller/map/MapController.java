@@ -24,6 +24,10 @@ public class MapController {
         this.coordinatesList = new ArrayList<>();
     }
 
+    /**
+     * @param stringIATA takes a "List" of IATAs, which are seperated by "&" and returns a JPEG, which then contains markers on the required IATA Airport Locations
+     * @return JPEG image
+     */
     @RequestMapping(value = "/getMapImage/{stringIATA}", method = RequestMethod.GET, produces = MediaType.IMAGE_JPEG_VALUE)
     public byte[] getMapByIATA(@PathVariable(value = "stringIATA") String stringIATA) {
         String[] listIataRequest = stringIATA.split("&");
@@ -47,7 +51,6 @@ public class MapController {
                 }
             }
         }
-
         return fassadeAPI.getMapByIATA(coordinatesList);
     }
 }

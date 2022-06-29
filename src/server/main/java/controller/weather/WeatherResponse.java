@@ -10,6 +10,9 @@ public class WeatherResponse {
     private int dateInUTC;
     private String description;
 
+    /**
+     * This is a helper Class (the response Class for an Weather request)
+     */
     public WeatherResponse(int dateInUTC, double temp, double tempFeelsLike, int humidity, double windSpeed, int windDirection, String description) {
         this.temp = temp;
         this.tempFeelsLike = tempFeelsLike;

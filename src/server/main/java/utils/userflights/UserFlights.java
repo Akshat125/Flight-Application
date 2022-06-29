@@ -7,7 +7,9 @@ import javax.persistence.Id;
 
 @Entity
 public class UserFlights {
-
+    /**
+     * This Class is used to store User-Flights (the ID-mapping: ID-User to ID-Flight)
+     */
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

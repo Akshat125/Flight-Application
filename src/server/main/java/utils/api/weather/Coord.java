@@ -1,6 +1,10 @@
 package utils.api.weather;
 
 public class Coord {
+    /**
+     * This is a helper-Class to handle the API-Calls for specific Weather: main: WeatherApiUtil
+     */
+
     private double lat;
     private double lon;
 

@@ -3,6 +3,10 @@ package utils.api.airline;
 import java.util.ArrayList;
 
 public class Response {
+    /**
+     * This is a helper-Class to handle the API-Calls for specific Airline information: main: AirlineApiUtil
+     */
+
     private String airline_iata;
     private String airline_icao;
     private String flight_number;
@@ -56,7 +60,7 @@ public class Response {
     public String name;
     public double lat;
 
-    public Response(String icao_code, String country_code, String iata_code, double lng, String name, double lat){
+    public Response(String icao_code, String country_code, String iata_code, double lng, String name, double lat) {
         this.icao_code = icao_code;
         this.country_code = country_code;
         this.iata_code = iata_code;

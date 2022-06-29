@@ -6,6 +6,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+/**
+ * This is a helper Class to map the Airline-IATA-Code to a specific Airport
+ */
 @Entity
 public class AirlineName {
 

@@ -1,6 +1,9 @@
 package utils.api.airlinename;
 
 public class Response {
+    /**
+     * This is a helper-Class to handle the API-Calls for specific Airline-name information: main: AirlineNameApiUtil
+     */
 
     private String icao_code;
     private String iata_code;

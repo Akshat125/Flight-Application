@@ -1,6 +1,6 @@
 package apis;
 
-import utils.api.airportNameIcao.Icao2NameApiUtil;
+import utils.api.airportNameIcao.IcaoMappingNameApiUtil;
 
 /**
  * Documentation: https://airlabs.co/docs/
@@ -15,7 +15,7 @@ public class AirportNameApiMockUp implements AirportNameApi {
      * @return Icao2NameApiUtil
      */
     @Override
-    public Icao2NameApiUtil getAirportData(String airportICAO) {
-        return new Icao2NameApiUtil(null, null, null);
+    public IcaoMappingNameApiUtil getAirportData(String airportICAO) {
+        return new IcaoMappingNameApiUtil(null, null, null);
     }
 }

@@ -3,6 +3,9 @@ package utils.api.airportNameIcao;
 import java.util.ArrayList;
 
 public class Response {
+    /**
+     * This is a helper-Class to handle the API-Calls for specific Airport-name information: main: IcaoMappingNameApiUtil
+     */
 
     private String icao_code;
     private String country_code;

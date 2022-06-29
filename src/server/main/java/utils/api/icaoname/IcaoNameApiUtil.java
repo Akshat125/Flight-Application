@@ -7,6 +7,9 @@ import javax.persistence.Id;
 
 @Entity
 public class IcaoNameApiUtil {
+    /**
+     * This is a helper Class to map the ICAO-Code to specific Airport name
+     */
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

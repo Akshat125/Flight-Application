@@ -1,6 +1,9 @@
 package utils.api.weather;
 
 public class Sys {
+    /**
+     * This is a helper-Class to handle the API-Calls for specific Weather: main: WeatherApiUtil
+     */
 
     private String pod;
 

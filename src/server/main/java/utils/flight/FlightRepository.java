@@ -7,9 +7,8 @@ import java.util.List;
 
 
 /**
- * This interface allows you to store new Users into the Database
+ * Repository to handle the DB interaction for the Flights
  */
-
 @Repository
 public interface FlightRepository extends CrudRepository<Flight, Long> {
     Flight findByHashode(int hashcode);
