@@ -3,6 +3,9 @@ package utils.api.airport;
 import java.util.ArrayList;
 
 public class AirportApiUtil {
+    /**
+     * This is the main-Class to handle the API-Calls for specific Airport information
+     */
 
     private String type;
     private String code;

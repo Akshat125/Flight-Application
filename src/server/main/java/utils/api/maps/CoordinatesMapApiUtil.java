@@ -1,6 +1,9 @@
 package utils.api.maps;
 
 public class CoordinatesMapApiUtil {
+    /**
+     * This is a helper Class to have Objects to store Coordinates (latitude,longitude)
+     */
 
     private double latitude;
     private double longitude;

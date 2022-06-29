@@ -2,19 +2,22 @@ package utils.api.airportNameIcao;
 
 import java.util.ArrayList;
 
-public class Icao2NameApiUtil {
+public class IcaoMappingNameApiUtil {
+    /**
+     * This is the main-Class to handle the API-Calls for specific Airport-ICAO-Code to Airport information
+     */
 
     private Request request;
     private ArrayList<Response> response;
     private String terms;
 
-    public Icao2NameApiUtil(Request request, ArrayList<Response> response, String terms) {
+    public IcaoMappingNameApiUtil(Request request, ArrayList<Response> response, String terms) {
         this.request = request;
         this.response = response;
         this.terms = terms;
     }
 
-    public Icao2NameApiUtil() {
+    public IcaoMappingNameApiUtil() {
     }
 
     public Request getRequest() {

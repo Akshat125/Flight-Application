@@ -3,7 +3,7 @@ package apis;
 import utils.api.airline.AirlineApiUtil;
 import utils.api.airlinename.AirlineNameApiUtil;
 import utils.api.airport.AirportApiUtil;
-import utils.api.airportNameIcao.Icao2NameApiUtil;
+import utils.api.airportNameIcao.IcaoMappingNameApiUtil;
 import utils.api.maps.CoordinatesMapApiUtil;
 import utils.api.weather.WeatherApiUtil;
 
@@ -91,7 +91,7 @@ public class FassadeApi {
      * @param icao takes the ICAO_CODE of a given Airport
      * @return Icao2NameApiUtil || and returns a new Object of Icao2NameApiUtil, witch contains the name of the Airport
      */
-    public Icao2NameApiUtil getNameAirport(String icao) {
+    public IcaoMappingNameApiUtil getNameAirport(String icao) {
         return airportNameAPI.getAirportData(icao);
     }
 

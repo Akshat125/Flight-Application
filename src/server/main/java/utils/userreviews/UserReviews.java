@@ -7,6 +7,9 @@ import javax.persistence.Id;
 
 @Entity
 public class UserReviews {
+    /**
+     * This Class is used to store User-Reviews (the ID-mapping: ID-User to ID-Review)
+     */
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

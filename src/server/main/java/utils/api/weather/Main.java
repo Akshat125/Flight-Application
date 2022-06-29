@@ -1,6 +1,9 @@
 package utils.api.weather;
 
 public class Main {
+    /**
+     * This is a helper-Class to handle the API-Calls for specific Weather: main: WeatherApiUtil
+     */
 
     private double temp;
     private double feels_like;

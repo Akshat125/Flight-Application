@@ -3,6 +3,10 @@ package utils.api.airportNameIcao;
 import org.aspectj.weaver.loadtime.Agent;
 
 public class Client{
+    /**
+     * This is a helper-Class to handle the API-Calls for specific Airport-name information: main: IcaoMappingNameApiUtil
+     */
+
     private String ip;
     private Geo geo;
     private Connection connection;

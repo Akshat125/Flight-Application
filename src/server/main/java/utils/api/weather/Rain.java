@@ -3,6 +3,9 @@ package utils.api.weather;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Rain {
+    /**
+     * This is a helper-Class to handle the API-Calls for specific Weather: main: WeatherApiUtil
+     */
 
     @JsonProperty("3h")
     private double _3h;

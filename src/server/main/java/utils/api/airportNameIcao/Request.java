@@ -1,6 +1,10 @@
 package utils.api.airportNameIcao;
 
 public class Request {
+    /**
+     * This is a helper-Class to handle the API-Calls for specific Airport-name information: main: IcaoMappingNameApiUtil
+     */
+
     private String lang;
     private String currency;
     private int time;

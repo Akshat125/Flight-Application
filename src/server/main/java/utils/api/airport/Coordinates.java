@@ -1,6 +1,9 @@
 package utils.api.airport;
 
 public class Coordinates {
+    /**
+     * This is a helper-Class to handle the API-Calls for specific Airport information: main: AirportApiUtil
+     */
 
     private double lon;
     private double lat;

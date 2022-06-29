@@ -8,6 +8,9 @@ import java.util.Objects;
 
 @Entity
 public class IataCoordinatesApiUtil {
+    /**
+     * This is a helper Class to map the Airline-IATA-Code to specific Airport Coordinates (latitude,longitude)
+     */
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

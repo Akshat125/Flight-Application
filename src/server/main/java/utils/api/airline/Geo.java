@@ -1,6 +1,9 @@
 package utils.api.airline;
 
 public class Geo {
+    /**
+     * This is a helper-Class to handle the API-Calls for specific Airline information: main: AirlineApiUtil
+     */
 
     private String country_code;
     private String country;

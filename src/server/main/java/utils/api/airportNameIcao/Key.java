@@ -3,6 +3,9 @@ package utils.api.airportNameIcao;
 import java.util.Date;
 
 public class Key {
+    /**
+     * This is a helper-Class to handle the API-Calls for specific Airport-name information: main: IcaoMappingNameApiUtil
+     */
 
     private int id;
     private String api_key;

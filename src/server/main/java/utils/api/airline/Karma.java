@@ -1,6 +1,9 @@
 package utils.api.airline;
 
 public class Karma {
+    /**
+     * This is a helper-Class to handle the API-Calls for specific Airline information: main: AirlineApiUtil
+     */
 
     private boolean is_blocked;
     private boolean is_crawler;

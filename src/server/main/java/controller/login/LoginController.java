@@ -30,6 +30,10 @@ public class LoginController {
     }
 
 
+    /**
+     * @param usernameAndPassword takes the Username and the Password/ID and returns all Flights the User saved previously
+     * @return List<Flight>
+     */
     @PostMapping("login/{usernameAndpassword}")
     public ResponseEntity<List<Flight>> loginUserGetFlights(@PathVariable("usernameAndpassword") String usernameAndPassword) {
 
@@ -54,6 +58,10 @@ public class LoginController {
         return ResponseEntity.ok(flightsReturn);
     }
 
+    /**
+     * @param userAndPassword takes the Username and the Password/ID and creates a new User
+     * @return the new User
+     */
     @PutMapping("createUser/{userAndPassword}")
     public ResponseEntity<User> createNewUser(@PathVariable("userAndPassword") String userAndPassword) {
         this.userRepository = SpringbootApplication.getApplicationContext().getBean(UserRepository.class);

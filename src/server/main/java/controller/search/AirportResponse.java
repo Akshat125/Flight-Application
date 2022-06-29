@@ -7,6 +7,9 @@ public class AirportResponse {
     private String nameCountry;
     private String iata;
 
+    /**
+     * This is a helper Class (the response Class for an Airport search request)
+     */
     public AirportResponse(String airportName, String nameCity, String nameCountry, String iata) {
         this.airportName = airportName;
         this.nameCity = nameCity;

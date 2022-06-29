@@ -7,9 +7,8 @@ import java.util.List;
 
 
 /**
- * This interface allows you to store new iatas with their coordinates into the Database
+ * Repository to handle the DB interaction for the IATA-Codes to Coordinates mapping
  */
-
 @Repository
 public interface IataCoordinatesRepository extends CrudRepository<IataCoordinatesApiUtil, String>{
     List<IataCoordinatesApiUtil> findByIata(String iata);

@@ -1,6 +1,9 @@
 package utils.api.airportNameIcao;
 
 public class Params {
+    /**
+     * This is a helper-Class to handle the API-Calls for specific Airport-name information: main: IcaoMappingNameApiUtil
+     */
 
     private String icao_code;
     private String lang;

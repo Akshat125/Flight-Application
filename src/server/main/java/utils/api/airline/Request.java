@@ -1,6 +1,10 @@
 package utils.api.airline;
 
 public class Request {
+    /**
+     * This is a helper-Class to handle the API-Calls for specific Airline information: main: AirlineApiUtil
+     */
+
     private String lang;
     private String currency;
     private int time;
