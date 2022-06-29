@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
 import RatingComponent from "./Subcomponents/RatingComponent";
 import './ratestyle.css'
+import './feedbackPopup.css'
 //import "font-awesome/css/font-awesome.min.css"
 import "bootstrap/dist/css/bootstrap.css"
+import './feed'
 class PassengerSurveyComponent extends Component {
 
     constructor(props) {
@@ -20,12 +22,13 @@ class PassengerSurveyComponent extends Component {
        //this.state.visible = !this.state.visible;}
 
     componentDidMount() {
+
         const ratings = {
-            comfort: 4.7,
-            food: 3.4,
-            entertainment: 2.3,
-            service: 3.6,
-            journey: 4.1
+            comfort: 0,
+            food:0,
+            entertainment: 0,
+            service: 0,
+            journey: 0
         };
 
         // Total Stars
@@ -86,10 +89,30 @@ class PassengerSurveyComponent extends Component {
         }
     }
 
+    save = (event) => {
+        // TODO: make API call
+
+        this.props.history.push('/')
+    }
+    cancel = (event) => {
+        this.props.history.push('/')
+    }
+
+    giveFeedback = (event) => {
+        //this.props.prototype.history.push('/')
+        var e = document.getElementById('feedback-main');
+        if(e.style.display == 'block')
+            e.style.display = 'none';
+        else
+            e.style.display = 'block';
+    }
+
+
     render() {
 
         //const {rating} = this.state;
         return (
+
             /*
             <div className="passenger-survey">
                 <h2>Rating from state:{rating}</h2>
@@ -174,10 +197,47 @@ class PassengerSurveyComponent extends Component {
                     </tbody>
                 </table>
 
-                <footer>
-                    <text> wlenf</text>
-                </footer>
+                <button className="btn btn-success" onClick={this.save}>Submit</button>
+                <button className="btn btn-danger" onClick={this.cancel} style={{marginLeft: "9px"}}>cancel</button>
+                <button className="btn btn-info" onClick={this.giveFeedback} style={{marginLeft: "900px"}}>write feedback</button>
+
+
+                <div id="feedback-main">
+                    <div id="centerpoint">
+                    <div id="feedback-div">
+                        <form action="contact.php" method="post" className="form" id="feedback-form1" name="form1"
+                              encType="multipart/form-data">
+
+                            <p className="name">
+                                <input name="name" type="name"
+                                       className="validate[required,custom[onlyLetter],length[0,100]] feedback-input"
+                                       required placeholder="Name" id="feedback-name"/>
+                            </p>
+
+                            <p className="email">
+                                <input name="email" type="email"
+                                       className="validate[required,custom[email]] feedback-input" id="feedback-email"
+                                       placeholder="Email" required/>
+                            </p>
+
+                            <p className="text">
+                                <textarea name="comment" type="comment"
+                                          className="validate[required,length[6,300]] feedback-input"
+                                          id="feedback-comment" required
+                                          placeholder="Please write your valuable feedback here"></textarea>
+                            </p>
+
+                            <div className="feedback-submit">
+                                <input type="submit" value="SEND" id="feedback-button-blue"/>
+                                <div className="feedback-ease"></div>
+                            </div>
+                        </form>
+                    </div>
+                    </div>
                 </div>
+
+
+            </div>
 
 
             //<div dangerouslySetInnerHTML={ {__html: survey} } />

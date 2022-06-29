@@ -3,13 +3,13 @@ import moviesLogo from '../../Images/InFlightService/Movies/popcorn.png';
 import serviceButtonLogo1 from '../../Images/InFlightService/Service/blueServiceButton.png';
 import serviceButtonLogo2 from '../../Images/InFlightService/Service/greenServiceButton.png';
 import flightInstructionLogo from '../../Images/InFlightService/SafetyInstructions/instructions.png';
-import cinemaLogo from '../../Images/InFlightService/Movies/PinguCinemas.png';
+//import cinemaLogo from '../../Images/InFlightService/Movies/PinguCinemas.png';
 import cinema from '../../Images/InFlightService/Movies/cinema.png'
 import FlightDashboardComponent from "../FlightDashboard/FlightDashboardComponent";
 import PassengerSurveyComponent from "../PassengerSurvey/PassengerSurveyComponent";
 import MoviesComponent from "./Subcomponents/MoviesComponent";
 import SafetyInstructionsComponent from "./Subcomponents/SafetyInstructionsComponent";
-import Swal from "sweetaleyrt2";
+//import Swal from "sweetaleyrt2";
 
 class InFlightServiceComponent extends Component {
     //potentially add music effects later
@@ -47,11 +47,13 @@ class InFlightServiceComponent extends Component {
         });
         if (previousState == serviceButtonLogo1) {
 
+            /*
             Swal.fire({
                 icon: 'success',
                 type: 'success',
                 text: 'The flight attendant has been informed',
             });
+             */
 
 
 

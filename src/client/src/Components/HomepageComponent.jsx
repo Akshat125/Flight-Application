@@ -54,9 +54,7 @@ class HomepageComponent extends Component {
         setTimeout(() => {window.scrollTo({top: y, behavior: 'smooth'})}, 200);
     }
 
-    loginUser() {
-        this.props.history.push('/login')
-    }
+
 
     render() {
         return (

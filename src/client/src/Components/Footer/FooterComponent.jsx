@@ -72,7 +72,6 @@ class FooterComponent extends Component {
             description={description}
             title={title}
             columns={columns}
-            credit={credit}
             linkedin="linkedin.comn"
             facebook="facebook.com"
             twitter="twitter.com"
@@ -81,10 +80,9 @@ class FooterComponent extends Component {
             pinterest="fluffy_cats_collections"
             copyright="airpingu"
             iconColor="black"
-            backgroundColor="bisque"
+            backgroundColor="grey"
             fontColor="black"
             copyrightColor="darkgrey"
-
         />;
         /*
         return (
