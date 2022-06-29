@@ -220,6 +220,7 @@ class PassengerSurveyComponent extends Component {
                                        placeholder="Email" required/>
                             </p>
 
+
                             <p className="text">
                                 <textarea name="comment" type="comment"
                                           className="validate[required,length[6,300]] feedback-input"
