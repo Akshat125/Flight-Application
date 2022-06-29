@@ -24,7 +24,7 @@ class MoviesComponent extends Component {
     render() {
         return (
             <div>
-                <Card className = "text-center" style={{ width: '60rem' }}>
+                <Card className = "bg-opacity-100" style={{ width: '60rem' }}>
                     <Card.Img src= {baseImage}  alt="Card Image"/>
                     <Card.ImgOverlay>
 
