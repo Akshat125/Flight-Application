@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import safetyInstructions from "../../../Images/InFlightService/SafetyInstructions.jpg";
 
 class SafetyInstructionsComponent extends Component {
 
@@ -6,6 +7,8 @@ class SafetyInstructionsComponent extends Component {
         super(props);
 
         this.state = {
+            showManual: false,
+            showVideo: false
         }
 
     }
@@ -15,8 +18,8 @@ class SafetyInstructionsComponent extends Component {
 
     render() {
         return (
-            <div>
-                TODO
+            <div className="inflight-service">
+                <img class = "img-fluid" src={safetyInstructions}/>
             </div>
         );
     }

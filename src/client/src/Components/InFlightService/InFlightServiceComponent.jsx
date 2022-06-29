@@ -49,9 +49,6 @@ class InFlightServiceComponent extends Component {
                 text: 'The flight attendant has been informed',
             });
 
-
-
-
         }
     }
 
