@@ -9,7 +9,7 @@ import FlightDashboardComponent from "../FlightDashboard/FlightDashboardComponen
 import PassengerSurveyComponent from "../PassengerSurvey/PassengerSurveyComponent";
 import MoviesComponent from "./Subcomponents/MoviesComponent";
 import SafetyInstructionsComponent from "./Subcomponents/SafetyInstructionsComponent";
-import Swal from "sweetaleyrt2";
+//import Swal from "sweetaleyrt2";
 
 class InFlightServiceComponent extends Component {
     //potentially add music effects later
@@ -47,13 +47,13 @@ class InFlightServiceComponent extends Component {
         });
         if (previousState == serviceButtonLogo1) {
 
-            Swal.fire({
+       /*     Swal.fire({
                 icon: 'success',
                 type: 'success',
                 text: 'The flight attendant has been informed',
             });
 
-
+        */
 
 
         }

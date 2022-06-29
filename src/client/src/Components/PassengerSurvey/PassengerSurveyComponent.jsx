@@ -173,6 +173,10 @@ class PassengerSurveyComponent extends Component {
                     </tr>
                     </tbody>
                 </table>
+
+                <footer>
+                    <text> wlenf</text>
+                </footer>
                 </div>
 
 
