@@ -15,6 +15,7 @@ class FooterComponent extends Component {
     }
 
     render() {
+
         //const credit =" EIST Project 2022 | @Team: Debugging Penguins | @Authors: Akshat Tandon, Eben Jowie Haezer, Jonas Arnold, Kilian Burger, Saiyam Jain\n" ;
         const description = "According to Wikipedia, Pingu is the main character of the show, a typically playful, curious little penguin. His name comes from the German word for penguin, Pinguin. He is stubborn and mostly well-behaved but prone to making mischief and throwing occasional tantrums.";
         const title = "AirPingu";
