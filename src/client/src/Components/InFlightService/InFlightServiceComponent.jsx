@@ -32,7 +32,7 @@ class InFlightServiceComponent extends Component {
             showFlightInstructions: false,
             serviceImageUrl: this.state.serviceImageUrl
         });
-        const y = document.getElementById('body').getBoundingClientRect().top + window.pageYOffset + 205;
+        const y = document.getElementById('body').getBoundingClientRect().top + window.pageYOffset + 215;
         setTimeout(() => {window.scrollTo({top: y, behavior: 'smooth'})}, 300);
     }
 
@@ -84,7 +84,7 @@ class InFlightServiceComponent extends Component {
                         </li>
                     </ul>
                 </div>
-                <div className="stage-body">
+                <div className="body">
                     {this.state.showMovie ? <MoviesComponent /> : null}
                     {this.state.showFlightInstructions ? <SafetyInstructionsComponent /> : null}
                 </div>

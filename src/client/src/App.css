@@ -210,8 +210,8 @@ div {
 
 .stage-body  {
     display: block;
-    padding: 3em 2em 0em 8.2em;
-    justify-content: center;
+    padding: 3em 0em 0em 8.2em;
+    justify-content: end;
 }
 
 .trip-dashboard {
