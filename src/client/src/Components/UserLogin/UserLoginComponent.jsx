@@ -28,7 +28,6 @@ class EmployeeLoginComponent extends Component {
     }
 
     saveLogin = (event) => {
-        // TODO: make API call
         this.props.history.push('/')
     }
 

@@ -69,17 +69,17 @@ class InFlightServiceComponent extends Component {
                     <ul className="button-list">
                         <li className="button">
                             <button onClick={this.clickedMovies}><img className="btn1logo" src = {moviesLogo}/>
-                                <br/> Movies <br/>
+                                <br/> Movies <br/> <br/>
                             </button>
                         </li>
                         <li className="button">
                             <button onClick={this.clickedSafetyInstructions}><img className="btn2logo" src = {flightInstructionLogo}/>
-                                <br/> Flight Instructions <br/>
+                                <br/> Flight Instructions<br/>
                             </button>
                         </li>
                         <li className="button">
                             <button onClick={this.clickedService}><img className="btn3logo" src = {this.state.serviceImageUrl}/>
-                                <br/> Service <br/>
+                                <br/> Service <br/> <br/>
                             </button>
                         </li>
                     </ul>
