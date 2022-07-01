@@ -33,7 +33,7 @@ class AirlineController {
     getFlights(fromIata, toIata, day) {
         return (
             axios.get(AIRLINE_GET_API_BASE_URL + "/" + fromIata + "&" + toIata + "&" + day)
-            .then(response => {
+            .then(response =>   {
                 return response.data;
             })
         );
@@ -46,7 +46,12 @@ class AirlineController {
        -> false: flight doesn't exist
      */
     putFlight(username, password, flightHashCode) {
-        return axios.put(AIRLINE_PUT_API_BASE_URL + "/" + username + "&and&" + password + "&and&" + flightHashCode);
+        return (
+            axios.put(AIRLINE_PUT_API_BASE_URL + "/" + username + "&and&" + password + "&and&" + flightHashCode)
+            .then(response =>   {
+                return response.data;
+            })
+        );
     }
 
     // @param: username &and& password &and& hashCode
@@ -57,7 +62,12 @@ class AirlineController {
      */
 
     deleteFlight(username, password, flightHashCode) {
-        return axios.delete(AIRLINE_DELETE_API_BASE_URL + "/" + username + "&and&" + password + "&and&" + flightHashCode);
+        return (
+            axios.delete(AIRLINE_DELETE_API_BASE_URL + "/" + username + "&and&" + password + "&and&" + flightHashCode)
+            .then(response =>   {
+                return response.data;
+            })
+        );
     }
 
     // @param: login information for a specific user := username &and& password
@@ -67,7 +77,12 @@ class AirlineController {
      */
 
     postUserFlights (username, password) {
-        return axios.post(AIRLINE_POST_API_BASE_URL + "/" + username + "&and&" + password);
+        return (
+            axios.post(AIRLINE_POST_API_BASE_URL + "/" + username + "&and&" + password)
+            .then(response =>   {
+                return response.data;
+            })
+        );
     }
 
 }

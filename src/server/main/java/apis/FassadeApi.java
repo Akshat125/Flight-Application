@@ -14,7 +14,7 @@ public class FassadeApi {
     /**
      * This classes use the Fassade-Pattern to access the different versions of the current API-Implementations
      * the variable USE_MOCKUP can be set to
-     * true -> ue the Mockup-Versions of the APIs
+     * true -> use the Mockup-Versions of the APIs
      * or
      * false -> to use the non-mocked implementation
      */

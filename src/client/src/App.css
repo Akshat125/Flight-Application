@@ -238,6 +238,199 @@ div {
     border-radius: 1em;
 }
 
+.trip-dashboard-dynamic {
+    font-size: 14pt;
+}
+
+.trip-dashboard-dynamic .searchbar  {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.searchbar button {
+    display: inline-block;
+    position: relative;
+    height: 6em;
+    margin: 0.2em;
+
+    text-align: center;
+    vertical-align: center;
+    min-width: 12em;
+}
+
+.searchdepartureinput   {
+    display: none;
+    margin: 0.2em auto;
+    min-width: 48vw;
+
+    padding: 0.2em 1em;
+}
+
+.searcharrivalinput {
+    display: none;
+    margin: 0.2em auto;
+    min-width: 48vw;
+
+    padding: 0.2em 1em;
+}
+
+.search-show    {
+    display: block;
+}
+
+.trip-dashboard-dynamic .searchdropdown  {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-right: 1.5em;
+}
+
+.trip-dashboard-dynamic .airport-dropdown-from  {
+    display: inline-block;
+    position: relative;
+}
+
+.airport-dropdown-from li {
+    list-style: none;
+    text-align: left;
+    min-width: 48vw;
+
+    border-left: 1px solid #141414;
+    border-right: 1px solid #141414;
+    border-bottom: 1px solid #141414;
+
+    padding: 0.2em 1em;
+}
+
+.trip-dashboard-dynamic .airport-dropdown-to    {
+    display: inline-block;
+    position: relative;
+}
+
+.airport-dropdown-to li {
+    list-style: none;
+    text-align: left;
+    min-width: 48vw;
+
+    border-left: 1px solid #141414;
+    border-right: 1px solid #141414;
+    border-bottom: 1px solid #141414;
+
+    padding: 0.2em 1em;
+}
+
+.getflights {
+    display: block;
+    margin: 0.2em auto;
+
+    min-width: 37em;
+}
+
+
+.trip-dashboard-dynamic .table-scroller {
+    max-height: 50vh;
+    text-align: center;
+    overflow: scroll;
+}
+
+.trip-dashboard-dynamic table   {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.trip-dashboard-dynamic th  {
+    margin: 0em 1em;
+    padding: 0em 1em;
+}
+
+.trip-dashboard-dynamic td  {
+    margin: 0em 1em;
+    padding: 0em 1em;
+    text-align: center;
+
+    font-size: 14pt;
+}
+
+
+.flightoptionheader span {
+    display: inline-block;
+    text-align: center;
+
+    font-size: 14pt;
+}
+
+.flightoptionheader #flight {
+    min-width: 6rem;
+}
+.flightoptionheader #airline {
+    min-width: 20rem;
+}
+.flightoptionheader #from_airport {
+    min-width: 6rem;
+}
+.flightoptionheader #from_gate {
+    min-width: 6rem;
+}
+.flightoptionheader #from_time {
+    min-width: 6rem;
+}
+.flightoptionheader #headerwhitespace {
+    min-width: 2.5rem;
+}
+.flightoptionheader #to_airport {
+    min-width: 6rem;
+}
+.flightoptionheader #to_gate {
+    min-width: 6rem;
+}
+.flightoptionheader #to_time {
+    min-width: 6rem;
+}
+
+.flightoptionheader {
+    width: 58em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.flightoption #flightno   {
+    min-width: 6rem;
+}
+.flightoption #airline   {
+    min-width: 20rem;
+}
+.flightoption #departureiata    {
+    min-width: 6rem;
+}
+.flightoption #departuregate    {
+    min-width: 6rem;
+}
+.flightoption #departuretime    {
+    min-width: 6rem;
+}
+.flightoption #whitespace   {
+    min-width: 2rem;
+}
+.flightoption #arrivaliata  {
+    min-width: 6rem;
+}
+.flightoption #arrivalgate  {
+    min-width: 6rem;
+}
+.flightoption #arrivaltime  {
+    min-width: 6rem;
+}
+
+.trip-dashboard-dynamic .flightoptionbtn  {
+    width: 58em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
 .passenger-survey   {
     position: relative;
     left: -30em;
