@@ -2,8 +2,10 @@ package tests.database;
 
 import main.SpringbootApplication;
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.boot.SpringApplication;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import utils.review.Review;
 import utils.review.ReviewRepository;
 import utils.user.User;
@@ -11,6 +13,7 @@ import utils.user.UserRepository;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@ExtendWith(SpringExtension.class)
 public class TestDB {
 
     private static ConfigurableApplicationContext applicationContext;
