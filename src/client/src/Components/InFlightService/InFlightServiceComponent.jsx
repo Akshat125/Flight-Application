@@ -32,7 +32,7 @@ class InFlightServiceComponent extends Component {
             showFlightInstructions: false,
             serviceImageUrl: this.state.serviceImageUrl
         });
-        const y = document.getElementById('body').getBoundingClientRect().top + window.pageYOffset  + 220;
+        const y = document.getElementById('body').getBoundingClientRect().top + window.pageYOffset  + 245;
         setTimeout(() => {window.scrollTo({top: y, behavior: 'smooth'})}, 300);
     }
 

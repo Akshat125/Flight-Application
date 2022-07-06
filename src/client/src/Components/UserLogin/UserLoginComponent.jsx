@@ -1,38 +1,76 @@
 import React, {Component} from 'react';
+import Swal from 'sweetalert2';
+import UserLoginController from "../../Controller/UserLoginController";
+
+const errors = {
+    invalidUsername: "username contains the following combination of characters: \"&and&\"",
+    invalidPassword: "password contains the following combination of characters: \"&and&\"",
+    genericError: "an unexpected error occurred"
+};
 
 class EmployeeLoginComponent extends Component {
     //TODO the username and the password is not allowed to have this combination in the name and password! “&and&”
+
     constructor(props) {
         super(props);
         this.state = {
-            username: '',
-            password: '',
-            userId: 0
+            currentUsername: "",
+            currentPassword: "",
+            registeredUsers: []
         }
 
         this.insertUserIdHandler = this.insertUserIdHandler.bind(this);
         this.insertPasswordHandler = this.insertPasswordHandler.bind(this);
-        this.saveLogin = this.saveLogin.bind(this);
-        this.cancel = this.cancel.bind(this);
+        this.register = this.register.bind(this);
+        this.login = this.login.bind(this);
     }
 
     componentDidMount() {
     }
 
     insertUserIdHandler = (event) => {
-        this.setState({userId: event.target.value});
+        this.setState({currentUsername: event.target.value});
     }
 
     insertPasswordHandler = (event) => {
-        this.setState({password: event.target.value});
+        this.setState({currentPassword: event.target.value});
     }
 
-    saveLogin = (event) => {
-        this.props.history.push('/')
+    register = (event) => {
+        event.preventDefault();
+        this.state.registeredUsers.push();
+        const isValidCredentials = !this.state.currentUsername.includes("&and&") && !this.state.currentPassword.includes("&and&");
+        if (isValidCredentials) {
+            const registered = UserLoginController.putUser(this.state.currentUsername, this.state.currentPassword);
+            if (registered) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'user registered successfully',
+                    showConfirmButton: false,
+                    timer: 2000
+                });
+                this.setState({registeredUsers: this.state.registeredUsers.push(event.target.value)});
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: errors.genericError,
+                    showConfirmButton: false,
+                    timer: 2000
+                });
+            }
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: !this.state.currentUsername.includes("&and&") ? errors.invalidUsername : errors.invalidPassword,
+                showConfirmButton: false,
+                timer: 2000
+            });
+        }
+        this.props.history.push('/');
     }
 
-    cancel = (event) => {
-        this.props.history.push('/')
+    login = (event) => {
+        this.props.history.push('/');
     }
 
     render() {
@@ -41,24 +79,24 @@ class EmployeeLoginComponent extends Component {
                 <div className = "container">
                     <div className= "row">
                         <div className = "card col-md-6 offset-md-3 offset-md-3">
-                            <h3 className="text-center">Add Client</h3>
+                            <h3 className="text-center">User Login</h3>
                             <div className="card-body">
+                                <h6 className="card-subtitle mb-2 text-muted">Note: Please ensure that the password does not contain the following combination of characters: “&and&” </h6>
                                 <form>
-
                                     <div className="form-group">
-                                        <label> User Id: </label>
-                                        <input placeholder="User Id" name = "userId" className="form-control"
-                                               value = {this.state.userId} onChange={this.insertUserIdHandler}/>
+                                        <label> Username: </label>
+                                        <input placeholder="username" name = "userId" className="form-control"
+                                               value = {this.state.currentUsername} onChange={this.insertUserIdHandler}/>
                                     </div>
 
                                     <div className="form-group">
                                         <label> Password: </label>
-                                        <input placeholder="Password" name = "password" className="form-control"
-                                               value = {this.state.password} onChange={this.insertPasswordHandler}/>
+                                        <input placeholder="password" name = "password" className="form-control"
+                                               value = {this.state.currentPassword} onChange={this.insertPasswordHandler}/>
                                     </div>
 
-                                    <button className="btn btn-success" onClick={this.saveLogin}>Confirm</button>
-                                    <button className="btn btn-danger" onClick={this.cancel} style={{marginLeft: "9px"}}>Return</button>
+                                    <button className="btn btn-success" onClick={this.register}>Register</button>
+                                    <button className="btn btn-info" onClick={this.login} style={{marginLeft: "9px"}}>Login</button>
                                 </form>
                             </div>
                         </div>
