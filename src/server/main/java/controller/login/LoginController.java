@@ -60,7 +60,7 @@ public class LoginController {
 
     /**
      * @param userAndPassword takes the Username and the Password/ID and creates a new User
-     * @return the new User
+     * @return true in case the new user was added OR return false in case the user already exists/the request was wrong
      */
     @PutMapping("createUser/{userAndPassword}")
     public ResponseEntity<Boolean> createNewUser(@PathVariable("userAndPassword") String userAndPassword) {
