@@ -63,18 +63,18 @@ public class LoginController {
      * @return the new User
      */
     @PutMapping("createUser/{userAndPassword}")
-    public ResponseEntity<User> createNewUser(@PathVariable("userAndPassword") String userAndPassword) {
+    public ResponseEntity<Boolean> createNewUser(@PathVariable("userAndPassword") String userAndPassword) {
         this.userRepository = SpringbootApplication.getApplicationContext().getBean(UserRepository.class);
         String[] params = userAndPassword.split("&and&");
         if (params.length != 2) {
-            return ResponseEntity.badRequest().build();
+            return ResponseEntity.ok(false);
         }
         User user = userRepository.findByName(params[0]);
         if (user != null) {
-            return ResponseEntity.badRequest().build();
+            return ResponseEntity.ok(false);
         }
         User newUser = new User(params[0], params[1]);
         userRepository.save(newUser);
-        return ResponseEntity.ok(newUser);
+        return ResponseEntity.ok(true);
     }
 }
