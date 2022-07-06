@@ -26,7 +26,7 @@ public class AirlineApiRelease implements AirlineApi {
     public AirlineApiUtil getFlightData(String formDep_iata, String toArr_iata) {
         try {
             String res = webClient.get()
-                    .uri(new URI(("https://airlabs.co/api/v9/routes?api_key=f6753372-61ae-40c3-85ed-2333a7ea8b15&dep_iata=" + formDep_iata + "&arr_iata=" + toArr_iata)))
+                    .uri(new URI(("https://airlabs.co/api/v9/routes?api_key=" + ApiKey.AIRLABS_KEY + "&dep_iata=" + formDep_iata + "&arr_iata=" + toArr_iata)))
                     .retrieve()
                     .bodyToMono(String.class)
                     .onErrorStop()
