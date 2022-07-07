@@ -3,10 +3,7 @@ package controller.login;
 
 import main.SpringbootApplication;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import utils.flight.Flight;
 import utils.flight.FlightRepository;
 import utils.user.User;
@@ -34,7 +31,7 @@ public class LoginController {
      * @param usernameAndPassword takes the Username and the Password/ID and returns all Flights the User saved previously
      * @return List<Flight>
      */
-    @PostMapping("login/{usernameAndpassword}")
+    @GetMapping("getUserFlights/{usernameAndpassword}")
     public ResponseEntity<List<Flight>> loginUserGetFlights(@PathVariable("usernameAndpassword") String usernameAndPassword) {
 
         String[] params = usernameAndPassword.split("&and&");
@@ -56,6 +53,28 @@ public class LoginController {
             flightsReturn.add(flightsRepository.getByID(userFlight.getFlightID()));
         }
         return ResponseEntity.ok(flightsReturn);
+    }
+
+    /**
+     * @param usernameAndPassword takes the Username and the Password/ID
+     * @return true in case the user exists OR returns false in case the user doesn't  exist
+     */
+    @GetMapping("checkLogin/{usernameAndpassword}")
+    public ResponseEntity<Boolean> checkLogin(@PathVariable("usernameAndpassword") String usernameAndPassword) {
+
+        String[] params = usernameAndPassword.split("&and&");
+        if (params.length != 2) {
+            return ResponseEntity.ok(false);
+        }
+
+        this.userRepository = SpringbootApplication.getApplicationContext().getBean(UserRepository.class);
+
+        User user = userRepository.findUserByNameAndPassword(params[0], params[1]);
+        if (user == null) {
+            return ResponseEntity.ok(false);
+        }else{
+            return ResponseEntity.ok(true);
+        }
     }
 
     /**
