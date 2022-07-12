@@ -454,8 +454,12 @@ div {
     animation-fill-mode: forwards;
 }
 
-
-
+.cinemaScreen {
+    margin-top: 218px;
+    margin-left: 151px;
+    width: 915px;
+    height: 410px;
+}
 
 /* TODO: Add further elements here: */
 /* Additional CSS elements can be imported through bootstrap, react-bootstrap*/

@@ -9,14 +9,13 @@ const errors = {
 };
 
 class EmployeeLoginComponent extends Component {
-    //TODO the username and the password is not allowed to have this combination in the name and password! “&and&”
 
     constructor(props) {
         super(props);
         this.state = {
             currentUsername: "",
             currentPassword: "",
-            registeredUsers: []
+            loggedInUserCredentials: {username: null, password: null}
         }
 
         this.insertUserIdHandler = this.insertUserIdHandler.bind(this);
@@ -41,23 +40,23 @@ class EmployeeLoginComponent extends Component {
         this.state.registeredUsers.push();
         const isValidCredentials = !this.state.currentUsername.includes("&and&") && !this.state.currentPassword.includes("&and&");
         if (isValidCredentials) {
-            const registered = UserLoginController.putUser(this.state.currentUsername, this.state.currentPassword);
-            if (registered) {
-                Swal.fire({
-                    icon: 'success',
-                    title: 'user registered successfully',
-                    showConfirmButton: false,
-                    timer: 2000
-                });
-                this.setState({registeredUsers: this.state.registeredUsers.push(event.target.value)});
-            } else {
-                Swal.fire({
-                    icon: 'error',
-                    title: errors.genericError,
-                    showConfirmButton: false,
-                    timer: 2000
-                });
-            }
+          UserLoginController.putUser(this.state.currentUsername, this.state.currentPassword).then(res => {
+              if (res) {
+                  Swal.fire({
+                      icon: 'success',
+                      title: 'user registered successfully',
+                      showConfirmButton: false,
+                      timer: 2000
+                  });
+              } else {
+                  Swal.fire({
+                      icon: 'error',
+                      title: errors.genericError,
+                      showConfirmButton: false,
+                      timer: 2000
+                  });
+              }
+          });
         } else {
             Swal.fire({
                 icon: 'error',
@@ -70,7 +69,9 @@ class EmployeeLoginComponent extends Component {
     }
 
     login = (event) => {
+
         this.props.history.push('/');
+        return null;
     }
 
     render() {
