@@ -1,9 +1,10 @@
 import axios from 'axios'
 
-const AIRLINE_GET_API_BASE_URL = "http://localhost:8080/getFlights"
-const AIRLINE_PUT_API_BASE_URL = "http://localhost:8080/addFlight"
-const AIRLINE_DELETE_API_BASE_URL = "http://localhost:8080/deleteFlight"
-const AIRLINE_POST_API_BASE_URL = "http://localhost:8080/login"
+const AIRLINE_GET_API_BASE_URL = "http://localhost:8080/getFlights";
+const AIRLINE_PUT_API_BASE_URL = "http://localhost:8080/addFlight";
+const AIRLINE_DELETE_API_BASE_URL = "http://localhost:8080/deleteFlight";
+const LOGIN = "http://localhost:8080/checkLogin";
+const GET_USER_FLIGHTS = "http://localhost:8080/getUserFlights";
 
 class AirlineController {
 
@@ -70,12 +71,32 @@ class AirlineController {
         );
     }
 
-    // @param: login information for a specific user := username &and& password
-    /* @return:
-       -> 400: something went wrong
-       else -> list of flights corresponding to the user
-     */
 
+     checkLogin(user, pass) {
+         return (
+            axios.get(LOGIN + "/" + user + "&and&" + pass)
+            .then(response =>   {
+                return response.data;
+            })
+         );
+     }
+
+     getUserFlights(user, pass) {
+         return (
+             axios.get(GET_USER_FLIGHTS + "/" + user + "&and&" + pass)
+             .then(response =>  {
+                 return response.data;
+             })
+         );
+     }
+
+
+     // @param: login information for a specific user := username &and& password
+     /* @return:
+        -> 400: something went wrong
+        else -> list of flights corresponding to the user
+      */
+     /*
     postUserFlights (username, password) {
         return (
             axios.post(AIRLINE_POST_API_BASE_URL + "/" + username + "&and&" + password)
@@ -84,7 +105,7 @@ class AirlineController {
             })
         );
     }
-
+    */
 }
 
 export default new AirlineController()

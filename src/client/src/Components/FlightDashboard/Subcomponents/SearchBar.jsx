@@ -3,6 +3,10 @@ import AirportController from '../../../Controller/AirportController.js';
 import AirlineController from '../../../Controller/AirlineController.js';
 import Swal from 'sweetalert2';
 
+import 'react-date-range/dist/styles.css';
+import 'react-date-range/dist/theme/default.css';
+import {Calendar} from 'react-date-range';
+
 class SearchBar extends Component {
 
     constructor(props) {
@@ -13,10 +17,13 @@ class SearchBar extends Component {
             arrival_menu: false,
             searched_from: false,
             searched_to: false,
+            searched_date: false,
+            selected_date: false,
             selected_from: false,
             selected_to: false,
             iata_from: "",
             iata_to: "",
+            day: "",
             data_from: [],
             data_to: [],
             flights: [],
@@ -27,6 +34,8 @@ class SearchBar extends Component {
     }
 
     componentDidMount() {
+        this.setState({my_flights: this.props.getSavedFlights()});
+        console.log(this.props.getSavedFlights());
     }
 
     receive_from = (resp_from) => {
@@ -58,6 +67,7 @@ class SearchBar extends Component {
 
     showDeparture = () =>   {
         this.hideArrival();
+        this.hideCalendar();
         document.getElementById("searchdepartureinput").classList.add("search-show");
         document.getElementById("searchdepartureinput").value = "";
         document.getElementById("searcharrivalinput").value = "";
@@ -66,10 +76,20 @@ class SearchBar extends Component {
 
     showArrival = () => {
         this.hideDeparture();
+        this.hideCalendar();
         document.getElementById("searcharrivalinput").classList.add("search-show");
         document.getElementById("searchdepartureinput").value = "";
         document.getElementById("searcharrivalinput").value = "";
         this.setState({searched_to: false});
+    }
+
+    showCalendar = () =>    {
+        this.hideArrival();
+        this.hideDeparture();
+        document.getElementById("searchdateinput").classList.add("search-show-date");
+        document.getElementById("searchdepartureinput").value = "";
+        document.getElementById("searcharrivalinput").value = "";
+        this.setState({searched_date: false});
     }
 
     hideDeparture = () =>   {
@@ -86,12 +106,20 @@ class SearchBar extends Component {
         this.setState({searched_to: false});
     }
 
+    hideCalendar = () =>    {
+        document.getElementById("searchdateinput").classList.remove("search-show-date");
+        document.getElementById("searchdepartureinput").value = "";
+        document.getElementById("searcharrivalinput").value = "";
+        this.setState({searched_date: false});
+    }
+
     hideBoth = () =>    {
         document.getElementById("searchdepartureinput").classList.remove("search-show");
         document.getElementById("searcharrivalinput").classList.remove("search-show");
+        document.getElementById("searchdateinput").classList.remove("search-show-date");
         document.getElementById("searchdepartureinput").value = "";
         document.getElementById("searcharrivalinput").value = "";
-        this.setState({searched_from: false, searched_to: false});
+        this.setState({searched_from: false, searched_to: false, searched_date: false});
     }
 
     setFrom = (item) => {
@@ -108,6 +136,17 @@ class SearchBar extends Component {
         document.getElementById("searchdepartureinput").value = "";
         document.getElementById("searcharrivalinput").value = "";
     }
+    setDate = (item) => {
+        this.hideBoth();
+        const option = {weekday: 'short'};
+        const daystr = (new Intl.DateTimeFormat('en-US', option).format(item.getDay())).toLowerCase();
+        this.setState({searched_date: false, selected_date: true, day: daystr});
+        const option1 = {weekday: 'long'};
+        const option2 = {month: 'long'};
+        document.getElementById('searchbardate').innerHTML = (new Intl.DateTimeFormat('en-US', option1).format(item.getDay()) + ", <br/>" + item.getDate() + " " + new Intl.DateTimeFormat('en-US', option2).format(item.getMonth()) + " " + item.getFullYear());
+        document.getElementById("searchdepartureinput").value = "";
+        document.getElementById("searcharrivalinput").value = "";
+    }
 
 
     parseFlights = (x) => {
@@ -117,53 +156,61 @@ class SearchBar extends Component {
 
     getFlights = async () =>  {
         // TODO: day option
-        const flights = await AirlineController.getFlights(this.state.iata_from, this.state.iata_to, "mon");
+        const flights = await AirlineController.getFlights(this.state.iata_from, this.state.iata_to, this.state.day);
         this.parseFlights(flights);
 
         setTimeout(() => console.log(this.state.flights), 200);
     }
 
     addFlight = (flight) =>   {
-        const resp = AirlineController.putFlight('admin', 'admin', flight.hashode);
+        if (this.props.getUser() === "")    {
+            Swal.fire({
+                icon: 'error',
+                html: '<h3>Failed to add flight</h3><br>You are not logged in or you are disconnected from the server.',
+                showConfirmButton: false,
+                timer: 4000
+            });
+            return;
+        }
+        const resp = AirlineController.putFlight(this.props.getUser(), this.props.getPass(), flight.hashode);
         if (resp)   {
-            this.getSavedFlights();
+            this.setState(prev => ({my_flights: [...prev.my_flights, flight]}));
             Swal.fire({
                 icon: 'success',
-                type: 'success',
-                text: 'flight successfully added to list',
+                text: 'Flight successfully added to list.',
+                showConfirmButton: false,
+                timer: 2000
             });
         }
         else {
             Swal.fire({
-                icon: 'failure',
-                type: 'failure',
-                text: 'failed to add flight',
+                icon: 'error',
+                html: '<h3>Failed to add flight</h3><br>You may be disconnected from the server.',
+                showConfirmButton: false,
+                timer: 4000
             });
         }
     }
 
     removeFlight = (flight) =>  {
-        const resp = AirlineController.deleteFlight('admin', 'admin', flight.hashode);
+        const resp = AirlineController.deleteFlight(this.props.getUser(), this.props.getPass(), flight.hashode);
         if (resp)   {
-            this.getSavedFlights();
+            this.setState({my_flights: this.state.my_flights.filter((val) => val !== flight)});
             Swal.fire({
                 icon: 'success',
-                type: 'success',
-                text: 'flight successfully removed from list',
+                text: 'Flight successfully removed from list.',
+                showConfirmButton: false,
+                timer: 2000
             });
         }
         else {
             Swal.fire({
-                icon: 'failure',
-                type: 'failure',
-                text: 'failed to remove flight',
+                icon: 'error',
+                html: '<h3>Failed to remove flight</h3><br>You may be disconnected from the server.',
+                showConfirmButton: false,
+                timer: 4000
             });
         }
-    }
-
-    getSavedFlights = async () =>   {
-        const resp = await AirlineController.postUserFlights('admin', 'admin');
-        this.setState({my_flights: resp});
     }
 
 
@@ -176,11 +223,12 @@ class SearchBar extends Component {
                 <div className="searchbar">
                     <button onClick={this.showDeparture} id="searchbarfrom">departure:<br />city or airport</button>
                     <button onClick={this.showArrival} id="searchbarto">arrival:<br />city or airport</button>
-                    <button id="searchdateinput">date</button>
+                    <button onClick={this.showCalendar} id="searchbardate">date</button>
                 </div>
                 <div className="searchinput">
                     <input placeholder="leaving from ..." className="searchdepartureinput" onInput={this.searchFrom} type="text" id="searchdepartureinput" />
                     <input placeholder="heading towards ..." className="searcharrivalinput" onInput={this.searchTo} type="text" id="searcharrivalinput" />
+                    <div className="searchdateinput" id="searchdateinput"><Calendar minDate={new Date()} direction='horizontal' weekStartsOn={new Number('1')} date={new Date()} onChange={this.setDate} scroll={{enabled: true}} /></div>
                 </div>
                 <div className="searchdropdown">
                     <div className="airport-dropdown-from" onMouseLeave={this.hideDeparture}>
@@ -191,7 +239,7 @@ class SearchBar extends Component {
                     </div>
                 </div>
                 </div>
-                {this.state.selected_to && this.state.selected_from ? <button className="getflights" onClick={this.getFlights.bind(this)}>get flights</button> : <button className="getflights" disabled="true" onClick={this.getFlights.bind(this)}>get flights</button>}
+                {this.state.selected_to && this.state.selected_from && this.state.selected_date ? <button className="getflights" onClick={this.getFlights.bind(this)}>get flights</button> : <button className="getflights" disabled="true" onClick={this.getFlights.bind(this)}>get flights</button>}
                 {this.state.showSearch ? <div><h2>search results</h2><p>click to add flights</p></div> : ""}
                 {
                     this.state.showSearch ?
@@ -217,15 +265,15 @@ class SearchBar extends Component {
                             this.state.flights.map(flight =>
                                 <button className="flightoptionbtn" onClick={this.addFlight.bind(this, flight)}>
                                 <tr className="flightoption">
-                                    <td id="flightno" key={flight.id}>{flight.flightNumber}</td>
-                                    <td id="airline" key={flight.id}>{flight.airline}</td>
-                                    <td id="departureiata" key={flight.id}>{flight.departureIata}</td>
-                                    <td id="departuregate" key={flight.id}>{flight.departureTerminal}</td>
-                                    <td id="departuretime" key={flight.id}>{flight.departureTime}</td>
+                                    <td id="flightno">{flight.flightNumber}</td>
+                                    <td id="airline">{flight.airline}</td>
+                                    <td id="departureiata">{flight.departureIata}</td>
+                                    <td id="departuregate">{flight.departureTerminal}</td>
+                                    <td id="departuretime">{flight.departureTime}</td>
                                     <td id="whitespace"></td>
-                                    <td id="arrivaliata" key={flight.id}>{flight.arrivalIata}</td>
-                                    <td id="arrivalgate" key={flight.id}>{flight.arrivalTerminal}</td>
-                                    <td id="arrivaltime" key={flight.id}>{flight.arrivalTime}</td>
+                                    <td id="arrivaliata">{flight.arrivalIata}</td>
+                                    <td id="arrivalgate">{flight.arrivalTerminal}</td>
+                                    <td id="arrivaltime">{flight.arrivalTime}</td>
                                 </tr>
                                 </button>
                             )
@@ -236,39 +284,47 @@ class SearchBar extends Component {
 
 
                 <h2> my flights </h2>
-                <table>
-                <tr>
-                    <th> flight number </th>
-                    <th> airline </th>
-                    <th> departure </th>
-                    <th> terminal </th>
-                    <th> gate </th>
-                    <th> arrival </th>
-                    <th> terminal </th>
-                    <th> gate </th>
-                </tr>
-                </table>
+                {this.props.isLoggedIn() ? <div><p>click to remove flights from your list</p></div> : ""}
+                <div>
                 {
-                    this.state.my_flights !== [] ?
+                    this.props.isLoggedIn() ?
+                    <div className="flightoptionheader" id="flightoptionheader">
+                        <span id="flight">flight</span>
+                        <span id="airline">airline</span>
+                        <span id="from_airport">airport</span>
+                        <span id="from_gate">gate</span>
+                        <span id="from_time">time</span>
+                        <span id="headerwhitespace"></span>
+                        <span id="to_airport">airport</span>
+                        <span id="to_gate">gate</span>
+                        <span id="to_time">time</span>
+                    </div>
+                    : "login to see your saved flights"
+                }
+                </div>
+                <div className="table-scroller">
+                {
+                    this.props.isLoggedIn() ?
                     <table>
                     {
                         this.state.my_flights.map(flight =>
-                            <button className="savedbtn" onClick={this.removeFlight.bind(this, flight)}>
-                            <tr className="savedoption">
-                                <td id="savedflightno" key={flight.id}>{flight.flightNumber}</td>
-                                <td id="savedairline" key={flight.id}>{flight.airline}</td>
-                                <td id="saveddepartureiata" key={flight.id}>{flight.departureIata}</td>
-                                <td id="saveddeparturegate" key={flight.id}>{flight.departureTerminal}</td>
-                                <td id="saveddeparturetime" key={flight.id}>{flight.departureTime}</td>
-                                <td id="savedwhitespace"></td>
-                                <td id="savedarrivaliata" key={flight.id}>{flight.arrivalIata}</td>
-                                <td id="savedarrivalgate" key={flight.id}>{flight.arrivalTerminal}</td>
-                                <td id="savedarrivaltime" key={flight.id}>{flight.arrivalTime}</td>
+                            <button className="flightoptionbtn" onClick={this.removeFlight.bind(this, flight)}>
+                            <tr className="flightoption">
+                                <td id="flightno">{flight.flightNumber}</td>
+                                <td id="airline">{flight.airline}</td>
+                                <td id="departureiata">{flight.departureIata}</td>
+                                <td id="departuregate">{flight.departureTerminal}</td>
+                                <td id="departuretime">{flight.departureTime}</td>
+                                <td id="whitespace"></td>
+                                <td id="arrivaliata">{flight.arrivalIata}</td>
+                                <td id="arrivalgate">{flight.arrivalTerminal}</td>
+                                <td id="arrivaltime">{flight.arrivalTime}</td>
                             </tr>
                             </button>
                         )
-                    }</table> : null
+                    }</table> : "null placeholder"
                 }
+                </div>
             </div>
         );
     }

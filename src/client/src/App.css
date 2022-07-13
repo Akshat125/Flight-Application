@@ -256,27 +256,64 @@ div {
 
     text-align: center;
     vertical-align: center;
-    min-width: 12em;
+    min-width: 16vw;
 }
 
 .searchdepartureinput   {
-    display: none;
+    height: 0;
+    visibility: hidden;
+    display: block;
+    opacity: 0;
     margin: 0.2em auto;
-    min-width: 48vw;
-
+    min-width: 49vw;
     padding: 0.2em 1em;
+
+    transition: all 0.2s linear;
 }
 
 .searcharrivalinput {
-    display: none;
-    margin: 0.2em auto;
-    min-width: 48vw;
+    position: relative;
+    top: -0.7em;
 
+    visibility: hidden;
+    display: block;
+    height: 0;
+    opacity: 0;
+    margin: 0.2em auto;
+    min-width: 49vw;
     padding: 0.2em 1em;
+
+    transition: all 0.2s linear;
+}
+
+.searchdateinput {
+    display: flex;
+    justify-content: center;
+
+    position: relative;
+    top: -3em;
+
+    visibility: hidden;
+    height: 0;
+    opacity: 0;
+    margin: 0em auto;
+    min-width: 49vw;
+    padding: 0.2em 1em;
+    align-items: center;
+
+    transition: all 0.2s linear;
 }
 
 .search-show    {
-    display: block;
+    visibility: visible;
+    opacity: 1;
+    height: 2.5em;
+}
+
+.search-show-date    {
+    visibility: visible;
+    opacity: 1;
+    height: 24em;
 }
 
 .trip-dashboard-dynamic .searchdropdown  {
@@ -289,12 +326,13 @@ div {
 .trip-dashboard-dynamic .airport-dropdown-from  {
     display: inline-block;
     position: relative;
+    top: -1.2em;
 }
 
 .airport-dropdown-from li {
     list-style: none;
     text-align: left;
-    min-width: 48vw;
+    min-width: 49vw;
 
     border-left: 1px solid #141414;
     border-right: 1px solid #141414;
@@ -306,12 +344,13 @@ div {
 .trip-dashboard-dynamic .airport-dropdown-to    {
     display: inline-block;
     position: relative;
+    top: -1.2em;
 }
 
 .airport-dropdown-to li {
     list-style: none;
     text-align: left;
-    min-width: 48vw;
+    min-width: 49vw;
 
     border-left: 1px solid #141414;
     border-right: 1px solid #141414;
@@ -322,7 +361,7 @@ div {
 
 .getflights {
     display: block;
-    margin: 0.2em auto;
+    margin: 0em auto 0.2em auto;
 
     min-width: 37em;
 }
