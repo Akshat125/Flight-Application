@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import AirportController from '../../../Controller/AirportController.js';
 import AirlineController from '../../../Controller/AirlineController.js';
+import WeatherController from '../../../Controller/WeatherController.js';
+import MapsController from '../../../Controller/MapsController.js';
 import Swal from 'sweetalert2';
 
 import 'react-date-range/dist/styles.css';
@@ -28,7 +30,11 @@ class SearchBar extends Component {
             data_to: [],
             flights: [],
             my_flights: [],
-            showSearch: false
+            showSearch: false,
+            weather: [],
+            weatherClicked: false,
+            weatherFor: null,
+            mapimg: null,
         }
 
     }
@@ -142,8 +148,47 @@ class SearchBar extends Component {
         const daystr = (new Intl.DateTimeFormat('en-US', option).format(item.getDay())).toLowerCase();
         this.setState({searched_date: false, selected_date: true, day: daystr});
         const option1 = {weekday: 'long'};
-        const option2 = {month: 'long'};
-        document.getElementById('searchbardate').innerHTML = (new Intl.DateTimeFormat('en-US', option1).format(item.getDay()) + ", <br/>" + item.getDate() + " " + new Intl.DateTimeFormat('en-US', option2).format(item.getMonth()) + " " + item.getFullYear());
+        const daystrl = (new Intl.DateTimeFormat('en-US', option1).format(item.getDay()));
+        let mstr = "";
+        switch (item.getMonth())   {
+            case 0:
+                mstr = "January";
+                break;
+            case 1:
+                mstr = "February";
+                break;
+            case 2:
+                mstr = "March";
+                break;
+            case 3:
+                mstr = "April";
+                break;
+            case 4:
+                mstr = "May";
+                break;
+            case 5:
+                mstr = "June";
+                break;
+            case 6:
+                mstr = "July";
+                break;
+            case 7:
+                mstr = "August";
+                break;
+            case 8:
+                mstr = "September";
+                break;
+            case 9:
+                mstr = "October";
+                break;
+            case 10:
+                mstr = "November";
+                break;
+            case 11:
+                mstr = "December";
+                break;
+        }
+        document.getElementById('searchbardate').innerHTML = (daystrl + ", <br/>" + item.getDate() + " " + mstr + " " + item.getFullYear());
         document.getElementById("searchdepartureinput").value = "";
         document.getElementById("searcharrivalinput").value = "";
     }
@@ -167,6 +212,15 @@ class SearchBar extends Component {
             Swal.fire({
                 icon: 'error',
                 html: '<h3>Failed to add flight</h3><br>You are not logged in or you are disconnected from the server.',
+                showConfirmButton: false,
+                timer: 4000
+            });
+            return;
+        }
+        if (this.state.my_flights.filter((f) => f === flight).length != 0)  {
+            Swal.fire({
+                icon: 'error',
+                html: '<h3>Failed to add flight</h3><br>This flight already already exists under \'My Flights\'.',
                 showConfirmButton: false,
                 timer: 4000
             });
@@ -211,6 +265,30 @@ class SearchBar extends Component {
                 timer: 4000
             });
         }
+    }
+
+
+    generateMap = async (flight) => {
+        const resp = await MapsController.getMap(flight.departureIata, flight.arrivalIata);
+        this.setState({mapimg: URL.createObjectURL(resp)});
+    }
+
+
+    expandFlight = async (flight) =>  {
+        if (this.state.weatherFor === flight) {
+            this.collapseFlight(flight);
+        }
+        else {
+            this.generateMap(flight);
+            const resp = await WeatherController.getWeather(flight.arrivalIata);
+            this.setState({weather: resp, weatherClicked: true, weatherFor: flight});
+            console.log(this.state.weather);
+        }
+    }
+
+    collapseFlight = async (flight) =>  {
+        
+        this.setState({weather: [], weatherClicked: false, weatherFor: null});
     }
 
 
@@ -284,11 +362,11 @@ class SearchBar extends Component {
 
 
                 <h2> my flights </h2>
-                {this.props.isLoggedIn() ? <div><p>click to remove flights from your list</p></div> : ""}
+                {this.props.isLoggedIn() ? <div><p>click to see further details</p></div> : ""}
                 <div>
                 {
                     this.props.isLoggedIn() ?
-                    <div className="flightoptionheader" id="flightoptionheader">
+                    <div className="myflightoptionheader" id="myflightoptionheader">
                         <span id="flight">flight</span>
                         <span id="airline">airline</span>
                         <span id="from_airport">airport</span>
@@ -298,18 +376,19 @@ class SearchBar extends Component {
                         <span id="to_airport">airport</span>
                         <span id="to_gate">gate</span>
                         <span id="to_time">time</span>
+                        <span id="remove-placeholder"></span>
                     </div>
                     : "login to see your saved flights"
                 }
                 </div>
-                <div className="table-scroller">
+                <div>
                 {
                     this.props.isLoggedIn() ?
-                    <table>
+                    <table id="my-flights-table">
                     {
                         this.state.my_flights.map(flight =>
-                            <button className="flightoptionbtn" onClick={this.removeFlight.bind(this, flight)}>
-                            <tr className="flightoption">
+                            <div>
+                            <tr className="flightoption" onClick={this.expandFlight.bind(this, flight)}>
                                 <td id="flightno">{flight.flightNumber}</td>
                                 <td id="airline">{flight.airline}</td>
                                 <td id="departureiata">{flight.departureIata}</td>
@@ -319,10 +398,27 @@ class SearchBar extends Component {
                                 <td id="arrivaliata">{flight.arrivalIata}</td>
                                 <td id="arrivalgate">{flight.arrivalTerminal}</td>
                                 <td id="arrivaltime">{flight.arrivalTime}</td>
+                                <button className="flightoptionbtn" id="remove-btn" onClick={this.removeFlight.bind(this, flight)}>remove</button>
                             </tr>
-                            </button>
+                            <div>
+                            {this.state.weatherClicked && this.state.weatherFor === flight  ?
+                                <div id="expand-flight">
+                                    <div id="expand-header">
+                                        <h3>{flight.arrivalAirport}</h3>
+                                        <div id="weather">
+                                            <span id="temp">{(this.state.weather[0].temp - 273.15).toFixed()}°C</span>
+                                            <span id="windSpeed">{(this.state.weather[0].windSpeed * 3.6).toFixed()}kph</span>
+                                        </div>
+                                    </div>
+                                    <div id="map">
+                                        <img width="30%" src={this.state.mapimg}/>
+                                    </div>
+                                </div>
+                             : null}
+                            </div>
+                            </div>
                         )
-                    }</table> : "null placeholder"
+                    }</table> : null
                 }
                 </div>
             </div>
