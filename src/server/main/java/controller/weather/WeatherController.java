@@ -4,9 +4,7 @@ package controller.weather;
 import apis.FassadeApi;
 import main.SpringbootApplication;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import utils.api.iatacoordinates.IataCoordinatesApiUtil;
 import utils.api.iatacoordinates.IataCoordinatesRepository;
 import utils.api.weather.WeatherApiUtil;
@@ -15,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 public class WeatherController {
 

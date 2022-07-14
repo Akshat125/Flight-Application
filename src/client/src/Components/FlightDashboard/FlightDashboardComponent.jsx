@@ -25,7 +25,7 @@ class FlightDashboardComponent extends Component {
         return (
             <div className="trip-dashboard">
                 <h1> placeholder trip dashboard section </h1>
-                <SearchBar />
+                <SearchBar loadSavedFlights={this.props.loadSavedFlights} getSavedFlights={this.props.getSavedFlights} isLoggedIn={this.props.isLoggedIn} getUser={this.props.getUser} getPass={this.props.getPass}/>
                 <SearchResults />
                 <SaveFlight />
             </div>

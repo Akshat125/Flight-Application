@@ -9,7 +9,12 @@ class MapsController {
 
     getMap(...iatas) {
         const query = iatas.reduce((previous, next) => previous + "&" + next);
-        return axios.get(MAP_API_BASE_URL + "/" + query);
+        return (
+            axios.get(MAP_API_BASE_URL + "/" + query, {responseType: "blob"})
+            .then(response =>   {
+                return response.data;
+            })
+        );
     }
 
 }

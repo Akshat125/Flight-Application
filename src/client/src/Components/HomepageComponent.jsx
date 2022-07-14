@@ -9,6 +9,8 @@ import FlightDashboardComponent from './FlightDashboard/FlightDashboardComponent
 import PassengerSurveyComponent from './PassengerSurvey/PassengerSurveyComponent';
 import InFlightServiceComponent from './InFlightService/InFlightServiceComponent';
 
+import AirlineController from '../Controller/AirlineController';
+
 import Dropdown from 'react-bootstrap/Dropdown';
 
 class HomepageComponent extends Component {
@@ -16,6 +18,10 @@ class HomepageComponent extends Component {
         super(props);
 
         this.state = {
+            logged_in: false,
+            username: "",
+            passname: "",
+            my_flights: [],
             showDash: false,
             showSurvey: false,
             showService: false,
@@ -56,12 +62,63 @@ class HomepageComponent extends Component {
         setTimeout(() => {window.scrollTo({top: y, behavior: 'smooth'})}, 200);
     }
 
+    setLoggedIn = (val) =>  {
+        this.setState({logged_in: val});
+        this.setState({
+            showDash: false,
+            showSurvey: false,
+            showService: false,
+        });
+        setTimeout(() => {window.scrollTo({top: 0, behavior: 'smooth'})}, 200);
+    }
+
+    isLoggedIn = () =>  {
+        return this.state.logged_in;
+    }
+
+    setUser = (user) =>    {
+        this.setState({username: user});
+    }
+
+    getUser = () => {
+        return this.state.username;
+    }
+
+    setPass = (pass) =>    {
+        this.setState({password: pass});
+    }
+
+    getPass = () => {
+        return this.state.password;
+    }
+
+    loadSavedFlights = async () =>   {
+        if (this.getUser() === "")  {
+            this.setState({my_flights: []});
+        }
+        else {
+            const resp = await AirlineController.getUserFlights(this.getUser(), this.getPass());
+            setTimeout(() => console.log(""), 200);
+            this.setState({my_flights: resp});
+        }
+    }
+
+    getSavedFlights = () => {
+        if (this.getUser() === "")  {
+            return [];
+        }
+        else {
+            this.loadSavedFlights();
+            setTimeout(() => console.log(""), 200);
+            return this.state.my_flights;
+        }
+    }
 
 
     render() {
         return (
             <div>
-                <HeaderComponent clickedDash={this.clickedDash}/>
+                <HeaderComponent loadSavedFlights={this.loadSavedFlights} setLoggedIn={this.setLoggedIn} setUser={this.setUser} setPass={this.setPass} clickedDash={this.clickedDash} clickedSurvey={this.clickedSurvey} clickedService={this.clickedService}/>
                 <div className="main">
                     <div className="logo">
                         <img className="main-logo" src={logo}/>
@@ -80,7 +137,7 @@ class HomepageComponent extends Component {
                         </ul>
                     </div>
                     <div id="body" className="body">
-                        {this.state.showDash ? <FlightDashboardComponent /> : null}
+                        {this.state.showDash ? <FlightDashboardComponent loadSavedFlights={this.loadSavedFlights} getSavedFlights={this.getSavedFlights} isLoggedIn={this.isLoggedIn} getUser={this.getUser} getPass={this.getPass}/> : null}
                         {this.state.showSurvey ? <PassengerSurveyComponent /> : null}
                         {this.state.showService ? <InFlightServiceComponent /> : null}
                     </div>

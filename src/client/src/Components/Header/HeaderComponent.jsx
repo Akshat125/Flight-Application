@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import HomepageComponent from "../HomepageComponent";
-import NavigationBarComponent from "./Subcomponents/NavigationBarComponent"
+import NavigationBarComponent from "./Subcomponents/NavigationBarComponent";
 
 class HeaderComponent extends Component {
 
@@ -18,7 +18,7 @@ class HeaderComponent extends Component {
     render() {
         return (
             <header>
-                <NavigationBarComponent clickedDash={this.clickedDash} />
+                <NavigationBarComponent loadSavedFlights={this.props.loadSavedFlights} setLoggedIn={this.props.setLoggedIn} setUser={this.props.setUser} setPass={this.props.setPass} clickedDash={this.props.clickedDash} clickedSurvey={this.props.clickedSurvey} clickedService={this.props.clickedService} />
                 <div className="drop-shadow"> </div>
             </header>
         );

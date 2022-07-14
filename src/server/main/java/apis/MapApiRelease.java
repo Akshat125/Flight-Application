@@ -29,6 +29,7 @@ public class MapApiRelease implements MapApi {
      * @param coordinatesMapAPIList takes a List of Coordinates
      * @return byte[] and returns the Byte Array/Image of a static Map, showing all Markers of the given Coordinates-List
      */
+    @Override
     public byte[] getImageOfMap(List<CoordinatesMapApiUtil> coordinatesMapAPIList) {
         if (coordinatesMapAPIList.isEmpty()) {
             return new byte[0];

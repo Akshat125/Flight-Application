@@ -32,7 +32,7 @@ class InFlightServiceComponent extends Component {
             showFlightInstructions: false,
             serviceImageUrl: this.state.serviceImageUrl
         });
-        const y = document.getElementById('body').getBoundingClientRect().top + window.pageYOffset  + 245;
+        const y = document.getElementById('body').getBoundingClientRect().top + window.pageYOffset + 215;
         setTimeout(() => {window.scrollTo({top: y, behavior: 'smooth'})}, 300);
     }
 
@@ -69,22 +69,22 @@ class InFlightServiceComponent extends Component {
                     <ul className="button-list">
                         <li className="button">
                             <button onClick={this.clickedMovies}><img className="btn1logo" src = {moviesLogo}/>
-                                <br/> Movies <br/> <br/>
+                                <br/> Movies <br/>
                             </button>
                         </li>
                         <li className="button">
                             <button onClick={this.clickedSafetyInstructions}><img className="btn2logo" src = {flightInstructionLogo}/>
-                                <br/> Flight Instructions<br/>
+                                <br/> Flight Instructions <br/>
                             </button>
                         </li>
                         <li className="button">
                             <button onClick={this.clickedService}><img className="btn3logo" src = {this.state.serviceImageUrl}/>
-                                <br/> Service <br/> <br/>
+                                <br/> Service <br/>
                             </button>
                         </li>
                     </ul>
                 </div>
-                <div id="body" className="body">
+                <div className="body">
                     {this.state.showMovie ? <MoviesComponent /> : null}
                     {this.state.showFlightInstructions ? <SafetyInstructionsComponent /> : null}
                 </div>
