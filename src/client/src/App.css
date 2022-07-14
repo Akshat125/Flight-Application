@@ -457,9 +457,18 @@ div {
 .cinemaScreen {
     margin-top: 218px;
     margin-left: 151px;
-    width: 915px;
-    height: 410px;
 }
+
+h1 {
+    margin: 8px;
+    font-size: 38px;
+    color: rgb(33,19,13);
+}
+
+.searchBar {
+    width: 32%;
+}
+
 
 /* TODO: Add further elements here: */
 /* Additional CSS elements can be imported through bootstrap, react-bootstrap*/
