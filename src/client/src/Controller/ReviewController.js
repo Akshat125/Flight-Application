@@ -73,7 +73,6 @@ class ReviewController {
         const query = name + "&and&" + hashValue + "&and&" + password;
         return axios.delete(REVIEW_DELETE_API_BASE_URL + "/" + query)
     }
-
 }
 
 export default new ReviewController()

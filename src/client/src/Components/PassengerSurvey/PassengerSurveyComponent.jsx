@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import RatingComponent from "./Subcomponents/RatingComponent";
 import './ratestyle.css'
 import './feedbackPopup.css'
+import './coupon.css';
 //import "font-awesome/css/font-awesome.min.css"
 import "bootstrap/dist/css/bootstrap.css"
 import './feed'
@@ -201,7 +202,7 @@ class PassengerSurveyComponent extends Component {
                 <button className="btn btn-danger" onClick={this.cancel} style={{marginLeft: "9px"}}>cancel</button>
                 <button className="btn btn-info" onClick={this.giveFeedback} style={{marginLeft: "900px"}}>write feedback</button>
 
-
+//feedbackPopup code starts from here
                 <div id="feedback-main">
                     <div id="centerpoint">
                     <div id="feedback-div">
@@ -235,13 +236,14 @@ class PassengerSurveyComponent extends Component {
                         </form>
                     </div>
                     </div>
+
+
+
                 </div>
 
 
             </div>
 
-
-            //<div dangerouslySetInnerHTML={ {__html: survey} } />
 
 
     );
