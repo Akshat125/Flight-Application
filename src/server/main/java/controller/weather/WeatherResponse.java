@@ -9,11 +9,13 @@ public class WeatherResponse {
     private int windDirection;
     private int dateInUTC;
     private String description;
+    private String icon;
+    private double pop;
 
     /**
      * This is a helper Class (the response Class for an Weather request)
      */
-    public WeatherResponse(int dateInUTC, double temp, double tempFeelsLike, int humidity, double windSpeed, int windDirection, String description) {
+    public WeatherResponse(int dateInUTC, double temp, double tempFeelsLike, int humidity, double windSpeed, int windDirection, String description, String icon, double pop) {
         this.temp = temp;
         this.tempFeelsLike = tempFeelsLike;
         this.humidity = humidity;
@@ -21,6 +23,8 @@ public class WeatherResponse {
         this.windDirection = windDirection;
         this.dateInUTC = dateInUTC;
         this.description = description;
+        this.icon = icon;
+        this.pop = pop;
     }
 
     public double getTemp() {
@@ -77,5 +81,21 @@ public class WeatherResponse {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getIcon() {
+        return icon;
+    }
+
+    public void setIcon(String icon) {
+        this.icon = icon;
+    }
+
+    public double getPop() {
+        return pop;
+    }
+
+    public void setPop(double pop) {
+        this.pop = pop;
     }
 }

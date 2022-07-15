@@ -25,7 +25,7 @@ public class AirportNameApiRelease implements AirportNameApi {
     public IcaoMappingNameApiUtil getAirportData(String airportICAO) {
         try {
             String res = webClient.get()
-                    .uri(new URI(("https://airlabs.co/api/v9/airports?icao_code=" + airportICAO + "&api_key=" + ApiKey.AIRLABS_KEY)))
+                    .uri(new URI(("https://airlabs.co/api/v9/airports?icao_code=" + airportICAO + "&api_key=" + ApiKey.AIRLABS_KEY.getKEY())))
                     .retrieve()
                     .bodyToMono(String.class)
                     .onErrorStop()

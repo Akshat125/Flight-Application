@@ -27,7 +27,7 @@ public class AirlineNameApiRelease implements AirlineNameApi {
     public AirlineNameApiUtil getAirlineName(String airline_icao) {
         try {
             String res = webClient.get()
-                    .uri(new URI(("https://airlabs.co/api/v9/airlines?icao_code=" + airline_icao + "&api_key=" + ApiKey.AIRLABS_KEY)))
+                    .uri(new URI(("https://airlabs.co/api/v9/airlines?icao_code=" + airline_icao + "&api_key=" + ApiKey.AIRLABS_KEY.getKEY())))
                     .retrieve()
                     .bodyToMono(String.class)
                     .onErrorStop()
