@@ -27,7 +27,7 @@ public class AirportApiRelease implements AirportApi {
     public List<AirportApiUtil> getAirportsByString(String airportSearch) {
 
         try {
-            String http = ("https://autocomplete.travelpayouts.com/places2?locale=de&types[]=airport&types[]=city&term=" + airportSearch);
+            String http = ("https://autocomplete.travelpayouts.com/places2?locale=en&types[]=airport&types[]=city&term=" + airportSearch);
             URI uri = new URI(http);
             String searchURI = uri.toASCIIString();
             String res = webClient.get()

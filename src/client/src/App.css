@@ -97,17 +97,106 @@ div {
     transition: font-size 0.5s ease;
 }
 
-.navbar .login-btn    {
+.navbar .login-btn  {
+    font-size: 13pt;
+    color: #1f557b;
+    text-decoration: none;
+    background-color: #ffffff;
+
+    padding: 0.2em 1.5em;
+    margin: 0em 1em;
+    border: solid 1px #1f557b;
+    border-radius: 2em;
+
+    transition: all 0.5s ease-out;
+}
+
+.logout-btn  {
+    font-size: 13pt;
+    color: #a62525;
+    text-decoration: none;
+    background-color: #ffffff;
+
+    padding: 0.2em 1.5em;
+    margin: 0em 1em;
+    border: solid 1px #a62525;
+    border-radius: 2em;
+
+    transition: all 0.5s ease-out;
+}
+
+.login-btn:hover    {
+    background-color: #76c6ff;
+    color: #ffffff;
+}
+
+.logout-btn:hover   {
+    background-color: #a62525;
+    color: #ffffff;
+}
+
+.navbar p   {
+    position: relative;
+    left: -0.3em;
     font-size: 12pt;
+    font-weight: bold;
     color: #142a52;
+    padding-top: 0.2em;
+    margin: 0em 1em;
+}
+
+#loginpanediv h1    {
+    font-weight: bold;
+    color: #a62525;
+}
+
+#loginpanediv h2    {
+    font-size: 16pt;
+    color: #142a52;
+}
+
+#loginpanediv input {
+    color: #142a52;
+    border-radius: 2em;
+    border: solid 1px #142a52;
+    width: 90%;
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+    padding-left: 0.8em;
+    margin-bottom: 1em;
+}
+
+#loginpanebtndiv    {
+    display: flex;
+    align-items: center;
+}
+
+#loginpanediv button    {
+    font-size: 12pt;
+    font-weight: bold;
+    color: #ffffff;
     text-decoration: none;
     background-color: #76c6ff;
 
-    padding: 0.5em 1.5em;
-    margin: 0em 1em;
-    border: 1px solid #1f557b;
+    padding: 0.2em 0em;
+    min-width: 7em;
+    margin-right: 2em;
+    border: solid 1px #1f557b;
     border-radius: 2em;
+
+    transition: all 0.5s ease-out;
 }
+
+#loginpanediv button:hover  {
+    background-color: #1f557b;
+}
+
+.blinkredtext   {
+    color: #a62525;
+    font-weight: bold;
+    font-size: 13pt;
+}
+
 
 .drop-shadow    {
     height: 3px;
@@ -146,12 +235,12 @@ div {
 }
 
 .main .button-list button   {
+    width: 9em;
     border: 2px solid #1f557b;
     border-radius: 20px;
     padding: 0.5em;
     box-shadow: 2px 3px #888888;
-    background: #000000;
-    background: linear-gradient(30deg, #76c6ff 0%, #e5f6fb 100%);
+    background: #ffffff;
 
     transition: color 0.5s ease;
 
@@ -161,12 +250,18 @@ div {
     animation-timing-function: ease-out;
 }
 
+.button-list img    {
+    max-width: 100px;
+}
+
 @keyframes btn-border-rev   {
     from    {
+        background: #e5f6fb;
         border: 1px solid #ffb145;
         box-shadow: 0px 0px 10px #ffb145;
     }
     to  {
+        background: #ffffff;
         border: 2px solid #1f557b;
         box-shadow: 2px 3px #888888;
     }
@@ -186,10 +281,12 @@ div {
 
 @keyframes btn-border   {
     from    {
+        background: #ffffff;
         border: 2px solid #1f557b;
         box-shadow: 2px 3px #888888;
     }
     to  {
+        background: #e5f6fb;
         border: 1px solid #ffb145;
         box-shadow: 0px 0px 10px #ffb145;
     }
@@ -233,13 +330,34 @@ div {
 }
 
 .trip-dashboard h1  {
-    background: rgb(229, 246, 251);
-    background: linear-gradient(90deg, #76c6ff 0%, #e5f6fb 100%);
-    border-radius: 1em;
+    display: block;
+    margin: 0;
+    border: solid 1px #76c6ff;
+    border-radius: 0.5em;
+    padding: 0.2em 0em 0.2em 0em;
+    text-align: center;
+
+    font-size: 28pt;
+    color: #142a52;
+    background-color: #e5f6fb;
 }
 
 .trip-dashboard-dynamic {
     font-size: 14pt;
+    background-color: #ffffff;
+    margin: 0em 0.5em;
+}
+
+.trip-dashboard-dynamic h2  {
+    color: #1f557b;
+    margin: 0em 0em 0em 10vw;
+    padding-top: 1em;
+}
+
+.trip-dashboard-dynamic p  {
+    color: #1f557b;
+    margin: 0.5em 0em 1.5em 10vw;
+    font-style: italic;
 }
 
 .trip-dashboard-dynamic .searchbar  {
@@ -257,7 +375,19 @@ div {
     text-align: center;
     vertical-align: center;
     min-width: 16vw;
+
+    color: #1f557b;
+    border-radius: 1em;
+    border: solid 1px #76c6ff;
+    background-color: #ffffff;
+
+    transition: all 0.5s ease;
 }
+
+.searchbar button:hover {
+    background-color: #e5f6fb;
+}
+
 
 .searchdepartureinput   {
     height: 0;
@@ -267,6 +397,10 @@ div {
     margin: 0.2em auto;
     min-width: 49vw;
     padding: 0.2em 1em;
+
+    color: #1f557b;
+    border-radius: 2em;
+    border: solid 1px #1f557b;
 
     transition: all 0.2s linear;
 }
@@ -282,6 +416,10 @@ div {
     margin: 0.2em auto;
     min-width: 49vw;
     padding: 0.2em 1em;
+
+    color: #1f557b;
+    border-radius: 2em;
+    border: solid 1px #1f557b;
 
     transition: all 0.2s linear;
 }
@@ -339,6 +477,23 @@ div {
     border-bottom: 1px solid #141414;
 
     padding: 0.2em 1em;
+
+    color: #1f557b;
+    border: none;
+    border-top: solid 0.5px #76c6ff;
+    border-bottom: solid 0.5px #76c6ff;
+
+    transition: background 0.5s linear;
+}
+
+.airport-dropdown-from li:hover {
+    cursor: pointer;
+    background: #e5f6fb;
+}
+
+.airport-dropdown-to li:hover   {
+    cursor: pointer;
+    background: #e5f6fb;
 }
 
 .trip-dashboard-dynamic .airport-dropdown-to    {
@@ -357,20 +512,56 @@ div {
     border-bottom: 1px solid #141414;
 
     padding: 0.2em 1em;
+
+    color: #1f557b;
+    border: none;
+    border-top: solid 0.5px #76c6ff;
+    border-bottom: solid 0.5px #76c6ff;
+
+    transition: background 0.5s linear;
 }
 
 .getflights {
     display: block;
-    margin: 0em auto 0.2em auto;
+    margin: 0em auto 2em auto;
+    padding: 0.2em 0em;
 
     min-width: 37em;
+
+    color: #ffffff;
+    border-radius: 2em;
+    border: solid 1px #1f557b;
+    background-color: #76c6ff;
 }
 
+.getflights:disabled    {
+    cursor: not-allowed;
+    color: #4c4c4c;
+    border: solid 1px #ffffff;
+    background-color: lightgray;
+}
+
+.trip-dashboard-dynamic hr  {
+    margin: auto;
+    width: 90%;
+    color: #1f557b;
+    border: solid 1px #1f557b;
+}
 
 .trip-dashboard-dynamic .table-scroller {
+    margin: 0em 5em;
+    margin-bottom: 2em;
     max-height: 50vh;
     text-align: center;
     overflow: scroll;
+}
+
+::-webkit-scrollbar-track {
+    background: #76c6ff;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #1f557b;
 }
 
 .trip-dashboard-dynamic table   {
@@ -389,6 +580,30 @@ div {
     text-align: center;
 
     font-size: 14pt;
+    color: #142a52;
+
+    transition: all 0.5s linear;
+}
+
+.trip-dashboard-dynamic td:hover    {
+    color: #1f557b;
+}
+
+.flightoptionbtn   {
+    color: #1f557b;
+    border: none;
+    border-top: solid 0.5px #76c6ff;
+    border-bottom: solid 0.5px #76c6ff;
+    background-color: #e5f6fb;
+
+    transition: all 0.5s linear;
+}
+
+.flightoptionbtn:hover  {
+    cursor: pointer;
+    background-color: #76c6ff;
+    border-top: solid 0.5px #1f557b;
+    border-bottom: solid 0.5px #1f557b;
 }
 
 
@@ -396,7 +611,10 @@ div {
     display: inline-block;
     text-align: center;
 
-    font-size: 14pt;
+    font-size: 16pt;
+    color: #1f557b;
+    font-weight: bold;
+    padding-bottom: 0.2em;
 }
 
 .flightoptionheader #flight {
@@ -468,10 +686,51 @@ div {
     margin-right: auto;
 }
 
+
+.myflightoptionheader span  {
+    display: inline-block;
+    text-align: center;
+
+    font-size: 16pt;
+    color: #1f557b;
+    font-weight: bold;
+    padding-bottom: 0.2em;
+}
+
+#my-flights {
+    padding-bottom: 1em;
+}
+
 #my-flights-table   {
     width: 58em;
     text-align: center;
 }
+
+#flightoptioncontainer  {
+    margin-bottom: 0.3em;
+    padding: 0em 0em;
+}
+
+#my-flights-table tr    {
+    margin: 0em 1em;
+    padding: 0em 1em;
+
+    color: #1f557b;
+    border: none;
+    border-top: solid 0.5px #76c6ff;
+    border-bottom: solid 0.5px #76c6ff;
+    background-color: #e5f6fb;
+
+    transition: all 0.5s linear;
+}
+
+#my-flights-table tr:hover  {
+    cursor: pointer;
+    background: #76c6ff;
+    border-top: solid 1px #1f557b;
+    border-bottom: solid 1px #1f557b;
+}
+
 
 @keyframes drop    {
     from    {
@@ -482,6 +741,10 @@ div {
         opacity: 1;
         top: 0em;
     }
+}
+
+#expandcontainer    {
+    padding: 0em 1em;
 }
 
 #expand-flight  {
@@ -498,14 +761,16 @@ div {
 
 #expand-header  {
     display: flex;
+    margin-bottom: 1.5em;
 }
 
 #expand-header h3   {
     text-align: left;
     min-width: 50%;
+    color: #1f557b;
 }
 
-#expand-header #weather   {
+#weather   {
     text-align: right;
     min-width: 50%;
 }
@@ -513,19 +778,37 @@ div {
 #expand-header span {
     display: inline-block;
     min-width: 5em;
+    padding: 0;
+    padding-left: 0.5em;
+    padding-right: 1em;
+    text-align: left;
+    color: #1f557b;
+}
+
+#expand-header img  {
+    padding: 0;
+    margin: 0;
 }
 
 span #temp   {
     min-width: 5em;
 }
 
-span #windSpeed  {
+span #wind  {
     min-width: 5em;
 }
 
 
 #remove-btn {
+    border: none;
+    color: #a62525;
+    background-color: rgba(0, 0, 0, 0);
     width: 5em;
+}
+
+#remove-btn:hover   {
+    color: #ffffff;
+    background-color: #a62525;
 }
 
 .myflightoptionheader #remove-placeholder {
@@ -560,17 +843,11 @@ span #windSpeed  {
     min-width: 6rem;
 }
 
-.myflightoptionheader span {
-    display: inline-block;
-    text-align: center;
-
-    font-size: 14pt;
-}
-
 .myflightoptionheader {
     width: 60em;
     margin-left: auto;
     margin-right: auto;
+    height: 2em;
 }
 
 .passenger-survey   {

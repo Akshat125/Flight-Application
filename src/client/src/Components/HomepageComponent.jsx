@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 
 import logo from '../Images/flightLogo.png';
+import dashicon from '../Images/dashicon.png';
+import surveyicon from '../Images/surveyicon.png';
+import serviceicon from '../Images/serviceicon.png';
 
 import HeaderComponent from "./Header/HeaderComponent";
 import FooterComponent from "./Footer/FooterComponent";
@@ -126,13 +129,13 @@ class HomepageComponent extends Component {
                     <div className="button-container">
                         <ul className="button-list">
                             <li className="button">
-                                <button onClick={this.clickedDash}> <img className="btn1logo" src={logo}/> <br/> trip <br/> dashboard </button>
+                                <button onClick={this.clickedDash}> <img className="btn1logo" src={dashicon}/> <br/> trip <br/> dashboard </button>
                             </li>
                             <li className="button">
-                                <button onClick={this.clickedSurvey}> <img className="btn2logo" src={logo}/> <br/> passenger <br/> survey </button>
+                                <button onClick={this.clickedSurvey}> <img className="btn2logo" src={surveyicon}/> <br/> passenger <br/> survey </button>
                             </li>
                             <li className="button">
-                                <button onClick={this.clickedService}> <img className="btn3logo" src={logo}/> <br/> inflight <br/> service </button>
+                                <button onClick={this.clickedService}> <img className="btn3logo" src={serviceicon}/> <br/> inflight <br/> service </button>
                             </li>
                         </ul>
                     </div>

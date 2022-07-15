@@ -5,6 +5,9 @@ import WeatherController from '../../../Controller/WeatherController.js';
 import MapsController from '../../../Controller/MapsController.js';
 import Swal from 'sweetalert2';
 
+import thermometericon from '../../../Images/thermometericon.png';
+import windicon from '../../../Images/windicon.jpeg';
+
 import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
 import {Calendar} from 'react-date-range';
@@ -40,6 +43,11 @@ class SearchBar extends Component {
     }
 
     componentDidMount() {
+        this.setState({my_flights: this.props.getSavedFlights()});
+        console.log(this.props.getSavedFlights());
+    }
+
+    componentWillUnmount()  {
         this.setState({my_flights: this.props.getSavedFlights()});
         console.log(this.props.getSavedFlights());
     }
@@ -200,7 +208,6 @@ class SearchBar extends Component {
     }
 
     getFlights = async () =>  {
-        // TODO: day option
         const flights = await AirlineController.getFlights(this.state.iata_from, this.state.iata_to, this.state.day);
         this.parseFlights(flights);
 
@@ -217,7 +224,7 @@ class SearchBar extends Component {
             });
             return;
         }
-        if (this.state.my_flights.filter((f) => f === flight).length != 0)  {
+        else if (this.state.my_flights.filter(f => (f.flightNumber === flight.flightNumber && f.departureTime === flight.departureTime && f.arrivalIata === flight.arrivalIata)).length != 0)  {
             Swal.fire({
                 icon: 'error',
                 html: '<h3>Failed to add flight</h3><br>This flight already already exists under \'My Flights\'.',
@@ -287,7 +294,7 @@ class SearchBar extends Component {
     }
 
     collapseFlight = async (flight) =>  {
-        
+
         this.setState({weather: [], weatherClicked: false, weatherFor: null});
     }
 
@@ -301,7 +308,7 @@ class SearchBar extends Component {
                 <div className="searchbar">
                     <button onClick={this.showDeparture} id="searchbarfrom">departure:<br />city or airport</button>
                     <button onClick={this.showArrival} id="searchbarto">arrival:<br />city or airport</button>
-                    <button onClick={this.showCalendar} id="searchbardate">date</button>
+                    <button onClick={this.showCalendar} id="searchbardate">flight date</button>
                 </div>
                 <div className="searchinput">
                     <input placeholder="leaving from ..." className="searchdepartureinput" onInput={this.searchFrom} type="text" id="searchdepartureinput" />
@@ -310,15 +317,19 @@ class SearchBar extends Component {
                 </div>
                 <div className="searchdropdown">
                     <div className="airport-dropdown-from" onMouseLeave={this.hideDeparture}>
-                        {this.state.searched_from ? <ul>{this.state.data_from.map(item => (<li className="airportoption" onClick={this.setFrom.bind(this, item)} key={item.id}>{item.iata} - {item.nameCity}</li>))}</ul> : null}
+                        {this.state.searched_from ? <ul>{this.state.data_from.map(item => (<li className="airportoption" onClick={this.setFrom.bind(this, item)} key={item.id}>{item.iata} - {item.airportName}, {item.nameCity}</li>))}</ul> : null}
                     </div>
                     <div className="airport-dropdown-to" onMouseLeave={this.hideArrival}>
-                        {this.state.searched_to ? <ul>{this.state.data_to.map(item => (<li className="airportoption" onClick={this.setTo.bind(this, item)} key={item.id}>{item.iata} - {item.nameCity}</li>))}</ul> : null}
+                        {this.state.searched_to ? <ul>{this.state.data_to.map(item => (<li className="airportoption" onClick={this.setTo.bind(this, item)} key={item.id}>{item.iata} - {item.airportName}, {item.nameCity}</li>))}</ul> : null}
                     </div>
                 </div>
                 </div>
                 {this.state.selected_to && this.state.selected_from && this.state.selected_date ? <button className="getflights" onClick={this.getFlights.bind(this)}>get flights</button> : <button className="getflights" disabled="true" onClick={this.getFlights.bind(this)}>get flights</button>}
-                {this.state.showSearch ? <div><h2>search results</h2><p>click to add flights</p></div> : ""}
+                <hr/>
+                {this.state.showSearch ? <h2>search results</h2> : ""}
+                {this.state.showSearch && !this.props.isLoggedIn() ? <p>login to save flights</p> : ""}
+                {this.state.showSearch && this.props.isLoggedIn() ? <p>click to add flights</p> : ""}
+                
                 {
                     this.state.showSearch ?
                     <div className="flightoptionheader" id="flightoptionheader">
@@ -360,9 +371,10 @@ class SearchBar extends Component {
                 }
                 </div>
 
+                {this.state.showSearch ? <hr/> : null}
 
                 <h2> my flights </h2>
-                {this.props.isLoggedIn() ? <div><p>click to see further details</p></div> : ""}
+                {this.props.isLoggedIn() ? <p>click to see further details</p> : ""}
                 <div>
                 {
                     this.props.isLoggedIn() ?
@@ -378,16 +390,16 @@ class SearchBar extends Component {
                         <span id="to_time">time</span>
                         <span id="remove-placeholder"></span>
                     </div>
-                    : "login to see your saved flights"
+                    : <p>login to see your saved flights</p>
                 }
                 </div>
-                <div>
+                <div id="my-flights">
                 {
                     this.props.isLoggedIn() ?
                     <table id="my-flights-table">
                     {
                         this.state.my_flights.map(flight =>
-                            <div>
+                            <div id="flightoptioncontainer">
                             <tr className="flightoption" onClick={this.expandFlight.bind(this, flight)}>
                                 <td id="flightno">{flight.flightNumber}</td>
                                 <td id="airline">{flight.airline}</td>
@@ -400,14 +412,16 @@ class SearchBar extends Component {
                                 <td id="arrivaltime">{flight.arrivalTime}</td>
                                 <button className="flightoptionbtn" id="remove-btn" onClick={this.removeFlight.bind(this, flight)}>remove</button>
                             </tr>
-                            <div>
+                            <div id="expandcontainer">
                             {this.state.weatherClicked && this.state.weatherFor === flight  ?
                                 <div id="expand-flight">
                                     <div id="expand-header">
                                         <h3>{flight.arrivalAirport}</h3>
                                         <div id="weather">
+                                            <img id="themometericon" width="30" height="30" src={thermometericon}/>
                                             <span id="temp">{(this.state.weather[0].temp - 273.15).toFixed()}°C</span>
-                                            <span id="windSpeed">{(this.state.weather[0].windSpeed * 3.6).toFixed()}kph</span>
+                                            <img width="30" height="30" src={windicon}/>
+                                            <span id="wind">{(this.state.weather[0].windSpeed * 3.6).toFixed()}kph {this.state.weather[0].windDirection / 45 < 1 ? "N" : this.state.weather[0].windDirection / 45 < 2 ? "NE" : this.state.weather[0].windDirection / 45 < 3 ? "E" : this.state.weather[0].windDirection / 45 < 4 ? "SE" : this.state.weather[0].windDirection / 45 < 5 ? "S" : this.state.weather[0].windDirection / 45 < 6 ? "SW" : this.state.weather[0].windDirection / 45 < 7 ? "W" : this.state.weather[0].windDirection / 45 < 8 ? "NW" : "direction"}</span>
                                         </div>
                                     </div>
                                     <div id="map">

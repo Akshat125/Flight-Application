@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import logo from '../../../Images/flightLogo.png';
+import loginicon from '../../../Images/person.png';
 import { render } from "react-dom";
 import SlidingPane from "react-sliding-pane";
 import "react-sliding-pane/dist/react-sliding-pane.css";
@@ -136,11 +137,12 @@ class NavigationBarComponent extends Component {
                             <a onClick={this.props.clickedService} className="navlink">inflight service</a>
                         </li>
                     </ul>
-                    <p>{this.state.logged_in ? "logged in as " + this.state.logged_in_as : null}</p>
+                    {this.state.logged_in ? <img width="2%" src={loginicon}/> : null}
+                    {this.state.logged_in ? <p>{this.state.logged_in_as}</p> : null}
                     <div>{this.state.logged_in ? <button className="logout-btn" onClick={this.logoutUser}>logout</button> : <button className="login-btn" onClick={this.showLogin}>login</button>}</div>
                 </div>
                 <SlidingPane className="loginpane" width="35vw" isOpen={this.state.showLogin} onRequestClose={() => this.setState({showLogin: false})}>
-                    <div>
+                    <div id="loginpanediv">
                         <h1> login </h1>
 
                         <p>
@@ -148,22 +150,23 @@ class NavigationBarComponent extends Component {
                         </p>
 
                         <h2> username </h2>
-                        <input id="username" type="text" required={true} onInput={this.sanitise} />
+                        <input id="username" type="text" required={true} placeholder="enter username" onInput={this.sanitise} />
 
                         <h2> password </h2>
-                        <input id="password" type="password" required={true} onInput={this.sanitise} />
+                        <input id="password" type="password" required={true} placeholder="enter password" onInput={this.sanitise} />
 
                         <br/>
-
-                        <button onClick={this.loginUser}>login</button>
-                        <button onClick={this.registerUser}>register</button>
+                        <div id="loginpanebtndiv">
+                            <button onClick={this.loginUser}>login</button>
+                            <button onClick={this.registerUser}>register</button>
+                        </div>
 
                         <br/>
 
                         <div>
                             Username and password may not contain whitespace or special characters apart from underscores.
                         </div>
-
+                        <br/>
                         <div>
                             {this.state.password_fail ? <p className="blinkredtext">Password must be at least 8 characters.</p>  : <p>Password must be at least 8 characters.</p>}
                         </div>
