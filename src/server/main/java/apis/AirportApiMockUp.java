@@ -37,7 +37,6 @@ public class AirportApiMockUp implements AirportApi {
                     .bodyToMono(String.class)
                     .onErrorStop()
                     .block();
-            System.out.println(res);
             return AirportApi.jsonStringToJavaClass(res);
 
         } catch (URISyntaxException e) {

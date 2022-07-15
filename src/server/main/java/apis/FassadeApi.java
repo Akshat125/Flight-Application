@@ -5,6 +5,7 @@ import utils.api.airlinename.AirlineNameApiUtil;
 import utils.api.airport.AirportApiUtil;
 import utils.api.airportNameIcao.IcaoMappingNameApiUtil;
 import utils.api.maps.CoordinatesMapApiUtil;
+import utils.api.poiTripMap.PoiTripMapUtil;
 import utils.api.weather.WeatherApiUtil;
 
 import java.util.List;
@@ -18,7 +19,7 @@ public class FassadeApi {
      * or
      * false -> to use the non-mocked implementation
      */
-    private static final boolean USE_MOCKUP = true;
+    private static final boolean USE_MOCKUP = false;
 
     private AirlineApi airlinesAPI;
     private MapApi mapsAPI;
@@ -26,6 +27,7 @@ public class FassadeApi {
     private AirportApi airportsAPI;
     private AirportNameApi airportNameAPI;
     private AirlineNameApi airlineNameApi;
+    private PoiTripMapApi poiTripMapApi;
 
     public FassadeApi() {
         if (USE_MOCKUP) {
@@ -34,12 +36,14 @@ public class FassadeApi {
             this.weatherAPI = new WeatherApiMockUp();
             this.airportNameAPI = new AirportNameApiMockUp();
             this.airlineNameApi = new AirlineNameApiMockUp();
+            this.poiTripMapApi = new PoiTripMapApiMockUp();
         } else {
             this.airlinesAPI = new AirlineApiRelease();
             this.mapsAPI = new MapApiRelease();
             this.weatherAPI = new WeatherApiRelease();
             this.airportNameAPI = new AirportNameApiRelease();
             this.airlineNameApi = new AirlineNameApiRelease();
+            this.poiTripMapApi = new PoiTripMapApiRelease();
         }
         // no restrictions, can be used right now
         this.airportsAPI = new AirportApiRelease();
@@ -101,5 +105,15 @@ public class FassadeApi {
      */
     public AirlineNameApiUtil getAirlineNameByIcao(String arinlineIcao_code) {
         return airlineNameApi.getAirlineName(arinlineIcao_code);
+    }
+
+    /**
+     * @param lon takes the Longitude
+     *            and
+     * @param lat takes the Latitude
+     * @return List<PoiTripMapUtil> || and returns List of 10 Point of Interests in category: "cultural"
+     */
+    public List<PoiTripMapUtil> getPoiByCoordinates(double lon, double lat){
+        return poiTripMapApi.getPOIsByCoordinates(lon,lat);
     }
 }

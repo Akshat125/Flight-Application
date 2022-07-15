@@ -18,13 +18,12 @@ import java.util.Locale;
 public class WeatherController {
 
     private IataCoordinatesRepository iataCoordinatesRepository;
-    private List<IataCoordinatesApiUtil> iataList;
+    private IataCoordinatesApiUtil iata;
     private FassadeApi fassadeAPI;
     private List<WeatherResponse> weatherList;
 
 
     public WeatherController() {
-        this.iataList = new ArrayList<>();
         this.fassadeAPI = new FassadeApi();
         weatherList = new ArrayList<>();
     }
@@ -37,10 +36,10 @@ public class WeatherController {
     public ResponseEntity<List<WeatherResponse>> getWeather(@PathVariable("searchByIATA") String IATA) {
         this.iataCoordinatesRepository = SpringbootApplication.getApplicationContext().getBean(IataCoordinatesRepository.class);
         weatherList.clear();
-        this.iataList = iataCoordinatesRepository.findByIata(IATA.toUpperCase(Locale.ROOT));
-        for (IataCoordinatesApiUtil iataCoordinatesMapping : iataList) {
-            if (iataCoordinatesMapping.getIata().trim().equalsIgnoreCase(IATA.trim())) {
-                WeatherApiUtil weather = fassadeAPI.getWeatherByCoordinates(iataCoordinatesMapping.getLongitude(), iataCoordinatesMapping.getLatitude());
+        this.iata = iataCoordinatesRepository.findByIata(IATA.toUpperCase(Locale.ROOT));
+
+            if (this.iata.getIata().trim().equalsIgnoreCase(IATA.trim())) {
+                WeatherApiUtil weather = fassadeAPI.getWeatherByCoordinates(this.iata.getLongitude(), this.iata.getLatitude());
                 for (int j = 0; j < weather.getList().size(); j++) {
                     weatherList.add(new WeatherResponse(weather.getList().get(j).getDt(), weather.getList().get(j).getMain().getTemp(),
                             weather.getList().get(j).getMain().getFeels_like(), weather.getList().get(j).getMain().getHumidity(),
@@ -49,7 +48,7 @@ public class WeatherController {
                 }
                 return ResponseEntity.ok(weatherList);
             }
-        }
+
         return ResponseEntity.noContent().build();
     }
 }

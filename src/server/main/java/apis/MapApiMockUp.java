@@ -14,15 +14,7 @@ import java.util.List;
  */
 public class MapApiMockUp implements MapApi {
 
-    private WebClient webClient;
-
     public MapApiMockUp() {
-        webClient = WebClient.builder()
-                .exchangeStrategies(ExchangeStrategies.builder().codecs(
-                                clientCodecConfigurer ->
-                                        clientCodecConfigurer.defaultCodecs().maxInMemorySize(10000000))
-                        .build())
-                .build();
     }
 
     /**

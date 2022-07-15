@@ -32,8 +32,6 @@ public class WeatherApiRelease implements WeatherApi {
                     .bodyToMono(String.class)
                     .onErrorStop()
                     .block();
-
-            System.out.println(WeatherApi.jsonStringToJavaClass(res));
             return WeatherApi.jsonStringToJavaClass(res);
         } catch (URISyntaxException e) {
             return null;
