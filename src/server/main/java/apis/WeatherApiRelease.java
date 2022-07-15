@@ -27,7 +27,7 @@ public class WeatherApiRelease implements WeatherApi {
     public WeatherApiUtil getWeatherByCoordinates(double lon, double lat) {
         try {
             String res = webClient.get()
-                    .uri(new URI("https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&unit=metric&cnt=40&lang=de&appid=" + ApiKey.WEATHER_KEY.getKEY()))
+                    .uri(new URI("https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&unit=metric&cnt=40&lang=en&appid=" + ApiKey.WEATHER_KEY.getKEY()))
                     .retrieve()
                     .bodyToMono(String.class)
                     .onErrorStop()
