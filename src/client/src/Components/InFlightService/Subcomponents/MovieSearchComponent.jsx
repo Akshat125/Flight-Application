@@ -60,11 +60,11 @@ class MovieSearchComponent extends Component {
                 </div>
 
                 <div className="card opacity-100 bg-gradient">
-                    <img className="card-img" width={80} height={650} src={baseImage}/>
+                    <img className="card-img" width={80} height={700} src={baseImage}/>
                     <div className="card-img-overlay">
                         <div className="cinemaScreen">
                             <iframe
-                                width="935" height="420" src={this.state.moviesList[this.state.currentMovieId].url}
+                                width="915" height="405" src={this.state.moviesList[this.state.currentMovieId].url}
                                 title="Pingu Cinema" frameBorder="2"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             >
