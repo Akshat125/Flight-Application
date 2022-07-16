@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import baseImage from "../../../Images/InFlightService/Movies/cinema.png";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import Card from 'react-bootstrap/Card';
 
 class MovieSearchComponent extends Component {
 
@@ -40,7 +41,7 @@ class MovieSearchComponent extends Component {
 
     render() {
         return (
-            <div>
+            <Card style={{ width: '79.4rem'}}>
                 <Form>
                     <Form.Label>Movie Search</Form.Label>
                     <Form.Control
@@ -59,9 +60,9 @@ class MovieSearchComponent extends Component {
                                 onClick={((e) => this.setState({searchInput: "",currentMovieId: movie.id})).bind(this)}> {movie.name} </Button>))}
                 </div>
 
-                <div className="card opacity-100 bg-gradient">
+                <Card style={{ width: '79.4rem' }}>
                     <img className="card-img" width={80} height={700} src={baseImage}/>
-                    <div className="card-img-overlay">
+                    <div className="card-img-overlay" >
                         <div className="cinemaScreen">
                             <iframe
                                 width="915" height="405" src={this.state.moviesList[this.state.currentMovieId].url}
@@ -71,8 +72,8 @@ class MovieSearchComponent extends Component {
                             </iframe>
                         </div>
                     </div>
-                </div>
-            </div>);
+                </Card>
+            </Card>);
     }
 }
 
