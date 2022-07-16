@@ -92,15 +92,11 @@ class PassengerSurveyComponent extends Component {
 
     save = (event) => {
         Swal.fire({
-            title: "20% Discount Coupon at Pingu Drinks",
-            text: "Take a sip in the Pingu Bahamas with a refreshing Mocktail at Pingu Drinks!",
+            title: "You received a 20% Discount Coupon at Pingu Drinks!",
+            text: "Take a sip in the Pingu Bahamas with a refreshing Mocktail.",
             imageUrl: couponImage,
-            showCancelButton: true,
-            confirmButtonText: "Accept",
-            cancelButtonText: "Reject",
-            confirmButtonColor: "#00ff55",
-            cancelButtonColor: "#999999",
-            reverseButtons: true,
+            timer: 2000,
+            showConfirmButton: false,
             imageWidth: 550,
             imageHeight: 300,
         });

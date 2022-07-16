@@ -12,14 +12,16 @@ class MovieSearchComponent extends Component {
             moviesList: [
                 {id: 0, name: "Penguins Of Madagascar", url: "https://www.youtube.com/embed/ub4VArS_xWk"}, // the default movie.
                 {id: 1, name: "Angry Birds", url: "https://www.youtube.com/embed/ZL7WYCpu6pw"},
-                {id: 2, name: "Cars 3", url: "https://www.youtube.com/embed/ZL7WYCpu6pw"},
-                {id: 3, name: "Toy Story 4", url: "https://www.youtube.com/embed/ZL7WYCpu6pw"},
-                {id: 4, name: "Kung Fu Panda 3", url: "https://www.youtube.com/embed/ZL7WYCpu6pw"},
-                {id: 5, name: "Despicable Me 2", url: "https://www.youtube.com/embed/ub4VArS_xWk"},
-                {id: 6, name: "Rio", url: "https://www.youtube.com/embed/ZL7WYCpu6pw"},
-                {id: 7, name: "Frozen 2", url: "https://www.youtube.com/embed/ZL7WYCpu6pw"},
-                {id: 8, name: "Coco", url: "https://www.youtube.com/embed/ZL7WYCpu6pw"},
-                {id: 9, name: "Madagascar 2", url: "https://www.youtube.com/embed/ZL7WYCpu6pw"},
+                {id: 2, name: "Cars 3", url: "https://www.youtube.com/embed/2LeOH9AGJQM"},
+                {id: 3, name: "Toy Story 4", url: "https://www.youtube.com/embed/wmiIUN-7qhE"},
+                {id: 4, name: "Kung Fu Panda 3", url: "https://www.youtube.com/embed/zAWMHuxAzxw"},
+                {id: 5, name: "Despicable Me 2", url: "https://www.youtube.com/embed/yM9sKpQOuEw"},
+                {id: 6, name: "Rio", url: "https://www.youtube.com/embed/P1GRO31ve5Q"},
+                {id: 7, name: "Frozen 2", url: "https://www.youtube.com/embed/Zi4LMpSDccc"},
+                {id: 8, name: "Coco", url: "https://www.youtube.com/embed/Ga6RYejo6Hk"},
+                {id: 9, name: "Madagascar 3", url: "https://www.youtube.com/embed/laNiRXqh82Q"},
+                {id: 10, name: "Hotel Transylvania", url: "https://www.youtube.com/embed/cOlhzKPX0KU"},
+                {id: 11, name: "Encanto", url: "https://www.youtube.com/embed/CaimKeDcudo"}
                  ],
             searchInput: "",
             currentMovieId: 0
