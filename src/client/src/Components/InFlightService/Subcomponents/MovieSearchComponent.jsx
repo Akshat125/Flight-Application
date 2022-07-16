@@ -10,8 +10,17 @@ class MovieSearchComponent extends Component {
 
         this.state = {
             moviesList: [
-                {id: 0, name: "Penguins Of Madagascar", url: "https://www.youtube.com/embed/ub4VArS_xWk"},
-                {id: 1, name: "Angry Birds", url: "https://www.youtube.com/embed/ZL7WYCpu6pw"}],
+                {id: 0, name: "Penguins Of Madagascar", url: "https://www.youtube.com/embed/ub4VArS_xWk"}, // the default movie.
+                {id: 1, name: "Angry Birds", url: "https://www.youtube.com/embed/ZL7WYCpu6pw"},
+                {id: 2, name: "Cars 3", url: "https://www.youtube.com/embed/ZL7WYCpu6pw"},
+                {id: 3, name: "Toy Story 4", url: "https://www.youtube.com/embed/ZL7WYCpu6pw"},
+                {id: 4, name: "Kung Fu Panda 3", url: "https://www.youtube.com/embed/ZL7WYCpu6pw"},
+                {id: 5, name: "Despicable Me 2", url: "https://www.youtube.com/embed/ub4VArS_xWk"},
+                {id: 6, name: "Rio", url: "https://www.youtube.com/embed/ZL7WYCpu6pw"},
+                {id: 7, name: "Frozen 2", url: "https://www.youtube.com/embed/ZL7WYCpu6pw"},
+                {id: 8, name: "Coco", url: "https://www.youtube.com/embed/ZL7WYCpu6pw"},
+                {id: 9, name: "Madagascar 2", url: "https://www.youtube.com/embed/ZL7WYCpu6pw"},
+                 ],
             searchInput: "",
             currentMovieId: 0
         }
@@ -41,15 +50,15 @@ class MovieSearchComponent extends Component {
 
                 <div className="d-grid gap-2">
                     {this.state.moviesList.filter((x) => {
-                        if (this.state.searchInput == "") return x;
+                        if (this.state.searchInput == "") return false;
                         return x.name.toLowerCase().includes(this.state.searchInput)
                     }).map((movie) => (
                         <Button variant="primary" size="lg" key={movie.id}
-                                onClick={((e) => this.setState({currentMovieId: movie.id})).bind(this)}> {movie.name} </Button>))}
+                                onClick={((e) => this.setState({searchInput: "",currentMovieId: movie.id})).bind(this)}> {movie.name} </Button>))}
                 </div>
 
                 <div className="card opacity-100 bg-gradient">
-                    <img className="card-img" width={100} height={750} src={baseImage}/>
+                    <img className="card-img" width={80} height={650} src={baseImage}/>
                     <div className="card-img-overlay">
                         <div className="cinemaScreen">
                             <iframe

@@ -15,7 +15,7 @@ class InFlightServiceComponent extends Component {
         this.state = {
             showMovie: false,
             showFlightInstructions: false,
-            serviceImageUrl: serviceButtonLogo1
+            serviceImageUrl: serviceButtonLogo1,
         }
 
         this.clickedMovies = this.clickedMovies.bind(this);
@@ -69,7 +69,7 @@ class InFlightServiceComponent extends Component {
                     <ul className="button-list">
                         <li className="button">
                             <button onClick={this.clickedMovies}><img className="btn1logo" src = {moviesLogo}/>
-                                <br/> Movies <br/>
+                                <br/> Movies <br/> <br/>
                             </button>
                         </li>
                         <li className="button">
@@ -79,7 +79,7 @@ class InFlightServiceComponent extends Component {
                         </li>
                         <li className="button">
                             <button onClick={this.clickedService}><img className="btn3logo" src = {this.state.serviceImageUrl}/>
-                                <br/> Service <br/>
+                                <br/> Service <br/> <br/>
                             </button>
                         </li>
                     </ul>

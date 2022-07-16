@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
-import RatingComponent from "./Subcomponents/RatingComponent";
-import './ratestyle.css'
-import './feedbackPopup.css'
-import './coupon.css';
-//import "font-awesome/css/font-awesome.min.css"
-import "bootstrap/dist/css/bootstrap.css"
-import './feed'
+import './ratestyle.css';
+import './feedbackPopup.css';
+import "bootstrap/dist/css/bootstrap.css";
+import './feed';
+import Swal from "sweetalert2";
+import couponImage from "./drinks.jpg";
+
 class PassengerSurveyComponent extends Component {
 
     constructor(props) {
@@ -13,20 +13,20 @@ class PassengerSurveyComponent extends Component {
 
 
         this.state = {
-            visible: false
+            visible: false,
+            isSubmitted: false
         }
 
     }
 
     //setVisible()    {
-       // this.setState(this.setVisible);
-       //this.state.visible = !this.state.visible;}
+    // this.setState(this.setVisible);
+    //this.state.visible = !this.state.visible;}
 
     componentDidMount() {
-
         const ratings = {
             comfort: 0,
-            food:0,
+            food: 0,
             entertainment: 0,
             service: 0,
             journey: 0
@@ -91,18 +91,30 @@ class PassengerSurveyComponent extends Component {
     }
 
     save = (event) => {
-        // TODO: make API call
-
-        this.props.history.push('/')
+        Swal.fire({
+            title: "20% Discount Coupon at Pingu Drinks",
+            text: "Take a sip in the Pingu Bahamas with a refreshing Mocktail at Pingu Drinks!",
+            imageUrl: couponImage,
+            showCancelButton: true,
+            confirmButtonText: "Accept",
+            cancelButtonText: "Reject",
+            confirmButtonColor: "#00ff55",
+            cancelButtonColor: "#999999",
+            reverseButtons: true,
+            imageWidth: 550,
+            imageHeight: 300,
+        });
+        this.props.closeSurvey();
     }
+
     cancel = (event) => {
-        this.props.history.push('/')
+        this.props.closeSurvey();
     }
 
     giveFeedback = (event) => {
         //this.props.prototype.history.push('/')
         var e = document.getElementById('feedback-main');
-        if(e.style.display == 'block')
+        if (e.style.display == 'block')
             e.style.display = 'none';
         else
             e.style.display = 'block';
@@ -126,7 +138,6 @@ class PassengerSurveyComponent extends Component {
             </div>
             */
             <div className="container mt-5">
-
                 <div className="form-group">
                     <select id="product-select" className="form-control custom-select">
                         <option value="0" disabled selected>Rate your flight</option>
@@ -200,53 +211,47 @@ class PassengerSurveyComponent extends Component {
 
                 <button className="btn btn-success" onClick={this.save}>Submit</button>
                 <button className="btn btn-danger" onClick={this.cancel} style={{marginLeft: "9px"}}>cancel</button>
-                <button className="btn btn-info" onClick={this.giveFeedback} style={{marginLeft: "900px"}}>write feedback</button>
+                <button className="btn btn-info" onClick={this.giveFeedback} style={{marginLeft: "900px"}}>write
+                    feedback
+                </button>
 
-//feedbackPopup code starts from here
                 <div id="feedback-main">
                     <div id="centerpoint">
-                    <div id="feedback-div">
-                        <form action="contact.php" method="post" className="form" id="feedback-form1" name="form1"
-                              encType="multipart/form-data">
+                        <div id="feedback-div">
+                            <form action="contact.php" method="post" className="form" id="feedback-form1" name="form1"
+                                  encType="multipart/form-data">
 
-                            <p className="name">
-                                <input name="name" type="name"
-                                       className="validate[required,custom[onlyLetter],length[0,100]] feedback-input"
-                                       required placeholder="Name" id="feedback-name"/>
-                            </p>
+                                <p className="name">
+                                    <input name="name" type="name"
+                                           className="validate[required,custom[onlyLetter],length[0,100]] feedback-input"
+                                           required placeholder="Name" id="feedback-name"/>
+                                </p>
 
-                            <p className="email">
-                                <input name="email" type="email"
-                                       className="validate[required,custom[email]] feedback-input" id="feedback-email"
-                                       placeholder="Email" required/>
-                            </p>
+                                <p className="email">
+                                    <input name="email" type="email"
+                                           className="validate[required,custom[email]] feedback-input"
+                                           id="feedback-email"
+                                           placeholder="Email" required/>
+                                </p>
 
 
-                            <p className="text">
+                                <p className="text">
                                 <textarea name="comment" type="comment"
                                           className="validate[required,length[6,300]] feedback-input"
                                           id="feedback-comment" required
                                           placeholder="Please write your valuable feedback here"></textarea>
-                            </p>
+                                </p>
 
-                            <div className="feedback-submit">
-                                <input type="submit" value="SEND" id="feedback-button-blue"/>
-                                <div className="feedback-ease"></div>
-                            </div>
-                        </form>
+                                <div className="feedback-submit">
+                                    <input type="submit" value="SEND" id="feedback-button-blue"/>
+                                    <div className="feedback-ease"></div>
+                                </div>
+                            </form>
+                        </div>
                     </div>
-                    </div>
-
-
-
                 </div>
-
-
             </div>
-
-
-
-    );
+        );
     }
 }
 

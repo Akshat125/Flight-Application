@@ -117,6 +117,15 @@ class HomepageComponent extends Component {
         }
     }
 
+    closeSurvey = () => {
+        this.setState({
+            showDash: false,
+            showSurvey: false,
+            showService: false,
+        });
+        setTimeout(() => {window.scrollTo({top: 0, behavior: 'smooth'})}, 200);
+    }
+
 
     render() {
         return (
@@ -141,7 +150,7 @@ class HomepageComponent extends Component {
                     </div>
                     <div id="body" className="body">
                         {this.state.showDash ? <FlightDashboardComponent loadSavedFlights={this.loadSavedFlights} getSavedFlights={this.getSavedFlights} isLoggedIn={this.isLoggedIn} getUser={this.getUser} getPass={this.getPass}/> : null}
-                        {this.state.showSurvey ? <PassengerSurveyComponent /> : null}
+                        {this.state.showSurvey ? <PassengerSurveyComponent closeSurvey={this.closeSurvey}/> : null}
                         {this.state.showService ? <InFlightServiceComponent /> : null}
                     </div>
                 </div>
