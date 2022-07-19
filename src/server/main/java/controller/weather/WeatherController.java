@@ -44,7 +44,7 @@ public class WeatherController {
                     weatherList.add(new WeatherResponse(weather.getList().get(j).getDt(), weather.getList().get(j).getMain().getTemp(),
                             weather.getList().get(j).getMain().getFeels_like(), weather.getList().get(j).getMain().getHumidity(),
                             weather.getList().get(j).getWind().getSpeed(), weather.getList().get(j).getWind().getDeg(),
-                            weather.getList().get(j).getWeather().get(0).getDescription(), weather.getList().get(j).getWeather().get(0).getIcon(), weather.getList().get(j).getPop()));
+                            weather.getList().get(j).getWeather().isEmpty()?"Not available":weather.getList().get(j).getWeather().get(0).getDescription(), weather.getList().get(j).getWeather().isEmpty()?"Not available":weather.getList().get(j).getWeather().get(0).getIcon(), weather.getList().get(j).getPop()));
                 }
                 return ResponseEntity.ok(weatherList);
             }

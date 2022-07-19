@@ -69,13 +69,13 @@ public class FlightController {
             List<IcaoNameApiUtil> arrivalAirport = iacoNameRepository.findByIcao(flightData.getResponse().get(i).getArr_icao());
             if (departureAirport.isEmpty()) {
                 icao2NameAPI = fassadeAPI.getNameAirport(flightData.getResponse().get(i).getDep_icao());
-                iacoNameRepository.save(new IcaoNameApiUtil(icao2NameAPI.getResponse().get(0).getIcao_code(), icao2NameAPI.getResponse().get(0).getName()));
-                departureAirport.add(new IcaoNameApiUtil(icao2NameAPI.getResponse().get(0).getIcao_code(), icao2NameAPI.getResponse().get(0).getName()));
+                iacoNameRepository.save(new IcaoNameApiUtil(icao2NameAPI.getResponse().isEmpty()?"Not available":icao2NameAPI.getResponse().get(0).getIcao_code(), icao2NameAPI.getResponse().isEmpty()?"Not available":icao2NameAPI.getResponse().get(0).getName()));
+                departureAirport.add(new IcaoNameApiUtil(icao2NameAPI.getResponse().isEmpty()?"Not available":icao2NameAPI.getResponse().get(0).getIcao_code(), icao2NameAPI.getResponse().isEmpty()?"Not available":icao2NameAPI.getResponse().get(0).getName()));
             }
             if (arrivalAirport.isEmpty()) {
                 icao2NameAPI = fassadeAPI.getNameAirport(flightData.getResponse().get(i).getArr_icao());
-                iacoNameRepository.save(new IcaoNameApiUtil(icao2NameAPI.getResponse().get(0).getIcao_code(), icao2NameAPI.getResponse().get(0).getName()));
-                arrivalAirport.add(new IcaoNameApiUtil(icao2NameAPI.getResponse().get(0).getIcao_code(), icao2NameAPI.getResponse().get(0).getName()));
+                iacoNameRepository.save(new IcaoNameApiUtil(icao2NameAPI.getResponse().isEmpty()?"Not available":icao2NameAPI.getResponse().get(0).getIcao_code(), icao2NameAPI.getResponse().isEmpty()?"Not available":icao2NameAPI.getResponse().get(0).getName()));
+                arrivalAirport.add(new IcaoNameApiUtil(icao2NameAPI.getResponse().isEmpty()?"Not available":icao2NameAPI.getResponse().get(0).getIcao_code(), icao2NameAPI.getResponse().isEmpty()?"Not available":icao2NameAPI.getResponse().get(0).getName()));
             }
 
             airline_icao = flightData.getResponse().get(i).getAirline_icao();
@@ -86,7 +86,7 @@ public class FlightController {
                 if (airlineNameUtil == null) {
                     airlineNameRet = airline_icao;
                 } else {
-                    airlineNameRet = airlineNameUtil.getResponse().get(0).getName();
+                    airlineNameRet = airlineNameUtil.getResponse().isEmpty()?"Not available":airlineNameUtil.getResponse().get(0).getName();
                     airlineNameRepository.save(new AirlineName(airlineNameRet, airline_icao));
                 }
             } else {
@@ -94,10 +94,10 @@ public class FlightController {
             }
 
             if (flightData.getResponse().get(i).getDays().toString().contains(flightArray[2].toLowerCase())) {
-                Flight flight = new Flight(flightData.getResponse().get(i).getFlight_number(), airlineNameRet, departureAirport.get(0).getAirportName(), arrivalAirport.get(0).getAirportName(),
+                Flight flight = new Flight(flightData.getResponse().get(i).getFlight_number(), airlineNameRet, departureAirport.isEmpty()?"Not available":departureAirport.get(0).getAirportName(), arrivalAirport.isEmpty()?"Not available":arrivalAirport.get(0).getAirportName(),
                         flightData.getResponse().get(i).getDep_iata(), flightData.getResponse().get(i).getArr_iata(),
-                        flightData.getResponse().get(i).getDep_terminals() == null ? "/" : flightData.getResponse().get(i).getDep_terminals().toString(),
-                        flightData.getResponse().get(i).getDep_terminals() == null ? "/" : flightData.getResponse().get(i).getArr_terminals().toString(),
+                        flightData.getResponse().get(i).getDep_terminals() == null || flightData.getResponse().get(i).getDep_terminals().isEmpty()? "/" : flightData.getResponse().get(i).getDep_terminals().toString(),
+                        flightData.getResponse().get(i).getArr_terminals() == null || flightData.getResponse().get(i).getArr_terminals().isEmpty() ? "/" : flightData.getResponse().get(i).getArr_terminals().toString(),
                         flightData.getResponse().get(i).getDep_time_utc(), flightData.getResponse().get(i).getDep_time(),
                         flightData.getResponse().get(i).getArr_time_utc(), flightData.getResponse().get(i).getArr_time(), flightData.getResponse().get(i).getDuration());
                 flightListWhileSurfing.add(flight);
