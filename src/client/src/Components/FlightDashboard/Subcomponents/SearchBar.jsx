@@ -329,17 +329,17 @@ class SearchBar extends Component {
                 {this.state.showSearch ? <h2>search results</h2> : ""}
                 {this.state.showSearch && !this.props.isLoggedIn() ? <p>login to save flights</p> : ""}
                 {this.state.showSearch && this.props.isLoggedIn() ? <p>click to add flights</p> : ""}
-                
+
                 {
                     this.state.showSearch ?
                     <div className="flightoptionheader" id="flightoptionheader">
                         <span id="flight">flight</span>
                         <span id="airline">airline</span>
-                        <span id="from_airport">airport</span>
+                        <span id="from_airport">depart</span>
                         <span id="from_gate">gate</span>
                         <span id="from_time">time</span>
                         <span id="headerwhitespace"></span>
-                        <span id="to_airport">airport</span>
+                        <span id="to_airport">arrive</span>
                         <span id="to_gate">gate</span>
                         <span id="to_time">time</span>
                     </div>
@@ -381,11 +381,11 @@ class SearchBar extends Component {
                     <div className="myflightoptionheader" id="myflightoptionheader">
                         <span id="flight">flight</span>
                         <span id="airline">airline</span>
-                        <span id="from_airport">airport</span>
+                        <span id="from_airport">depart</span>
                         <span id="from_gate">gate</span>
                         <span id="from_time">time</span>
                         <span id="headerwhitespace"></span>
-                        <span id="to_airport">airport</span>
+                        <span id="to_airport">arrive</span>
                         <span id="to_gate">gate</span>
                         <span id="to_time">time</span>
                         <span id="remove-placeholder"></span>

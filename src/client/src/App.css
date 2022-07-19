@@ -853,7 +853,6 @@ span #wind  {
 .passenger-survey   {
     position: relative;
     left: -30em;
-    height: 70em;
 
     animation-name: tabswitch;
     animation-duration: 1s;
@@ -861,16 +860,41 @@ span #wind  {
     animation-fill-mode: forwards;
 }
 
+.passenger-survey h1  {
+    display: block;
+    margin: 0;
+    border: solid 1px #76c6ff;
+    border-radius: 0.5em;
+    padding: 0.2em 0em 0.2em 0em;
+    text-align: center;
+
+    font-size: 28pt;
+    color: #142a52;
+    background-color: #e5f6fb;
+}
+
 .inflight-service   {
     position: relative;
     left: -30em;
-    height: 70em;
 
     justify-content: center;
     animation-name: tabswitch;
     animation-duration: 1s;
     animation-timing-function: ease;
     animation-fill-mode: forwards;
+}
+
+.inflight-service h1  {
+    display: block;
+    margin: 0;
+    border: solid 1px #76c6ff;
+    border-radius: 0.5em;
+    padding: 0.2em 0em 0.2em 0em;
+    text-align: center;
+
+    font-size: 28pt;
+    color: #142a52;
+    background-color: #e5f6fb;
 }
 
 .cinemaScreen {

@@ -65,6 +65,8 @@ class InFlightServiceComponent extends Component {
     render() {
         return (
             <div className="inflight-service">
+                <h1> inflight service </h1>
+                <br/>
                 <div className="button-container">
                     <ul className="button-list">
                         <li className="button">

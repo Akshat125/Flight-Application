@@ -14,7 +14,12 @@ class PassengerSurveyComponent extends Component {
 
         this.state = {
             visible: false,
-            isSubmitted: false
+            isSubmitted: false,
+            comfort: 0,
+            food: 0,
+            entertainment: 0,
+            service: 0,
+            journey: 0,
         }
 
     }
@@ -105,6 +110,13 @@ class PassengerSurveyComponent extends Component {
 
     cancel = (event) => {
         this.props.closeSurvey();
+        //this.props.history.push('/')
+    }
+
+    comfort = () => {
+        this.setState({comfort: document.getElementById('comfortinput').value});
+        setTimeout(() => console.log(""), 200);
+        document.getElementById('comfortstars').style.width = `${Math.round((this.state.comfort / 5 * 100) / 10) * 10}%`;
     }
 
     giveFeedback = (event) => {
@@ -121,22 +133,13 @@ class PassengerSurveyComponent extends Component {
 
         //const {rating} = this.state;
         return (
-
-            /*
             <div className="passenger-survey">
-                <h2>Rating from state:{rating}</h2>
-                <RatingComponent
-                    name="rate1"
-                    starCount={5}
-                    value={rating}
-                    onStarClick={this.onStarClick.bind(this)}
-                />
-            </div>
-            */
+            <h1> passenger survey </h1>
+            <div className="maxwidth">
             <div className="container mt-5">
                 <div className="form-group">
                     <select id="product-select" className="form-control custom-select">
-                        <option value="0" disabled selected>Rate your flight</option>
+                        <option value="0" disabled selected>Rate category...</option>
                         <option value="comfort">Comfort</option>
                         <option value="food">Food</option>
                         <option value="entertainment">Entertainment</option>
@@ -152,22 +155,25 @@ class PassengerSurveyComponent extends Component {
                 <table className="table table-striped">
                     <thead>
                     <tr>
-                        <th>Air Pingu</th>
+                        <th>Category</th>
+                        <th>Input</th>
                         <th>Rating</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr className="comfort">
                         <td>Comfort</td>
+                        <td><input id="comfortinput" placeholder="0-5" onChange={this.comfort} type="number" maxLength="1" min="0" max="5" /></td>
                         <td>
                             <div className="stars-outer">
-                                <div className="stars-inner"></div>
+                                <div id="comfortstars" className="stars-inner"></div>
                             </div>
                             <span className="number-rating"></span>
                         </td>
                     </tr>
                     <tr className="food">
                         <td>Food</td>
+                        <td><input placeholder="0-5" onInput={this.save} type="text" /></td>
                         <td>
                             <div className="stars-outer">
                                 <div className="stars-inner"></div>
@@ -177,6 +183,7 @@ class PassengerSurveyComponent extends Component {
                     </tr>
                     <tr className="entertainment">
                         <td>Entertainment</td>
+                        <td><input placeholder="0-5" onInput={this.save} type="text" /></td>
                         <td>
                             <div className="stars-outer">
                                 <div className="stars-inner"></div>
@@ -186,6 +193,7 @@ class PassengerSurveyComponent extends Component {
                     </tr>
                     <tr className="service">
                         <td>Service</td>
+                        <td><input placeholder="0-5" onInput={this.save} type="text" /></td>
                         <td>
                             <div className="stars-outer">
                                 <div className="stars-inner"></div>
@@ -195,6 +203,7 @@ class PassengerSurveyComponent extends Component {
                     </tr>
                     <tr className="journey">
                         <td>Journey</td>
+                        <td><input placeholder="0-5" onInput={this.save} type="text" /></td>
                         <td>
                             <div className="stars-outer">
                                 <div className="stars-inner"></div>
@@ -246,8 +255,15 @@ class PassengerSurveyComponent extends Component {
                         </div>
                     </div>
                 </div>
+
+                </div>
             </div>
-        );
+            </div>
+
+            //<div dangerouslySetInnerHTML={ {__html: survey} } />
+
+
+    );
     }
 }
 
