@@ -1,6 +1,7 @@
 package apis;
 
 import org.springframework.http.MediaType;
+import org.springframework.web.reactive.function.client.ExchangeStrategies;
 import org.springframework.web.reactive.function.client.WebClient;
 import utils.api.poiTripMap.PoiTripMapUtil;
 import java.net.URI;
@@ -15,7 +16,12 @@ public class PoiTripMapApiRelease implements PoiTripMapApi {
     private WebClient webClient;
 
     public PoiTripMapApiRelease() {
-        webClient = WebClient.builder().defaultHeader(MediaType.APPLICATION_JSON_VALUE).build();
+        webClient = WebClient.builder()
+                .exchangeStrategies(ExchangeStrategies.builder().codecs(
+                                clientCodecConfigurer ->
+                                        clientCodecConfigurer.defaultCodecs().maxInMemorySize(10000000))
+                        .build())
+                .build();
     }
 
     /**

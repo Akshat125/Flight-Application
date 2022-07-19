@@ -19,7 +19,7 @@ public class FassadeApi {
      * or
      * false -> to use the non-mocked implementation
      */
-    private static final boolean USE_MOCKUP = true;
+    private static final boolean USE_MOCKUP = false;
 
     private AirlineApi airlinesAPI;
     private MapApi mapsAPI;
