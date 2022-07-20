@@ -13,11 +13,13 @@ import utils.user.UserRepository;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Just two simple tests for the Database itself
+ */
 @ExtendWith(SpringExtension.class)
 public class TestDB {
 
     private static ConfigurableApplicationContext applicationContext;
-    // Test adding new User
 
     @BeforeAll
     static void prepareDB() {
@@ -66,7 +68,4 @@ public class TestDB {
         reviewRepository.delete(newReview);
         assertNull(reviewRepository.findReviewByHash(newReview.getHash()));
     }
-
-
-    // TODO test remaining DB Entities
 }
