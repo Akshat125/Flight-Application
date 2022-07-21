@@ -16,8 +16,7 @@ class FooterComponent extends Component {
 
     render() {
 
-        const credit =" EIST Project 2022 | @Team: Debugging Penguins | @Authors: Akshat Tandon, Eben Jowie Haezer, Jonas Arnold, Kilian Burger, Saiyam Jain\n" ;
-        const description = "According to Wikipedia, Pingu is the main character of the show, a typically playful, curious little penguin. His name comes from the German word for penguin, Pinguin. He is stubborn and mostly well-behaved but prone to making mischief and throwing occasional tantrums.";
+        const description = "EIST Project 2022 \"Air Pingu\" Flight System by Team Debugging Penguins. Credits to Akshat Tandon, Eben Jowie Haezer, Jonas Arnold, Kilian Burger, Saiyam Jain. Made with React, Java, and <3 ";
         const title = "AirPingu";
         const columns = [
             {
@@ -80,8 +79,8 @@ class FooterComponent extends Component {
             pinterest="fluffy_cats_collections"
             copyright="airpingu"
             iconColor="black"
-            backgroundColor="grey"
-            fontColor="black"
+            backgroundColor="#e5f6fb"
+            fontColor="#142a52"
             copyrightColor="darkgrey"
         />;
         /*
