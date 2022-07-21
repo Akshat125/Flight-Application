@@ -80,8 +80,8 @@ class FooterComponent extends Component {
             copyright="airpingu"
             iconColor="black"
             backgroundColor="#e5f6fb"
-            fontColor="#142a52"
-            copyrightColor="darkgrey"
+            fontColor="#1f557b"
+            copyrightColor="1f557b"
         />;
         /*
         return (
