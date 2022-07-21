@@ -150,8 +150,8 @@ class HomepageComponent extends Component {
                     </div>
                     <div id="body" className="body">
                         {this.state.showDash ? <FlightDashboardComponent loadSavedFlights={this.loadSavedFlights} getSavedFlights={this.getSavedFlights} isLoggedIn={this.isLoggedIn} getUser={this.getUser} getPass={this.getPass}/> : null}
-                        {this.state.showSurvey ? <PassengerSurveyComponent closeSurvey={this.closeSurvey}/> : null}
-                        {this.state.showService ? <InFlightServiceComponent /> : null}
+                        {this.state.showSurvey ? <PassengerSurveyComponent loadSavedFlights={this.loadSavedFlights} getSavedFlights={this.getSavedFlights} isLoggedIn={this.isLoggedIn} getUser={this.getUser} closeSurvey={this.closeSurvey}/> : null}
+                        {this.state.showService ? <InFlightServiceComponent isLoggedIn={this.isLoggedIn}/> : null}
                     </div>
                 </div>
                 <FooterComponent />

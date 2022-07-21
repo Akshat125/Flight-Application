@@ -35,7 +35,7 @@
 *   {
     padding: 0;
     margin: 0;
-    color: #141414;
+    color: #142a52;
     font-family: "Montserrat", sans-serif;
 }
 
@@ -97,7 +97,7 @@ div {
     transition: font-size 0.5s ease;
 }
 
-.navbar .login-btn  {
+.login-btn  {
     font-size: 13pt;
     color: #1f557b;
     text-decoration: none;
@@ -695,6 +695,7 @@ div {
     color: #1f557b;
     font-weight: bold;
     padding-bottom: 0.2em;
+    padding-left: 1.3em;
 }
 
 #my-flights {
@@ -708,7 +709,12 @@ div {
 
 #flightoptioncontainer  {
     margin-bottom: 0.3em;
-    padding: 0em 0em;
+}
+
+#flightoptioncontainer2  {
+    margin-bottom: 0.3em;
+    width: 60em;
+    margin: 0em 5em;
 }
 
 #my-flights-table tr    {
@@ -777,10 +783,9 @@ div {
 
 #expand-header span {
     display: inline-block;
-    min-width: 5em;
     padding: 0;
-    padding-left: 0.5em;
-    padding-right: 1em;
+    padding-left: 0.3em;
+    padding-right: 1.3em;
     text-align: left;
     color: #1f557b;
 }
@@ -791,11 +796,19 @@ div {
 }
 
 span #temp   {
-    min-width: 5em;
+    min-width: 4em;
+}
+
+span #humidity   {
+    min-width: 3em;
 }
 
 span #wind  {
     min-width: 5em;
+}
+
+span #rain  {
+    min-width: 3em;
 }
 
 
@@ -803,7 +816,8 @@ span #wind  {
     border: none;
     color: #a62525;
     background-color: rgba(0, 0, 0, 0);
-    width: 5em;
+    width: 2em;
+    margin-right: 1em;
 }
 
 #remove-btn:hover   {
@@ -850,6 +864,130 @@ span #wind  {
     height: 2em;
 }
 
+#expandcontainer h3 {
+    text-align: left;
+}
+
+#expandcontainer p  {
+    margin: 0;
+    text-align: left;
+}
+
+#bucket-list p  {
+    margin-left: 7.7vw;
+    padding: 0;
+    text-align: left;
+}
+
+#bucket-list ul {
+    list-style: none;
+    display: inline-block;
+    columns: 2;
+    margin-top: 1em;
+}
+
+#bucket-list li    {
+    margin: auto;
+    height: 2em;
+    width: 25em;
+    display: inline-block;
+    position: relative;
+    margin: 0.2em;
+    margin-left: 5vw;
+
+    text-align: left;
+
+    color: #1f557b;
+    border: none;
+    border-top: solid 0.5px #76c6ff;
+    border-bottom: solid 0.5px #76c6ff;
+    background-color: #e5f6fb;
+
+    transition: all 0.5s linear;
+}
+
+#bucket-list li:hover {
+    cursor: pointer;
+}
+
+#remove-poi {
+    width: 2em;
+    height: 1.95em;
+    display: inline-block;
+    position: relative;
+    margin: 0em 1em;
+    text-align: center;
+
+    color: #1f557b;
+    border: none;
+    border-top: solid 0px #76c6ff;
+    border-bottom: solid 0px #76c6ff;
+    background-color: #e5f6fb;
+
+    transition: all 0.5s linear;
+}
+
+#remove-poi:hover {
+    border: none;
+    cursor: pointer;
+    color: #ffffff;
+    background-color: #a62525;
+}
+
+#poi-interface  {
+    display: flex;
+}
+
+#poi-list   {
+    display: inline-block;
+    width: 50%;
+    text-align: left;
+}
+
+#map    {
+    display: inline-block;
+    width: 50%
+}
+
+#poi-list ul    {
+    list-style: none;
+    padding: 0;
+}
+
+#poi-list button    {
+    height: 2em;
+    width: 25em;
+    display: inline-block;
+    position: relative;
+    margin: 0.2em;
+
+    text-align: left;
+    padding-left: 2em;
+
+    color: #1f557b;
+    border: none;
+    border-top: solid 0.5px #76c6ff;
+    border-bottom: solid 0.5px #76c6ff;
+    background-color: #e5f6fb;
+
+    transition: all 0.5s linear;
+}
+
+#poi-list button:hover {
+    cursor: pointer;
+    background-color: #76c6ff;
+    border-top: solid 0.5px #1f557b;
+    border-bottom: solid 0.5px #1f557b;
+}
+
+#flightmap  {
+    margin: 2em 0em 1em 0em;
+}
+
+#flightmap img  {
+    margin-top: 1em;
+}
+
 .passenger-survey   {
     position: relative;
     left: -30em;
@@ -858,6 +996,32 @@ span #wind  {
     animation-duration: 1s;
     animation-timing-function: ease;
     animation-fill-mode: forwards;
+}
+
+.maxwidth   {
+    max-width: 40em;
+
+    position: relative;
+    left: -30em;
+
+    justify-content: center;
+    animation-name: tabswitch;
+    animation-duration: 1s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+}
+
+.passenger-survey p {
+    font-size: 14pt;
+    color: #1f557b;
+    margin: 0.5em 0em 1.5em 10vw;
+    font-style: italic;
+}
+
+#comment    {
+    margin-left: 0em;
+    font-style: none;
+    font-size: 13pt;
 }
 
 .passenger-survey h1  {
@@ -871,6 +1035,19 @@ span #wind  {
     font-size: 28pt;
     color: #142a52;
     background-color: #e5f6fb;
+}
+
+.passenger-survey h2    {
+    color: #1f557b;
+    margin: 0em 0em 0em 10vw;
+    padding-top: 1em;
+}
+
+.passenger-survey textarea  {
+    width: 70vw;
+    height: 15vh;
+    font-size: 13pt;
+    padding: 0.5em;
 }
 
 .inflight-service   {
@@ -897,10 +1074,38 @@ span #wind  {
     background-color: #e5f6fb;
 }
 
+.inflight-service h2    {
+    color: #1f557b;
+    margin: 0.5em;
+}
+
+.inflight-service p {
+    color: #1f557b;
+    margin: 0.5em 0em 1.5em 10vw;
+    font-style: italic;
+    font-size: 14pt;
+}
+
 .cinemaScreen {
     margin-top: 201px;
     margin-left: 150px;
 
+}
+
+.flight-safety  {
+    margin: auto;
+    text-align: center;
+}
+
+.call   {
+    width: 9em;
+    border: 2px solid #1f557b;
+    border-radius: 20px;
+    padding: 0.5em;
+    box-shadow: 2px 3px #888888;
+    background: black;
+
+    transition: color 0.5s ease;
 }
 
 h1 {
@@ -911,6 +1116,11 @@ h1 {
 
 .searchBar {
     width: 32%;
+}
+
+td  {
+    font-size: 14pt;
+    color: #142a52;
 }
 
 

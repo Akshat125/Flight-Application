@@ -18,7 +18,7 @@ class SafetyInstructionsComponent extends Component {
 
     render() {
         return (
-            <div className="inflight-service">
+            <div className="inflight-service flight-safety">
                 <img class = "img-fluid" src={safetyInstructions}/>
             </div>
         );

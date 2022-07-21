@@ -114,7 +114,7 @@ class NavigationBarComponent extends Component {
         else {
             Swal.fire({
                 icon: 'error',
-                html: '<h3>Unable to register account</h3><br><Username or password may be incorrect.<br>Alternatively, you may be disconnected from the server.',
+                html: '<h3>Unable to register account</h3><br>Username taken.<br>Alternatively, you may be disconnected from the server.',
                 showConfirmButton: false,
                 timer: 4000
             });

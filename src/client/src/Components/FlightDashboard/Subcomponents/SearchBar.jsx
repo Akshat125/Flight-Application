@@ -3,10 +3,14 @@ import AirportController from '../../../Controller/AirportController.js';
 import AirlineController from '../../../Controller/AirlineController.js';
 import WeatherController from '../../../Controller/WeatherController.js';
 import MapsController from '../../../Controller/MapsController.js';
+import POIController from '../../../Controller/POIController.js';
 import Swal from 'sweetalert2';
 
 import thermometericon from '../../../Images/thermometericon.png';
 import windicon from '../../../Images/windicon.jpeg';
+import rainicon from '../../../Images/rainicon.png';
+import humidityicon from '../../../Images/humidityicon.png';
+import removeicon from '../../../Images/removeicon.png';
 
 import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
@@ -37,7 +41,11 @@ class SearchBar extends Component {
             weather: [],
             weatherClicked: false,
             weatherFor: null,
+            weatherCity: "",
+            weatherCityUrl: "",
             mapimg: null,
+            poi_list: null,
+            bucket_list: []
         }
 
     }
@@ -45,11 +53,13 @@ class SearchBar extends Component {
     componentDidMount() {
         this.setState({my_flights: this.props.getSavedFlights()});
         console.log(this.props.getSavedFlights());
+        this.loadPOIs();
     }
 
     componentWillUnmount()  {
         this.setState({my_flights: this.props.getSavedFlights()});
         console.log(this.props.getSavedFlights());
+        this.loadPOIs();
     }
 
     receive_from = (resp_from) => {
@@ -155,8 +165,30 @@ class SearchBar extends Component {
         const option = {weekday: 'short'};
         const daystr = (new Intl.DateTimeFormat('en-US', option).format(item.getDay())).toLowerCase();
         this.setState({searched_date: false, selected_date: true, day: daystr});
-        const option1 = {weekday: 'long'};
-        const daystrl = (new Intl.DateTimeFormat('en-US', option1).format(item.getDay()));
+        let daystrl = "";
+        switch (item.getDay())  {
+            case 1:
+                daystrl = "Monday";
+                break;
+            case 2:
+                daystrl = "Tuesday";
+                break;
+            case 3:
+                daystrl = "Wednesday";
+                break;
+            case 4:
+                daystrl = "Thursday";
+                break;
+            case 5:
+                daystrl = "Friday";
+                break;
+            case 6:
+                daystrl = "Saturday";
+                break;
+            case 0:
+                daystrl = "Sunday";
+                break;
+        }
         let mstr = "";
         switch (item.getMonth())   {
             case 0:
@@ -280,22 +312,62 @@ class SearchBar extends Component {
         this.setState({mapimg: URL.createObjectURL(resp)});
     }
 
-
-    expandFlight = async (flight) =>  {
-        if (this.state.weatherFor === flight) {
-            this.collapseFlight(flight);
-        }
-        else {
-            this.generateMap(flight);
-            const resp = await WeatherController.getWeather(flight.arrivalIata);
-            this.setState({weather: resp, weatherClicked: true, weatherFor: flight});
-            console.log(this.state.weather);
-        }
+    weatherIcon = () => {
+        return "http://openweathermap.org/img/wn/" + this.state.weather[0].icon + "@2x.png";
     }
 
-    collapseFlight = async (flight) =>  {
+    expandFlight = async (flight) =>  {
+        this.collapseFlight();
+        const city = await AirportController.getAirport(flight.arrivalIata);
+        this.setState({weatherCity: city[0].nameCity, weatherCityUrl: "https://maps.google.com/maps?q=" + city[0].nameCity + "&z=11&ie=UTF8&output=embed"});
+        console.log(this.state.weatherCity);
+        const poi = await POIController.getPoi(flight.arrivalIata);
+        this.setState({poi_list: poi});
+        console.log(this.state.poi_list);
+        this.generateMap(flight);
+        const resp = await WeatherController.getWeather(flight.arrivalIata);
+        this.setState({weather: resp, weatherClicked: true, weatherFor: flight});
+        console.log(this.state.weather);
+    }
 
-        this.setState({weather: [], weatherClicked: false, weatherFor: null});
+    collapseFlight = async () =>  {
+        this.setState({weather: [], weatherClicked: false, weatherFor: null, weatherCity: "", weatherCityUrl: "", poi_list: null});
+    }
+
+    savePOI = (poiName) =>  {
+        localStorage.setItem(this.props.getUser() + "&" + poiName, poiName);
+        this.loadPOIs();
+        console.log('added');
+
+        Swal.fire({
+            icon: 'success',
+            text: 'Item successfully added to your bucket list.',
+            showConfirmButton: false,
+            timer: 2000
+        });
+    }
+
+    removePOI = (poiName) =>    {
+        localStorage.removeItem(this.props.getUser() + "&" + poiName);
+        this.loadPOIs();
+        console.log('removed');
+
+        Swal.fire({
+            icon: 'success',
+            text: 'Item successfully removed from your bucket list.',
+            showConfirmButton: false,
+            timer: 2000
+        });
+    }
+
+    loadPOIs = () =>    {
+        this.setState({bucket_list: []});
+        for (var k in Object.keys(localStorage))    {
+            let key = localStorage.key(k);
+            if (key.split('&')[0] === this.props.getUser()) {
+                this.setState(prev => ({bucket_list: [...prev.bucket_list, key.split('&')[1]]}));
+            }
+        }
     }
 
 
@@ -373,8 +445,26 @@ class SearchBar extends Component {
 
                 {this.state.showSearch ? <hr/> : null}
 
+                {
+                    this.props.isLoggedIn() ?
+                    <div id="bucket-list">
+                        <h2> my bucket list </h2>
+                        <ul>
+                            {
+                                this.state.bucket_list !== null && this.state.bucket_list.length != 0?
+                                this.state.bucket_list.map(poi =>
+                                    <li className="bucket-item"><button id="remove-poi" onClick={this.removePOI.bind(this, poi)}><img src={removeicon} width="20"/></button>{poi}</li>
+                                )
+                                : <p>Your bucket list is empty.</p>
+                            }
+                        </ul>
+                    </div>
+                    : null
+                }
+
                 <h2> my flights </h2>
-                {this.props.isLoggedIn() ? <p>click to see further details</p> : ""}
+                {this.props.isLoggedIn() && this.state.my_flights.length != 0 ? <p>You have no saved flights.</p> : null}
+                {this.props.isLoggedIn() && this.state.my_flights.length == 0 ? <p>click to see further details</p> : null}
                 <div>
                 {
                     this.props.isLoggedIn() ?
@@ -390,7 +480,7 @@ class SearchBar extends Component {
                         <span id="to_time">time</span>
                         <span id="remove-placeholder"></span>
                     </div>
-                    : <p>login to see your saved flights</p>
+                    : <p>Login to see your saved flights.</p>
                 }
                 </div>
                 <div id="my-flights">
@@ -410,22 +500,47 @@ class SearchBar extends Component {
                                 <td id="arrivaliata">{flight.arrivalIata}</td>
                                 <td id="arrivalgate">{flight.arrivalTerminal}</td>
                                 <td id="arrivaltime">{flight.arrivalTime}</td>
-                                <button className="flightoptionbtn" id="remove-btn" onClick={this.removeFlight.bind(this, flight)}>remove</button>
+                                <button className="flightoptionbtn" id="remove-btn" onClick={this.removeFlight.bind(this, flight)}><img src={removeicon} width="20"/></button>
                             </tr>
                             <div id="expandcontainer">
                             {this.state.weatherClicked && this.state.weatherFor === flight  ?
                                 <div id="expand-flight">
                                     <div id="expand-header">
-                                        <h3>{flight.arrivalAirport}</h3>
+                                        <h3>{this.state.weatherCity}<img id="weathericon" src={this.weatherIcon()} width="50"/></h3>
                                         <div id="weather">
                                             <img id="themometericon" width="30" height="30" src={thermometericon}/>
                                             <span id="temp">{(this.state.weather[0].temp - 273.15).toFixed()}°C</span>
+                                            <img width="30" height="30" src={humidityicon}/>
+                                            <span id="humidity">{(this.state.weather[0].humidity)}%</span>
                                             <img width="30" height="30" src={windicon}/>
                                             <span id="wind">{(this.state.weather[0].windSpeed * 3.6).toFixed()}kph {this.state.weather[0].windDirection / 45 < 1 ? "N" : this.state.weather[0].windDirection / 45 < 2 ? "NE" : this.state.weather[0].windDirection / 45 < 3 ? "E" : this.state.weather[0].windDirection / 45 < 4 ? "SE" : this.state.weather[0].windDirection / 45 < 5 ? "S" : this.state.weather[0].windDirection / 45 < 6 ? "SW" : this.state.weather[0].windDirection / 45 < 7 ? "W" : this.state.weather[0].windDirection / 45 < 8 ? "NW" : "direction"}</span>
+                                            <img width="30" height="30" src={rainicon}/>
+                                            <span id="rain">{(this.state.weather[0].pop * 100)}%</span>
                                         </div>
                                     </div>
-                                    <div id="map">
-                                        <img width="30%" src={this.state.mapimg}/>
+                                    <h3> points of interest </h3>
+                                    <p> The following attractions in {this.state.weatherCity} may interest you: </p>
+                                    <p> Click to bookmark.  </p>
+                                    <br/>
+                                    <div id="poi-interface">
+                                        <div id="poi-list">
+                                            <ul>
+                                                {
+                                                    this.state.poi_list !== null ?
+                                                    this.state.poi_list.map(poi =>
+                                                        <li className="poi-item"><button onClick={this.savePOI.bind(this, poi.name)}>{poi.name}</button></li>
+                                                    )
+                                                    : null
+                                                }
+                                            </ul>
+                                        </div>
+                                        <div id="map">
+                                            <iframe src={this.state.weatherCityUrl} width="600" height="450"></iframe>
+                                        </div>
+                                    </div>
+                                    <div id="flightmap">
+                                        <h3> flight map </h3>
+                                        <img width="50%" src={this.state.mapimg}/>
                                     </div>
                                 </div>
                              : null}

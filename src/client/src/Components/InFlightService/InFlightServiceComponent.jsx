@@ -42,13 +42,14 @@ class InFlightServiceComponent extends Component {
             serviceImageUrl: this.state.serviceImageUrl == serviceButtonLogo1 ? serviceButtonLogo2 : serviceButtonLogo1
         });
         if (previousState == serviceButtonLogo1) {
-
             Swal.fire({
                 icon: 'success',
                 type: 'success',
                 text: 'The flight attendant has been informed',
             });
 
+        }
+        else {
         }
     }
 
@@ -67,6 +68,8 @@ class InFlightServiceComponent extends Component {
             <div className="inflight-service">
                 <h1> inflight service </h1>
                 <br/>
+                {this.props.isLoggedIn() ?
+                <div>
                 <div className="button-container">
                     <ul className="button-list">
                         <li className="button">
@@ -89,7 +92,10 @@ class InFlightServiceComponent extends Component {
                 <div className="body">
                     {this.state.showMovie ? <MoviesComponent /> : null}
                     {this.state.showFlightInstructions ? <SafetyInstructionsComponent /> : null}
+                    <br/>
                 </div>
+                </div>
+                : <div><p>You need to be logged in to access this feature.</p><br/></div>}
             </div>
         );
     }

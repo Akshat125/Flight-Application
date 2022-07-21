@@ -26,7 +26,11 @@ class MoviesComponent extends Component {
 
     render() {
         return (
+            <div>
+            <h2>Movie Search</h2>
             <MovieSearchComponent/>
+            <br/>
+            </div>
         );
     }
 }

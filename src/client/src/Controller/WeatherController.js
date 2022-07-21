@@ -14,7 +14,6 @@ class WeatherController {
              -windDirection (degree)
              -short description
      */
-    //TODO convert Kelvin to Celsius using: T(C) = 273 + T(K)
 
     getWeather(iata) {
         return (

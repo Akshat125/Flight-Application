@@ -43,7 +43,6 @@ class MovieSearchComponent extends Component {
         return (
             <Card style={{ width: '79.4rem'}}>
                 <Form>
-                    <Form.Label>Movie Search</Form.Label>
                     <Form.Control
                         type="text"
                         placeholder="Penguins Of Madagascar"

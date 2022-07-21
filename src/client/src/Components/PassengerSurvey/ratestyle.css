@@ -37,3 +37,7 @@
     font-weight: 900;
     color: #f8ce0b;
 }
+
+#rating-cols    {
+    columns: 2;
+}
