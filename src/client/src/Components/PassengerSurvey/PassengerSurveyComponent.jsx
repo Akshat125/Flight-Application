@@ -247,7 +247,7 @@ class PassengerSurveyComponent extends Component {
         return (
             <div className="passenger-survey">
             <h1> passenger survey </h1>
-            <h2> my flights </h2>
+            <h2> my recent flights </h2>
             {this.props.isLoggedIn() && this.state.my_flights.length != 0 ? <p>Select a flight to rate.</p> : null}
             {this.props.isLoggedIn() && this.state.my_flights.length == 0 ? <p>You have no saved flights.</p> : null}
 
@@ -268,7 +268,6 @@ class PassengerSurveyComponent extends Component {
                             <td id="arrivaliata">{flight.arrivalIata}</td>
                             <td id="arrivalgate">{flight.arrivalTerminal}</td>
                             <td id="arrivaltime">{flight.arrivalTime}</td>
-                            <button className="flightoptionbtn" id="remove-btn"><img src={removeicon} width="20"/></button>
                         </tr>
                         </div>
                     )
