@@ -7,9 +7,6 @@ class MoviesComponent extends Component {
         super(props);
 
         this.state = {
-            moviesList: {
-                angryBirds: "https://www.youtube.com/embed/ZL7WYCpu6pw"
-            }
         }
     }
 
@@ -17,13 +14,6 @@ class MoviesComponent extends Component {
     }
 
     // Movies Platform: Youtube API
-
-    /*
-    <div className = "card opacity-100 bg-gradient">
-
-            </div>
-     */
-
     render() {
         return (
             <div>

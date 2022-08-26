@@ -8,7 +8,6 @@ import SafetyInstructionsComponent from "./Subcomponents/SafetyInstructionsCompo
 import Swal from 'sweetalert2';
 
 class InFlightServiceComponent extends Component {
-    //potentially add music effects later
     constructor(props) {
         super(props);
 
