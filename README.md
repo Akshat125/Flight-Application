@@ -3,33 +3,23 @@
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
 
-<!-- PROJECT LOGO -->
 <br />
-<div align="center">
-  <a href="https://github.com/github_username/repo_name">
-    <img src="src/client/src/Images/flightLogo.jpeg" alt="Logo">
-  </a>
+<img src="src/client/src/Images/flightLogo.jpeg" alt="Logo">
 
-<h1 align="center">Air Pingu</h1>
-
-  <p align="center">
-    project_description
-    <br />
-    <a href="https://github.com/github_username/repo_name"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="https://github.com/github_username/repo_name">View Demo</a>
-    ·
-    <a href="https://github.com/github_username/repo_name/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/github_username/repo_name/issues">Request Feature</a>
-  </p>
-</div>
-
-<!-- ABOUT THE PROJECT -->
 ## About The Project
-### Functional Requirements:
-### Non-functional Requirements:
+This system is implemented using the traditional client server layered architecture based on the REST protocol, while leveraging various features of modern web applications. The server side is built on the Spring Boot framework for Java, which allows the handling of simple API calls and persistent storage through an inbuilt database feature. The client side is composed of HTML/CSS/JavaScript to be run in a browser, with the aid of React.js library.
+
+### Use-case model:
+<img src="modles/UseCaseDiagram.png">
+
+### UML model: 
+<img src="modles/UMLClassDiagram.png">
+
+### Communication diagram:
+<img src="modles/CommunicationDiagram.png">
+
+### Component diagram: 
+<img src="modles/ComponentDiagram.png">
 
 ### Built With
 
@@ -44,7 +34,7 @@
   1. ```sh
      $ sudo apt install nodejs npm
      ```
-  2. navigate to "Flight-System-Application"
+  2. navigate to "Flight-Application"
   3. ```sh
      $ ./start_project.sh
      ```
@@ -52,40 +42,40 @@
   1. ```sh
      $ brew install node
      ```
-  2. navigate to "Flight-System-Application"
+  2. navigate to "Flight-Application"
   3. ```sh
      $ ./start_project.sh
      ```
 * Windows:
   1. download Node.js installer and install npm from browser
-  2. navigate to "Flight-System-Application"
+  2. navigate to "Flight-Application"
   3. ```sh
      $ ./start_project.bat
      ```
 
 ### Starting server
-1. navigate to "Flight-System-Application"
+1. navigate to "Flight-Application"
 2. ```shell
      $ ./gradlew clean build
      $ ./gradlew bootRun;
      ```
 
 ### Starting client
-  1. navigate to "Flight-System-Application/src/client"
+  1. navigate to "Flight-Application/src/client"
   2. ```sh
      $ npm install --force --silent
      $ npm start --silent; 
      ```
-<!-- USAGE EXAMPLES -->
+     
 ## Usage
+<img src="UI_Images/img.png">
+<img src="UI_Images/img_2.png">
+<img src="UI_Images/img_3.png">
+<img src="UI_Images/img_4.png">
+<img src="UI_Images/img_1.png">
+<img src="UI_Images/img_5.png">
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)
-
-<!-- CONTRIBUTING -->
 ## Contributing
-
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
 If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
@@ -97,7 +87,6 @@ Don't forget to give the project a star! Thanks again!
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-<!-- LICENSE -->
 ## License
 
 Distributed under the MIT License. See `LICENSE.md` for more information.
