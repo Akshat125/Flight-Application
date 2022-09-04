@@ -1,3 +1,5 @@
+<!-- Template inspired from: Copyright (c) 2021 Othneil Drew -->
+
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Issues][issues-shield]][issues-url]
@@ -25,7 +27,8 @@ This system is implemented using the traditional client server layered architect
 
 * [![React][React.js]][React-url]
 * [![Bootstrap][Bootstrap.com]][Bootstrap-url]
-
+* [![Java][Java]][Java-url]
+* 
 <!-- GETTING STARTED -->
 ## Getting Started
 
@@ -93,20 +96,23 @@ Distributed under the MIT License. See `LICENSE.md` for more information.
 
 
 <!-- LINKS & IMAGES -->
-[contributors-shield]: https://img.shields.io/github/contributors/github_username/repo_name.svg?style=for-the-badge
-[contributors-url]: https://github.com/github_username/repo_name/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/github_username/repo_name.svg?style=for-the-badge
-[forks-url]: https://github.com/github_username/repo_name/network/members
-[stars-shield]: https://img.shields.io/github/stars/github_username/repo_name.svg?style=for-the-badge
-[stars-url]: https://github.com/github_username/repo_name/stargazers
-[issues-shield]: https://img.shields.io/github/issues/github_username/repo_name.svg?style=for-the-badge
-[issues-url]: https://github.com/github_username/repo_name/issues
-[license-shield]: https://img.shields.io/apm/l/vim-mode
-[license-url]: https://github.com/Akshat125/Flight-System-Application/blob/main/LICENSE.md
+[contributors-shield]: https://img.shields.io/github/contributors/Akshat125/Flight-Application.svg?style=for-the-badge
+[contributors-url]: https://github.com/Akshat125/Flight-Application/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/Akshat125/Flight-Application.svg?style=for-the-badge
+[forks-url]: https://github.com/Akshat125/Flight-Application/network/members
+[stars-shield]: https://img.shields.io/github/stars/Akshat125/Flight-Application.svg?style=for-the-badge
+[stars-url]: https://github.com/Akshat125/Flight-Application/stargazers
+[issues-shield]: https://img.shields.io/github/issues/Akshat125/Flight-Application.svg?style=for-the-badge
+[issues-url]: https://github.com/Akshat125/Flight-Application/issues
+[license-shield]: https://img.shields.io/github/license/Akshat125/Flight-Application.svg?style=for-the-badge
+[license-url]: https://github.com/Akshat125/Flight-Application/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/linkedin_username
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 [React-url]: https://reactjs.org/
 [Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
 [Bootstrap-url]: https://getbootstrap.com
+[Java]: https://img.shields.io/badge/Java-fff?style=for-the-badge&logo=Java&logoColor=007396
+[Java-url]: .
+
 
