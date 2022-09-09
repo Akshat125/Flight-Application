@@ -1,6 +1,5 @@
 package apis;
 
-import org.springframework.http.MediaType;
 import org.springframework.web.reactive.function.client.ExchangeStrategies;
 import org.springframework.web.reactive.function.client.WebClient;
 import utils.api.airport.AirportApiUtil;
