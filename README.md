@@ -1,7 +1,7 @@
 <!-- Template inspired from: Copyright (c) 2021 Othneil Drew -->
 
 [![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]<!-- [![Issues][issues-shield]][issues-url] -->
+<!-- [![Forks][forks-shield]][forks-url] [![Issues][issues-shield]][issues-url] -->
 [![MIT License][license-shield]][license-url]
 
 <br />
@@ -104,7 +104,7 @@ Distributed under the MIT License. See `LICENSE.md` for more information.
 [issues-shield]: https://img.shields.io/github/issues/Akshat125/Flight-Application.svg?style=for-the-badge
 [issues-url]: https://github.com/Akshat125/Flight-Application/issues
 [license-shield]: https://img.shields.io/github/license/Akshat125/Flight-Application.svg?style=for-the-badge
-[license-url]: https://github.com/Akshat125/Flight-Application/blob/master/LICENSE.txt
+[license-url]: https://github.com/Akshat125/Flight-Application/blob/master/LICENSE.md
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/linkedin_username
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
