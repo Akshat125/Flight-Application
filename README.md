@@ -27,7 +27,7 @@ This system is implemented using the traditional client server layered architect
 * [![React][React.js]][React-url]
 * [![Bootstrap][Bootstrap.com]][Bootstrap-url]
 * [![Java][Java]][Java-url]
-* 
+
 <!-- GETTING STARTED -->
 ## Getting Started
 
